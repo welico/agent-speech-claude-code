@@ -1,0 +1,50 @@
+{
+  "timestamp": "2026-02-12T15:49:06.137Z",
+  "reason": "compaction",
+  "status": {
+    "version": "2.0",
+    "lastUpdated": "2026-02-12T07:48:55.411Z",
+    "activeFeatures": [
+      "agent-speech-plugin"
+    ],
+    "primaryFeature": "agent-speech-plugin",
+    "features": {
+      "agent-speech-plugin": {
+        "phase": "do",
+        "level": "Starter",
+        "createdAt": "2026-02-12",
+        "tasks": {
+          "plan": "completed",
+          "design": "completed"
+        }
+      }
+    },
+    "pipeline": {
+      "currentPhase": 1,
+      "level": "Starter",
+      "phaseHistory": []
+    },
+    "session": {
+      "startedAt": "2026-02-12T07:48:55.411Z",
+      "onboardingCompleted": true,
+      "lastActivity": "2026-02-12T02:20:00.000Z"
+    },
+    "history": [
+      {
+        "action": "plan",
+        "feature": "agent-speech-plugin",
+        "timestamp": "2026-02-12T01:48:00.000Z"
+      },
+      {
+        "action": "design",
+        "feature": "agent-speech-plugin",
+        "timestamp": "2026-02-12T01:48:00.000Z"
+      },
+      {
+        "action": "do",
+        "feature": "agent-speech-plugin",
+        "timestamp": "2026-02-12T02:20:00.000Z"
+      }
+    ]
+  }
+}

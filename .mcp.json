@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "agent-speech": {
+      "command": "node",
+      "args": [
+        "/Users/warezio/Git/GitHub/warezio/agent-speech-plugin/dist/mcp-server.js"
+      ],
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  }
+}

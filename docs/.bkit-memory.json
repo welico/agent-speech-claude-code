@@ -1,0 +1,23 @@
+{
+  "sessionCount": 7,
+  "lastSession": {
+    "startedAt": "2026-02-12T20:55:00.000Z",
+    "platform": "claude",
+    "level": "Starter"
+  },
+  "activeFeatures": [
+    {
+      "name": "agent-speech-plugin",
+      "phase": "completed",
+      "completedPhases": [
+        "plan",
+        "design",
+        "do",
+        "act",
+        "check"
+      ],
+      "currentPhase": "completed",
+      "matchRate": 96
+    }
+  ]
+}

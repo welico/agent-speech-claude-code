@@ -1,0 +1,112 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Agent Speech Plugin Configuration",
+  "description": "Configuration schema for the Agent Speech Plugin",
+  "type": "object",
+  "required": ["version", "global"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference"
+    },
+    "version": {
+      "type": "string",
+      "description": "Config version for migration",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "global": {
+      "type": "object",
+      "description": "Global TTS settings",
+      "required": ["enabled", "voice", "rate", "volume"],
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Enable TTS globally"
+        },
+        "voice": {
+          "type": "string",
+          "description": "macOS voice name (e.g., Samantha, Alex, Victoria)",
+          "examples": ["Samantha", "Alex", "Victoria", "Fred"]
+        },
+        "rate": {
+          "type": "integer",
+          "description": "Speech rate in words per minute",
+          "minimum": 50,
+          "maximum": 400,
+          "default": 175
+        },
+        "volume": {
+          "type": "integer",
+          "description": "Volume level (0-100)",
+          "minimum": 0,
+          "maximum": 100,
+          "default": 50
+        },
+        "minLength": {
+          "type": "integer",
+          "description": "Minimum response length to speak (0 = no minimum)",
+          "minimum": 0,
+          "default": 10
+        },
+        "maxLength": {
+          "type": "integer",
+          "description": "Maximum response length to speak (0 = no limit)",
+          "minimum": 0,
+          "default": 0
+        },
+        "filters": {
+          "type": "object",
+          "description": "Content filtering options",
+          "properties": {
+            "sensitive": {
+              "type": "boolean",
+              "description": "Filter out sensitive information (passwords, API keys, etc.)",
+              "default": false
+            },
+            "skipCodeBlocks": {
+              "type": "boolean",
+              "description": "Skip code blocks when speaking",
+              "default": false
+            },
+            "skipCommands": {
+              "type": "boolean",
+              "description": "Skip command outputs",
+              "default": false
+            }
+          }
+        }
+      }
+    },
+    "tools": {
+      "type": "object",
+      "description": "Per-tool TTS settings",
+      "patternProperties": {
+        "^[a-z-]+$": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "voice": {
+              "type": "string"
+            },
+            "rate": {
+              "type": "integer",
+              "minimum": 50,
+              "maximum": 400
+            },
+            "volume": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "propertyNames": {
+        "enum": ["claude-code", "opencode", "codex-cli", "gemini-cli"]
+      }
+    }
+  }
+}

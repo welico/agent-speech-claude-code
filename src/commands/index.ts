@@ -1,0 +1,16 @@
+/**
+ * Command exports
+ * Central export point for all CLI commands
+ */
+
+export { cmdInit } from './init.js';
+export { cmdEnable } from './enable.js';
+export { cmdDisable } from './disable.js';
+export { cmdToggle } from './toggle.js';
+export { cmdStatus } from './status.js';
+export { cmdSetVoice } from './set-voice.js';
+export { cmdSetRate } from './set-rate.js';
+export { cmdSetVolume } from './set-volume.js';
+export { cmdListVoices } from './list-voices.js';
+export { cmdReset } from './reset.js';
+export { cmdHelp } from './help.js';

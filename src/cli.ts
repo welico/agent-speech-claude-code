@@ -1,0 +1,104 @@
+#!/usr/bin/env node
+/**
+ * CLI entry point for Agent Speech Plugin
+ *
+ * Usage:
+ *   agent-speech init              Initialize configuration
+ *   agent-speech enable [tool]     Enable TTS for tool
+ *   agent-speech disable [tool]    Disable TTS for tool
+ *   agent-speech toggle [tool]     Toggle TTS on/off
+ *   agent-speech status            Show configuration status
+ *   agent-speech set-voice <name>  Set voice
+ *   agent-speech set-rate <wpm>    Set speech rate
+ *   agent-speech set-volume <0-100> Set volume
+ *   agent-speech list-voices       List available voices
+ *   agent-speech reset             Reset to defaults
+ */
+
+import {
+  cmdInit,
+  cmdEnable,
+  cmdDisable,
+  cmdToggle,
+  cmdStatus,
+  cmdSetVoice,
+  cmdSetRate,
+  cmdSetVolume,
+  cmdListVoices,
+  cmdReset,
+  cmdHelp,
+} from './commands/index.js';
+import { formatError } from './utils/format.js';
+
+/**
+ * Available commands
+ */
+const COMMANDS = [
+  'init',
+  'enable',
+  'disable',
+  'toggle',
+  'status',
+  'set-voice',
+  'set-rate',
+  'set-volume',
+  'list-voices',
+  'reset',
+  'help',
+  '--help',
+  '-h',
+] as const;
+
+type Command = (typeof COMMANDS)[number];
+
+/**
+ * Main CLI entry point
+ */
+async function main(): Promise<number> {
+  const args = process.argv.slice(2);
+
+  if (args.length === 0) {
+    return cmdHelp();
+  }
+
+  const [command, ...commandArgs] = args;
+
+  switch (command as Command) {
+    case 'init':
+      return await cmdInit();
+    case 'enable':
+      return await cmdEnable(commandArgs[0]);
+    case 'disable':
+      return await cmdDisable(commandArgs[0]);
+    case 'toggle':
+      return await cmdToggle(commandArgs[0]);
+    case 'status':
+      return await cmdStatus();
+    case 'set-voice':
+      return await cmdSetVoice(commandArgs[0]);
+    case 'set-rate':
+      return await cmdSetRate(commandArgs[0]);
+    case 'set-volume':
+      return await cmdSetVolume(commandArgs[0]);
+    case 'list-voices':
+      return await cmdListVoices();
+    case 'reset':
+      return await cmdReset();
+    case 'help':
+    case '--help':
+    case '-h':
+      return cmdHelp();
+    default:
+      formatError(`Unknown command: ${command}`);
+      formatError('Run "agent-speech help" for usage');
+      return 1;
+  }
+}
+
+// Run CLI
+main()
+  .then((code) => process.exit(code))
+  .catch((error) => {
+    formatError('Unexpected error:', error);
+    process.exit(1);
+  });
