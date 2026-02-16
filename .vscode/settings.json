@@ -1,0 +1,37 @@
+{
+  // TypeScript settings
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+
+  // Testing
+  "vitest.enable": true,
+
+  // Files
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/node_modules": false,
+    "**/dist": true
+  },
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/dist/**": true
+  },
+
+  // Editor
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+
+  // Debug
+  "debug.node.autoAttach": "on",
+  "debug.internalConsoleOptions": "openOnSessionStart",
+
+  // Problems
+  "problems.decorations.enabled": true,
+
+  // TypeScript specific
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.suggest.autoImports": true
+}
