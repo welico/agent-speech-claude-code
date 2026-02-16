@@ -23,6 +23,7 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
+    "inspect": "./scripts/inspect.sh",
     "lint": "eslint src/",
     "typecheck": "tsc --noEmit"
   },
