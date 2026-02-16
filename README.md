@@ -1,84 +1,194 @@
-# Agent Speech Plugin
+# agent-speech-plugin
 
-> **A plugin that provides audio guidance for Terminal CLI AI Agent responses**
+> **Text-to-speech plugin for AI CLI tools (Claude Code, OpenCode, Codex-CLI, Gemini-CLI)**
 > **Platform**: macOS | **Level**: Starter
 > **Repository**: https://github.com/warezio/agent-speech-plugin
 
 ---
 
-## 📋 Overview
+## Overview
 
-A macOS-exclusive plugin that allows developers to hear responses via audio when using AI tools in the terminal such as Claude Code, OpenCode, Codex-CLI, and Gemini-CLI.
+A macOS-exclusive plugin that converts AI responses into speech using the built-in `say` command. Perfect for developers who prefer listening to long responses or want audio confirmation while multitasking.
 
-### 🎯 Supported CLI Tools
+### Supported CLI Tools
 
-- [x] **Claude Code** - Available via MCP (Model Context Protocol)
-- [ ] **OpenCode** - Planned
-- [ ] **Codex-CLI** - Planned (OpenAI function calling)
-- [ ] **Gemini-CLI** - Planned (Google tool calling)
+| Tool | Status | Integration |
+|------|--------|-------------|
+| **Claude Code** | ✅ Available | MCP Server |
+| **OpenCode** | 🚧 Planned | Config Adapter |
+| **Codex-CLI** | 🚧 Planned | OpenAI Functions |
+| **Gemini-CLI** | 🚧 Planned | Google Tools |
 
-### 🚧 Development Status
+### Key Features
 
-**Starter Level** - Implementing core plugin features with local TTS and simple configuration.
-
-- [x] Phase 1: Plan (Completed)
-- [x] Phase 2: Design (Completed)
-- [x] Phase 3: Implementation (In Progress - Claude Code MVP)
-- [ ] Phase 4: Testing
-- [ ] Phase 5: Release
+- **macOS Native TTS** - Uses built-in `say` command (no external dependencies)
+- **Non-Blocking** - Runs asynchronously without interfering with CLI operation
+- **Configurable** - Adjustable voice, rate (50-400 WPM), and volume (0-100)
+- **Privacy-Conscious** - Optional filtering for sensitive information
 
 ---
 
-## 🚀 Installation
+## Quick Start
 
-### Prerequisites
+Get speech output in under 2 minutes with Claude Code:
 
-- macOS 10.15+ (Catalina or higher)
-- Node.js 18+
-- Claude Code CLI
+### 1. Build the Project
 
-### Quick Install
-
-1. **Clone and build:**
 ```bash
 git clone https://github.com/warezio/agent-speech-plugin.git
 cd agent-speech-plugin
-npm install
-npm run build
+pnpm install
+pnpm build
 ```
 
-2. **Configure Claude Code MCP server:**
+### 2. Configure Claude Code
 
-Create or edit `~/.claude/mcp.json`:
+Add to `~/.config/claude-code/config.json`:
 
 ```json
 {
   "mcpServers": {
     "agent-speech": {
       "command": "node",
-      "args": ["/path/to/agent-speech-plugin/dist/mcp-server.js"]
+      "args": ["/ABSOLUTE/PATH/TO/agent-speech-plugin/dist/mcp-server.js"]
     }
   }
 }
 ```
 
-3. **Initialize configuration:**
+**Important**: Use an absolute path, not a relative path.
+
+### 3. Restart Claude Code
+
+Quit and restart Claude Code to load the new MCP server.
+
+### 4. Test It
+
+In Claude Code, ask: **"Say 'Hello World'"**
+
+Claude will use the `speak_text` tool to read the response aloud.
+
+---
+
+## Installation
+
+### Prerequisites
+
+- **macOS 10.15+** (Catalina or later)
+- **Node.js 18+**
+- **Claude Code CLI** (for MCP integration)
+
+### Option 1: Local Development (Recommended)
+
 ```bash
-npm run cli -- init
+# Clone the repository
+git clone https://github.com/warezio/agent-speech-plugin.git
+cd agent-speech-plugin
+
+# Install dependencies
+pnpm install
+
+# Build the project
+pnpm build
 ```
 
-4. **Test it works:**
+### Option 2: Global Install (via npm)
+
 ```bash
-npm run cli -- status
+npm install -g agent-speech-plugin
 ```
 
-### Usage with Claude Code
+### Verify Installation
 
-Once installed, Claude Code can call the `speak_text` tool:
+```bash
+# Check if the MCP server builds correctly
+node dist/mcp-server.js
+
+# List available voices
+agent-speech list-voices
+```
+
+---
+
+## Configuration
+
+### Claude Code MCP Server
+
+Add to `~/.config/claude-code/config.json`:
+
+```json
+{
+  "mcpServers": {
+    "agent-speech": {
+      "command": "node",
+      "args": ["/ABSOLUTE/PATH/TO/dist/mcp-server.js"],
+      "env": {
+        "DEBUG": "true",
+        "LOG_FILE": "/tmp/agent-speech-debug.log"
+      }
+    }
+  }
+}
+```
+
+**Important**: Use an absolute path to `mcp-server.js`.
+
+### Environment Variables
+
+| Variable | Purpose | Default |
+|----------|---------|---------|
+| `DEBUG` | Enable debug logging to stderr | `false` |
+| `LOG_FILE` | Path to debug log file | `/tmp/agent-speech-debug.log` |
+| `LOG_LEVEL` | Minimum log level (debug, info, warn, error) | `debug` |
+
+### Config File Location
+
+Configuration is stored at: `~/.agent-speech/config.json`
+
+```json
+{
+  "enabled": true,
+  "voice": "Samantha",
+  "rate": 200,
+  "volume": 50,
+  "minLength": 10,
+  "filterSensitive": false,
+  "tools": {
+    "claude-code": {
+      "enabled": true,
+      "voice": "Samantha"
+    }
+  }
+}
+```
+
+### Voice Selection
+
+List available macOS voices:
+
+```bash
+agent-speech list-voices
+```
+
+Or use the native macOS command:
+
+```bash
+say -v "?"
+```
+
+**Popular Voices**: Samantha, Alex, Victoria, Daniel, Fiona, Tessa
+
+---
+
+## Usage
+
+### MCP Server (Claude Code)
+
+Once configured, Claude Code can call the `speak_text` tool:
 
 ```typescript
-// Claude Code will use this tool automatically
-mcp.speak_text({
+// Claude Code uses this automatically
+speak_text({
   text: "Hello, this is a test of the speech synthesis",
   voice: "Samantha",
   rate: 200,
@@ -86,214 +196,328 @@ mcp.speak_text({
 })
 ```
 
-### CLI Commands
+### CLI Commands Overview
 
 ```bash
 agent-speech init              # Initialize configuration
-agent-speech enable [tool]     # Enable TTS for tool (default: claude-code)
-agent-speech disable [tool]    # Disable TTS for tool
-agent-speech toggle [tool]     # Toggle TTS on/off
-agent-speech status            # Show configuration status
-agent-speech set-voice <name>  # Set voice (e.g., Samantha, Alex)
+agent-speech enable            # Enable TTS
+agent-speech disable           # Disable TTS
+agent-speech toggle            # Quick toggle on/off
+agent-speech status            # Show current settings
+agent-speech reset             # Reset to defaults
+agent-speech set-voice <name>  # Set voice
 agent-speech set-rate <wpm>    # Set speech rate (50-400)
 agent-speech set-volume <0-100> # Set volume
 agent-speech list-voices       # List available voices
-agent-speech reset             # Reset to defaults
+agent-speech help              # Show help
 ```
 
 ---
 
-## 📁 Project Structure
+## CLI Reference
+
+### Configuration Commands
+
+#### `agent-speech init`
+
+Initialize the configuration file at `~/.agent-speech/config.json`.
+
+```bash
+agent-speech init
+```
+
+#### `agent-speech enable [tool]`
+
+Enable TTS. Optionally specify a tool (default: claude-code).
+
+```bash
+agent-speech enable           # Enable globally
+agent-speech enable opencode  # Enable for opencode
+```
+
+#### `agent-speech disable [tool]`
+
+Disable TTS.
+
+```bash
+agent-speech disable
+```
+
+#### `agent-speech toggle [tool]`
+
+Quick toggle on/off.
+
+```bash
+agent-speech toggle
+```
+
+#### `agent-speech status`
+
+Show current configuration.
+
+```bash
+agent-speech status
+```
+
+**Output**:
+```
+Agent Speech Status
+├─ Enabled: true
+├─ Voice: Samantha
+├─ Rate: 200 WPM
+└─ Volume: 50
+```
+
+#### `agent-speech reset`
+
+Reset to default settings.
+
+```bash
+agent-speech reset
+```
+
+### Voice Commands
+
+#### `agent-speech set-voice <name>`
+
+Set the voice. Use exact name from `list-voices`.
+
+```bash
+agent-speech set-voice Alex
+agent-speech set-voice Victoria
+```
+
+#### `agent-speech set-rate <wpm>`
+
+Set speech rate (50-400 words per minute).
+
+```bash
+agent-speech set-rate 150   # Slower
+agent-speech set-rate 250   # Faster
+```
+
+#### `agent-speech set-volume <0-100>`
+
+Set volume level.
+
+```bash
+agent-speech set-volume 80
+```
+
+#### `agent-speech list-voices`
+
+List all available voices.
+
+```bash
+agent-speech list-voices
+```
+
+**Output**:
+```
+Available voices:
+  - Samantha (Female, English)
+  - Alex (Male, English)
+  - Victoria (Female, Australian)
+  - Daniel (Male, British)
+  ...
+```
+
+### Help
+
+#### `agent-speech help`
+
+Show all commands.
+
+```bash
+agent-speech help
+```
+
+---
+
+## Development
+
+### Building
+
+```bash
+# Single build
+pnpm build
+
+# Watch mode (auto-rebuild on changes)
+pnpm dev
+```
+
+### Testing
+
+```bash
+# Run all tests
+pnpm test
+
+# Run with UI
+pnpm test:ui
+
+# Coverage report
+pnpm test:coverage
+```
+
+**Test Results** (64 tests passing):
+- logger.test.ts: 13 tests ✅
+- tts.test.ts: 11 tests ✅
+- filter.test.ts: 15 tests ✅
+- config.test.ts: 20 tests ✅
+- integration/tts.test.ts: 5 tests ✅
+
+### Debugging
+
+**Using VS Code:**
+
+1. Open the project in VS Code
+2. Press `F5` or select "Debug MCP Server" from the Run and Debug panel
+3. Set breakpoints in `src/infrastructure/mcp-server.ts`
+4. Use the Debug Console to inspect variables
+
+**Using MCP Inspector:**
+
+```bash
+pnpm inspect
+```
+
+Opens a browser-based tool at http://localhost:5173 for testing MCP tools.
+
+**Debug Logging:**
+
+```bash
+# Enable debug output
+DEBUG=true LOG_LEVEL=debug node dist/mcp-server.js
+
+# Tail the debug log
+tail -f /tmp/agent-speech-debug.log
+```
+
+### Project Structure
 
 ```
 agent-speech-plugin/
-├── docs/
-│   ├── 01-plan/
-│   │   └── features/
-│   │       └── agent-speech-plugin.plan.md    # Planning document
-│   ├── 02-design/
-│   │   └── features/
-│   │       └── agent-speech-plugin.design.md    # Design document (Core + Adapter architecture)
-│   ├── 03-analysis/                          # Analysis document (Planned)
-│   └── 04-report/                            # Completion report (Planned)
-├── src/                                      # Source code (To be implemented)
-│   ├── config/                                   # Configuration files
-└── README.md
+├── src/
+│   ├── core/              # Core TTS logic
+│   │   ├── tts.ts         # Text-to-speech implementation
+│   │   ├── config.ts      # Configuration management
+│   │   └── filter.ts      # Content filtering
+│   ├── infrastructure/    # External integrations
+│   │   ├── mcp-server.ts  # MCP server implementation
+│   │   ├── say.ts         # macOS say command wrapper
+│   │   └── fs.ts          # File system operations
+│   ├── adapters/          # CLI tool adapters
+│   │   ├── claude-code.ts # Claude Code adapter (MCP)
+│   │   ├── opencode.ts    # OpenCode adapter (stub)
+│   │   ├── codex-cli.ts   # Codex-CLI adapter (stub)
+│   │   ├── gemini-cli.ts  # Gemini-CLI adapter (stub)
+│   │   └── registry.ts    # Adapter registry
+│   ├── commands/          # CLI commands
+│   │   ├── init.ts
+│   │   ├── enable.ts
+│   │   ├── disable.ts
+│   │   ├── toggle.ts
+│   │   ├── status.ts
+│   │   ├── reset.ts
+│   │   ├── set-voice.ts
+│   │   ├── set-rate.ts
+│   │   ├── set-volume.ts
+│   │   ├── list-voices.ts
+│   │   └── help.ts
+│   ├── utils/             # Utilities
+│   │   ├── logger.ts      # Debug logging
+│   │   ├── error-handler.ts
+│   │   ├── schemas.ts     # Zod validation
+│   │   └── format.ts      # Output formatting
+│   ├── cli.ts             # CLI entry point
+│   └── index.ts           # Package entry point
+├── tests/
+│   ├── unit/              # Unit tests
+│   └── integration/       # Integration tests
+├── docs/                  # Documentation
+├── scripts/               # Utility scripts
+├── config/                # Configuration files
+└── dist/                  # Compiled output
 ```
 
 ---
 
-## 🔧 Key Features
+## Troubleshooting
 
-### Core Features
-- **macOS Native TTS** - Uses the built-in `say` command for speech synthesis
-- **Non-Blocking** - Runs asynchronously without interfering with CLI tool operation
-- **Privacy-Conscious** - Optional filtering for sensitive information (passwords, API keys)
-- **Configuration File** - Persistent storage via `~/.agent-speech/config.json`
+### Plugin not loading in Claude Code
 
-### Adjustable Settings
-- **Voice Selection** - Choose from installed macOS voices (Samantha, Alex, etc.)
-- **Speech Rate Control** - Adjustable words-per-minute (50-400 WPM)
-- **Volume Control** - Adjustable volume (0-100)
-- **On/Off Toggle** - Quick enable/disable without uninstalling
+**Symptoms**: The `speak_text` tool doesn't appear in available tools.
 
-### Per-Tool Configuration
-- Each CLI tool can have independent settings
-- Tool-specific config overrides global config
-- Support for Claude Code, OpenCode, Codex-CLI, Gemini-CLI
+**Solutions**:
+1. Check that the path in `config.json` is **absolute** (not relative)
+2. Verify `dist/mcp-server.js` exists (`pnpm build`)
+3. Check Claude Code debug logs: **View → Developer → Show Debug Logs**
+4. Restart Claude Code after config changes
 
----
+### No speech output
 
-## 🏗️ Architecture
+**Symptoms**: Tool executes but no sound plays.
 
-### Core + Adapter Pattern
+**Solutions**:
+1. Check macOS volume is not muted
+2. Verify the voice exists: `say -v Samantha "test"`
+3. Check if TTS is enabled: `agent-speech status`
+4. Try enabling: `agent-speech enable`
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                         User Environment                      │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                 │
-│  ┌──────────────┐         ┌─────────────────────┐              ┌─────────┐│
-│  │   CLI Tool     │         │   Agent Speech Plugin  │              │ macOS   ││
-│  │ (Claude Code,  │──────▶│                         │──────▶│  TTS    ││
-│  │  OpenCode,     │ Response│  ┌─────────────────────┐ │              │ (say)   ││
-│  │  Codex-CLI,     │         │  │   Plugin Registry    │ │              │         ││
-│  │  Gemini-CLI)   │         │  └─────────────────────┘ │              └─────────┘│
-│  └──────────────┘         │           │       │           │                             │
-│                            │  ┌──────┴──────┐       │                             │
-│                            │  │             │       │                             │
-│                            │  │             │       │                             │
-│                            │  ▼             ▼       │                             │
-│                            │  ┌─────────────────────────┐ │                             │
-│                            │  │     ADAPTER LAYER     │ │                             │
-│                            │  │  │ ┌─────────────────────┐ │                             │
-│                            │  │  │  │ Claude Code Adapter  │ │                             │
-│                            │  │  │ ├─────────────────────┤ │                             │
-│                            │  │  │  │ │ OpenCode Adapter    │ │                             │
-│                            │  │  │  ├─────────────────────┤ │                             │
-│                            │  │  │  │  │ Codex-CLI Adapter   │ │                             │
-│                            │  │  │  ├─────────────────────┤ │                             │
-│                            │  │  │  │  │ Gemini-CLI Adapter  │ │                             │
-│                            │  │  │  └─────────────────────┘ │                             │
-│                            │  │  └─────────────────────────────┘                             │
-│                            │  │           │       │                             │
-│                            │  │           │       │                             │
-│                            │  │           │       │                             │
-│                            │  │           │       │                             │
-│                            │  │           │       │                             │
-│                            │  │           │  │                             │
-│                            │  │           │       │                             │
-│                            │  │           │       │                             │
-│                            │  │           │  │                             │
-│                            │  │           │       │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │  │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-│                            │  │           │  │                             │
-└─────────────────────────────────────────────────────────────────────────┘
+### Speech too fast or too slow
+
+**Solution**: Adjust the rate setting
+
+```bash
+# Slower (recommended for long content)
+agent-speech set-rate 150
+
+# Faster (for brief updates)
+agent-speech set-rate 250
 ```
 
-### Tool Integration Methods
+### "say command not found"
 
-| Tool | Extension Method | Adapter Type |
-|------|-----------------|-------------|
-| **Claude Code** | MCP Server (stdio/SSE) | MCP Adapter |
-| **OpenCode** | Config (`openconfig.json`) + future MCP | Config Adapter |
-| **Codex-CLI** | OpenAI function calling pattern | Custom Adapter |
-| **Gemini-CLI** | Google tool calling spec | Custom Adapter |
+**Symptoms**: Error about `say` command.
+
+**Solution**: This plugin requires macOS. The `say` command is macOS-only and not available on Linux or Windows.
+
+### Voice not found
+
+**Symptoms**: Error about voice name.
+
+**Solution**: List available voices and use an exact name
+
+```bash
+agent-speech list-voices
+agent-speech set-voice Samantha  # Use exact name from list
+```
+
+### Need more help?
+
+1. Check debug logs: `tail -f /tmp/agent-speech-debug.log`
+2. Run tests: `pnpm test`
+3. Open an issue on [GitHub](https://github.com/warezio/agent-speech-plugin/issues)
 
 ---
 
-## 📝 License
+## MCP Tool Reference
 
-MIT
-
----
-
-## 📖 MCP Tool Reference
-
-### speak_text
+### `speak_text`
 
 Convert text to speech using macOS TTS.
 
 **Parameters:**
-- `text` (string, required): Text to speak
-- `voice` (string, optional): Voice name (e.g., Samantha, Alex, Victoria)
-- `rate` (number, optional): Speech rate in words per minute (50-400)
-- `volume` (number, optional): Volume level (0-100)
 
-**Example:**
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `text` | string | Yes | Text to speak |
+| `voice` | string | No | Voice name (e.g., Samantha, Alex, Victoria) |
+| `rate` | number | No | Speech rate in words per minute (50-400) |
+| `volume` | number | No | Volume level (0-100) |
+
+**Example**:
+
 ```json
 {
   "text": "Hello, this is a test",
@@ -305,4 +529,10 @@ Convert text to speech using macOS TTS.
 
 ---
 
-**PDCA Status**: Implementation Phase (In Progress) | **MVP**: Claude Code Plugin for macOS ✅
+## License
+
+MIT
+
+---
+
+**Status**: Active Development | **Version**: 0.1.0

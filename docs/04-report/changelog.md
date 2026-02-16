@@ -2,6 +2,39 @@
 
 All notable changes to the agent-speech-plugin project will be documented in this file.
 
+## [2026-02-15] - README Usage Documentation
+
+### Added
+- Comprehensive README usage documentation with 539 lines of content
+- Quick Start section for users to get speech output in < 2 minutes
+- Installation guide with local development and npm options
+- Configuration documentation including MCP server setup and environment variables
+- Complete CLI reference for all 11 commands with examples
+- Development section with testing and debugging guides
+- Troubleshooting section covering 5 common issues
+- MCP Tool Reference section with API documentation
+- Test results summary showing 64 tests passing
+- Project structure documentation with clear file organization
+- Debug logging examples and multiple debugging methods
+
+### Changed
+- Fixed incorrect configuration path (was ~/.claude/mcp.json)
+- Cleaned excessive whitespace (~100 lines removed)
+- Reorganized documentation structure with logical flow
+- Enhanced CLI command documentation with output examples
+- Improved user guidance throughout the documentation
+- Added macOS-specific notes and voice selection guidance
+
+### Fixed
+- Wrong config path in documentation
+- Missing Quick Start section
+- Incomplete CLI command examples
+- Missing troubleshooting section
+- Missing environment variables documentation
+- Missing development testing guide
+
+---
+
 ## [2026-02-15] - Debug Environment Setup
 
 ### Added
