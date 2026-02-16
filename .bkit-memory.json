@@ -1,16 +1,16 @@
 {
   "version": "1.4.7",
   "project": "agent-speech-plugin",
-  "currentFeature": "readme-usage-docs",
-  "phase": "completed",
+  "currentFeature": null,
+  "phase": "archived",
   "matchRate": 99,
   "activeFeatures": [],
-  "updatedAt": "2026-02-13T19:40:00.000Z",
+  "updatedAt": "2026-02-13T19:45:00.000Z",
   "tasks": {
     "readme-usage-docs": {
-      "status": "completed",
-      "phase": "report",
-      "matchRate": 99
+      "status": "archived",
+      "phase": "archived",
+      "archivedTo": "docs/archive/2026-02/readme-usage-docs"
     }
   },
   "history": [
@@ -39,6 +39,12 @@
       "action": "report",
       "feature": "readme-usage-docs",
       "timestamp": "2026-02-13T19:40:00.000Z",
+      "matchRate": 99
+    },
+    {
+      "action": "archive",
+      "feature": "readme-usage-docs",
+      "timestamp": "2026-02-13T19:45:00.000Z",
       "matchRate": 99
     }
   ]

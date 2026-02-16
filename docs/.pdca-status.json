@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-02-13T19:10:00.000Z",
+  "lastUpdated": "2026-02-13T19:45:00.000Z",
   "activeFeatures": [],
   "primaryFeature": null,
   "features": {
@@ -37,6 +37,23 @@
         "act": "completed",
         "report": "completed"
       }
+    },
+    "readme-usage-docs": {
+      "phase": "archived",
+      "level": "N/A",
+      "createdAt": "2026-02-13",
+      "archivedAt": "2026-02-13T19:45:00.000Z",
+      "archivedTo": "docs/archive/2026-02/readme-usage-docs",
+      "matchRate": 99,
+      "iterations": 0,
+      "tasks": {
+        "plan": "completed",
+        "design": "completed",
+        "do": "completed",
+        "check": "completed",
+        "act": "completed",
+        "report": "completed"
+      }
     }
   },
   "pipeline": {
@@ -47,7 +64,7 @@
   "session": {
     "startedAt": "2026-02-12T07:48:55.411Z",
     "onboardingCompleted": true,
-    "lastActivity": "2026-02-13T19:10:00.000Z"
+    "lastActivity": "2026-02-13T19:45:00.000Z"
   },
   "history": [
     {
@@ -119,6 +136,36 @@
       "action": "archive",
       "feature": "debug-env-setup",
       "timestamp": "2026-02-13T19:10:00.000Z"
+    },
+    {
+      "action": "plan",
+      "feature": "readme-usage-docs",
+      "timestamp": "2026-02-13T19:15:00.000Z"
+    },
+    {
+      "action": "design",
+      "feature": "readme-usage-docs",
+      "timestamp": "2026-02-13T19:20:00.000Z"
+    },
+    {
+      "action": "do",
+      "feature": "readme-usage-docs",
+      "timestamp": "2026-02-13T19:30:00.000Z"
+    },
+    {
+      "action": "check",
+      "feature": "readme-usage-docs",
+      "timestamp": "2026-02-13T19:35:00.000Z"
+    },
+    {
+      "action": "report",
+      "feature": "readme-usage-docs",
+      "timestamp": "2026-02-13T19:40:00.000Z"
+    },
+    {
+      "action": "archive",
+      "feature": "readme-usage-docs",
+      "timestamp": "2026-02-13T19:45:00.000Z"
     }
   ]
 }

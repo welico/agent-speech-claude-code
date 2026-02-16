@@ -2,6 +2,30 @@
 
 ## Features
 
+### readme-usage-docs
+
+| Phase | Document | Status | Date |
+|-------|----------|--------|------|
+| Plan | [readme-usage-docs.plan.md](./readme-usage-docs/readme-usage-docs.plan.md) | ✅ Complete | 2026-02-13 |
+| Design | [readme-usage-docs.design.md](./readme-usage-docs/readme-usage-docs.design.md) | ✅ Complete | 2026-02-13 |
+| Check | [readme-usage-docs-gap.md](./readme-usage-docs/readme-usage-docs-gap.md) | ✅ Complete | 2026-02-13 |
+| Report | [readme-usage-docs.report.md](./readme-usage-docs/readme-usage-docs.report.md) | ✅ Complete | 2026-02-13 |
+
+**Feature**: README Usage Documentation Update
+**Description**: Comprehensive usage documentation in README.md including Quick Start, Installation, Configuration, CLI Reference, Development, and Troubleshooting sections
+**Level**: N/A (Documentation)
+**Match Rate**: 99%
+
+**Key Achievements:**
+- README.md completely rewritten (539 lines)
+- Quick Start section gets users operational in < 2 minutes
+- All 11 CLI commands documented with examples
+- Environment variables documentation added
+- Troubleshooting section covering 5 common issues
+- MCP Tool Reference for API documentation
+
+---
+
 ### debug-env-setup
 
 | Phase | Document | Status | Date |
