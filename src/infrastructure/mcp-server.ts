@@ -6,7 +6,9 @@ import {
 } from '@modelcontextprotocol/sdk/types.js';
 import { TextToSpeech } from '../core/tts.js';
 import { ConfigManager } from '../core/config.js';
-import { SpeakTextInput } from '../types/index.js';
+import { createLogger } from '../utils/logger.js';
+import { withErrorHandling } from '../utils/error-handler.js';
+import { safeValidateSpeakTextInput } from '../utils/schemas.js';
 
 /**
  * Tool name for speak_text
@@ -21,6 +23,7 @@ export class MCPServer {
   private server: Server;
   private tts: TextToSpeech;
   private config: ConfigManager;
+  private logger = createLogger({ prefix: '[MCP]' });
 
   constructor() {
     this.server = new Server(
@@ -45,27 +48,29 @@ export class MCPServer {
    * Initialize the MCP server
    */
   async init(): Promise<void> {
+    this.logger.debug('Initializing MCP server');
     await this.config.init();
     await this.setupToolListing();
+    this.logger.info('MCP server initialized');
   }
 
   /**
    * Start the MCP server with stdio transport
    */
   async start(): Promise<void> {
+    this.logger.debug('Starting MCP server with stdio transport');
     const transport = new StdioServerTransport();
     await this.server.connect(transport);
-
-    // Log to stderr (won't interfere with MCP protocol)
-    console.error('[MCP] Agent Speech Plugin server started');
+    this.logger.info('Agent Speech Plugin server started');
   }
 
   /**
    * Stop the MCP server
    */
   async stop(): Promise<void> {
+    this.logger.debug('Stopping MCP server');
     await this.server.close();
-    console.error('[MCP] Agent Speech Plugin server stopped');
+    this.logger.info('Agent Speech Plugin server stopped');
   }
 
   /**
@@ -149,12 +154,22 @@ export class MCPServer {
   private async handleSpeak(args: unknown): Promise<{
     content: Array<{ type: string; text: string }>;
   }> {
-    try {
-      // Parse input
-      const input = this.parseSpeakInput(args);
+    return withErrorHandling('handleSpeak', async () => {
+      this.logger.debug('speak_text called', { args });
+
+      // Validate input with Zod schema
+      const validation = safeValidateSpeakTextInput(args);
+      if (!validation.success) {
+        this.logger.error('Validation failed', { error: validation.error });
+        throw new Error(validation.error);
+      }
+
+      const input = validation.data;
+      this.logger.debug('Parsed input', { text: input.text, length: input.text.length });
 
       // Get tool config (claude-code tool config)
       const toolConfig = this.config.getToolConfig('claude-code');
+      this.logger.debug('Tool config', toolConfig);
 
       // Merge input overrides with config
       const config = {
@@ -163,6 +178,8 @@ export class MCPServer {
         ...(input.rate && { rate: input.rate }),
         ...(input.volume !== undefined && { volume: input.volume }),
       };
+
+      this.logger.debug('Final config', { voice: config.voice, rate: config.rate, volume: config.volume });
 
       // Speak text (runs async, we return immediately)
       this.tts.speak(input.text, config);
@@ -175,52 +192,7 @@ export class MCPServer {
           },
         ],
       };
-    } catch (error) {
-      const message = error instanceof Error ? error.message : 'Unknown error';
-      console.error('[MCP] Error handling speak:', error);
-
-      return {
-        content: [
-          {
-            type: 'text',
-            text: `Error: ${message}`,
-          },
-        ],
-      };
-    }
-  }
-
-  /**
-   * Parse speak_text input
-   */
-  private parseSpeakInput(args: unknown): SpeakTextInput {
-    if (typeof args !== 'object' || args === null) {
-      throw new Error('Invalid input: expected object');
-    }
-
-    const obj = args as Record<string, unknown>;
-
-    if (typeof obj.text !== 'string') {
-      throw new Error('Invalid input: text must be a string');
-    }
-
-    const input: SpeakTextInput = {
-      text: obj.text,
-    };
-
-    if (typeof obj.voice === 'string') {
-      input.voice = obj.voice;
-    }
-
-    if (typeof obj.rate === 'number') {
-      input.rate = obj.rate;
-    }
-
-    if (typeof obj.volume === 'number') {
-      input.volume = obj.volume;
-    }
-
-    return input;
+    }, this.logger);
   }
 }
 

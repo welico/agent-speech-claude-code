@@ -1,6 +1,8 @@
 import { TTSConfig, VoiceInfo } from '../types/index.js';
 import { SayCommand } from '../infrastructure/say.js';
 import { ContentFilter } from './filter.js';
+import { createLogger } from '../utils/logger.js';
+import { withErrorHandling } from '../utils/error-handler.js';
 
 /**
  * Text-to-Speech engine
@@ -10,6 +12,7 @@ export class TextToSpeech {
   private say: SayCommand;
   private filter: ContentFilter;
   private enabled: boolean = true;
+  private logger = createLogger({ prefix: '[TTS]' });
 
   constructor() {
     this.say = new SayCommand();
@@ -23,31 +26,39 @@ export class TextToSpeech {
    * @returns Promise that resolves when speech starts
    */
   async speak(text: string, config: TTSConfig): Promise<void> {
-    // Check if globally enabled
-    if (!config.enabled || !this.enabled) {
-      return;
-    }
+    return withErrorHandling('speak', async () => {
+      this.logger.debug('Starting speech', { textLength: text.length, config });
 
-    // Apply content filtering
-    const { shouldSpeak, text: filteredText, reason } = this.filter.filter(text, config);
+      // Check if globally enabled
+      if (!config.enabled || !this.enabled) {
+        this.logger.debug('Speech disabled', { configEnabled: config.enabled, globalEnabled: this.enabled });
+        return;
+      }
 
-    if (!shouldSpeak) {
-      // Silently skip with log
-      console.debug(`[TTS] Skipping speech: ${reason || 'no content after filtering'}`);
-      return;
-    }
+      // Apply content filtering
+      const { shouldSpeak, text: filteredText, reason } = this.filter.filter(text, config);
 
-    // Start speech (runs in background)
-    await this.say.speak(filteredText, config, {
-      onClose: (code) => {
-        if (code !== 0) {
-          console.error(`[TTS] Speech process exited with code ${code}`);
-        }
-      },
-      onError: (error) => {
-        console.error(`[TTS] Speech error:`, error);
-      },
-    });
+      if (!shouldSpeak) {
+        this.logger.debug('Skipping speech', { reason });
+        return;
+      }
+
+      this.logger.debug('Filtered text', { originalLength: text.length, filteredLength: filteredText.length });
+
+      // Start speech (runs in background)
+      await this.say.speak(filteredText, config, {
+        onClose: (code) => {
+          if (code !== 0) {
+            this.logger.error('Speech process exited with non-zero code', { code });
+          }
+        },
+        onError: (error) => {
+          this.logger.error('Speech error', error);
+        },
+      });
+
+      this.logger.debug('Speech started');
+    }, this.logger);
   }
 
   /**

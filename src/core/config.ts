@@ -8,6 +8,7 @@ import {
   writeConfig,
   configExists,
 } from '../infrastructure/fs.js';
+import { createLogger } from '../utils/logger.js';
 
 /**
  * Default TTS configuration
@@ -67,6 +68,7 @@ const SUPPORTED_TOOLS = [
 export class ConfigManager {
   private config: AppConfig;
   private dirty: boolean = false;
+  private logger = createLogger({ prefix: '[CONFIG]' });
 
   /**
    * Create a new ConfigManager
@@ -83,19 +85,24 @@ export class ConfigManager {
    * Loads existing config or creates default
    */
   async init(): Promise<void> {
+    this.logger.debug('Initializing config manager');
+
     const loaded = await (this.configPath
       ? readConfig()
       : readConfig());
 
     if (loaded) {
+      this.logger.info('Loaded existing config');
       // Merge with defaults to ensure all fields exist
       this.config = this.mergeWithDefaults(loaded);
     } else {
+      this.logger.info('Creating new config with defaults');
       // Create new config with defaults
       this.config = { ...DEFAULT_APP_CONFIG };
     }
 
     this.dirty = false;
+    this.logger.debug('Config initialized', { version: this.config.version });
   }
 
   /**
@@ -103,11 +110,14 @@ export class ConfigManager {
    */
   async save(): Promise<void> {
     if (!this.dirty) {
+      this.logger.debug('Save skipped: no changes');
       return;
     }
 
+    this.logger.debug('Saving config');
     await writeConfig(this.config);
     this.dirty = false;
+    this.logger.info('Config saved');
   }
 
   /**
@@ -127,6 +137,7 @@ export class ConfigManager {
     const toolConfig = this.config.tools[toolName];
 
     if (!toolConfig) {
+      this.logger.debug(`No config for tool "${toolName}", using global`);
       return global;
     }
 
@@ -172,6 +183,7 @@ export class ConfigManager {
    */
   setToolConfig(toolName: string, config: ToolConfig): void {
     if (!SUPPORTED_TOOLS.includes(toolName as any)) {
+      this.logger.error('Unsupported tool', { toolName });
       throw new Error(`Unsupported tool: ${toolName}`);
     }
 
