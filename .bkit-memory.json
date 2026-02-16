@@ -1,51 +1,22 @@
 {
   "version": "1.4.7",
   "project": "agent-speech-plugin",
-  "currentFeature": null,
-  "phase": "archived",
-  "matchRate": 96,
-  "activeFeatures": [],
-  "updatedAt": "2026-02-13T19:10:00.000Z",
+  "currentFeature": "readme-usage-docs",
+  "phase": "plan",
+  "matchRate": null,
+  "activeFeatures": ["readme-usage-docs"],
+  "updatedAt": "2026-02-13T19:15:00.000Z",
   "tasks": {
-    "debug-env-setup": {
-      "status": "archived",
-      "phase": "archived",
-      "archivedTo": "docs/archive/2026-02/debug-env-setup"
+    "readme-usage-docs": {
+      "status": "plan",
+      "phase": "plan"
     }
   },
   "history": [
     {
       "action": "plan",
-      "feature": "debug-env-setup",
-      "timestamp": "2026-02-13T14:37:00.000Z"
-    },
-    {
-      "action": "design",
-      "feature": "debug-env-setup",
-      "timestamp": "2026-02-13T14:45:00.000Z"
-    },
-    {
-      "action": "do",
-      "feature": "debug-env-setup",
-      "timestamp": "2026-02-13T14:55:00.000Z"
-    },
-    {
-      "action": "check",
-      "feature": "debug-env-setup",
-      "timestamp": "2026-02-13T19:00:00.000Z",
-      "matchRate": 96
-    },
-    {
-      "action": "report",
-      "feature": "debug-env-setup",
-      "timestamp": "2026-02-13T19:05:00.000Z",
-      "matchRate": 96
-    },
-    {
-      "action": "archive",
-      "feature": "debug-env-setup",
-      "timestamp": "2026-02-13T19:10:00.000Z",
-      "matchRate": 96
+      "feature": "readme-usage-docs",
+      "timestamp": "2026-02-13T19:15:00.000Z"
     }
   ]
 }
