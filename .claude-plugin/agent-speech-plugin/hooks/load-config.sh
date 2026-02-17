@@ -47,4 +47,15 @@ if [[ -f "$CONFIG_PATH" ]]; then
   fi
 fi
 
-export VOICE RATE VOLUME SUMMARY_MAX_CHARS SUMMARY_MODE
+# Read language code (en, ko, ...)
+# Allow only known language codes; default to "en" (no translation)
+LANGUAGE="en"
+if [[ -f "$CONFIG_PATH" ]]; then
+  _LANG=$(jq -r '.language // empty' "$CONFIG_PATH" 2>/dev/null || echo "")
+  case "$_LANG" in
+    en|ko) LANGUAGE="$_LANG" ;;
+    *)     LANGUAGE="en" ;;
+  esac
+fi
+
+export VOICE RATE VOLUME SUMMARY_MAX_CHARS SUMMARY_MODE LANGUAGE

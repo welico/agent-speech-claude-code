@@ -4,8 +4,9 @@
 
 set -euo pipefail
 
-# Load user config (voice, rate, volume, summary settings)
+# Load user config (voice, rate, volume, summary settings, language)
 source "$(dirname "$0")/load-config.sh"
+source "$(dirname "$0")/translate.sh"
 
 # Read hook input from stdin
 HOOK_INPUT=$(cat)
@@ -23,7 +24,10 @@ if [[ ${#MESSAGE} -gt $SUMMARY_MAX_CHARS ]]; then
   MESSAGE="${MESSAGE:0:$SUMMARY_MAX_CHARS}"
 fi
 
+# Translate message if language is configured
+MSG=$(translate "$MESSAGE")
+
 # Speak using macOS built-in TTS (background, non-blocking)
-say -v "$VOICE" -r "$RATE" "$MESSAGE" &
+say -v "$VOICE" -r "$RATE" "$MSG" &
 
 exit 0

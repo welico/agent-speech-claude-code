@@ -1,9 +1,9 @@
 {
   "version": "1.4.8",
   "project": "agent-speech-plugin",
-  "currentFeature": null,
-  "phase": null,
-  "matchRate": null,
+  "currentFeature": "tts-i18n",
+  "phase": "archived",
+  "matchRate": 93,
   "activeFeatures": [],
   "updatedAt": "2026-02-16T21:15:00.000Z",
   "tasks": {
@@ -35,6 +35,12 @@
       "phase": "archived",
       "matchRate": 96,
       "archivedTo": "docs/archive/2026-02/tts-config"
+    },
+    "tts-i18n": {
+      "status": "archived",
+      "phase": "archived",
+      "matchRate": 93,
+      "archivedTo": "docs/archive/2026-02/tts-i18n"
     }
   },
   "history": [
@@ -206,6 +212,40 @@
       "timestamp": "2026-02-16T22:20:00.000Z",
       "matchRate": 96,
       "archivedTo": "docs/archive/2026-02/tts-config"
+    },
+    {
+      "action": "plan",
+      "feature": "tts-i18n",
+      "timestamp": "2026-02-16T22:30:00.000Z"
+    },
+    {
+      "action": "design",
+      "feature": "tts-i18n",
+      "timestamp": "2026-02-16T23:00:00.000Z"
+    },
+    {
+      "action": "do",
+      "feature": "tts-i18n",
+      "timestamp": "2026-02-16T23:10:00.000Z"
+    },
+    {
+      "action": "check",
+      "feature": "tts-i18n",
+      "timestamp": "2026-02-16T23:20:00.000Z",
+      "matchRate": 93
+    },
+    {
+      "action": "report",
+      "feature": "tts-i18n",
+      "timestamp": "2026-02-17T00:00:00.000Z",
+      "matchRate": 93
+    },
+    {
+      "action": "archive",
+      "feature": "tts-i18n",
+      "timestamp": "2026-02-17T00:10:00.000Z",
+      "matchRate": 93,
+      "archivedTo": "docs/archive/2026-02/tts-i18n"
     }
   ]
 }

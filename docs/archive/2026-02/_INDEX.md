@@ -168,3 +168,32 @@
 - `first-sentence` summary mode: extracts first complete sentence, fallback to truncate
 - `~/.agent-speech/config.json` created with Yuna Korean voice defaults
 - Invalid voice fallback verified: `say -v ? | grep` approach confirmed working
+
+---
+
+## tts-i18n
+
+| Item | Value |
+|------|-------|
+| Archived | 2026-02-17 |
+| Match Rate | 93% |
+| Status | Completed |
+| Path | `docs/archive/2026-02/tts-i18n/` |
+
+**Feature**: TTS Internationalization
+**Description**: Google Translate 무료 비공식 API를 사용해 TTS 훅 메세지를 사용자 설정 언어로 자동 번역. `"language": "ko"` 설정 시 모든 훅 메세지(permission, subagent, task, notification, stop 요약)가 한국어로 번역 후 음성 안내된다. 인터넷 없음/API 실패 시 원문 폴백.
+
+**Documents**:
+- `tts-i18n.plan.md`
+- `tts-i18n.design.md`
+- `tts-i18n.analysis.md`
+- `tts-i18n.report.md`
+
+**Key Achievements:**
+- `translate.sh` helper — `translate()` function with Google Translate API (no API key)
+- `curl --max-time 3` timeout + 6-level fallback chain ensures TTS always works
+- All 5 hooks updated: source `translate.sh` + `MSG=$(translate "$MESSAGE")`
+- `load-config.sh` updated — exports `LANGUAGE` from config (default: `"en"`)
+- `~/.agent-speech/config.json` updated with `"language": "ko"` for Korean TTS
+- 9/9 acceptance criteria passed (100%)
+- Verified: `"The task has been completed."` → `"작업이 완료되었습니다."`
