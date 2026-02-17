@@ -7,5 +7,59 @@
 
 | ID | Time | T | Title | Read |
 |----|------|---|-------|------|
-| #1161 | 8:21 PM | 🟣 | Added load-config.sh utility script to hooks directory | ~151 |
+| #1310 | 9:58 PM | 🟣 | Completed gap analysis for tts-i18n feature showing 93% match rate | ~279 |
+| #1308 | 9:55 PM | 🔵 | Discovered task-completed-hook.sh already implements translation support | ~201 |
+| #1307 | " | 🔵 | Discovered config.example.json with Korean voice and language configuration as default | ~260 |
+| #1306 | " | 🟣 | Implemented language code support in TTS configuration | ~233 |
+| #1305 | " | 🔵 | Discovered existing translate.sh with Google Translate API implementation | ~287 |
+| #1302 | 9:50 PM | 🟣 | Implemented multilingual TTS translation system | ~205 |
+| #1301 | " | 🟣 | Implemented and tested translate.sh helper for multilingual TTS support | ~237 |
+| #1300 | " | 🟣 | Added translation support to stop-hook for multilingual TTS | ~210 |
+| #1299 | " | 🟣 | Implemented tts-i18n feature with translation support and synchronized to plugin cache | ~272 |
+| #1294 | " | ✅ | Added language field to config example | ~188 |
+| #1293 | 9:49 PM | 🟣 | Implemented automatic translation in task-completed-hook.sh | ~239 |
+| #1292 | " | 🟣 | Implemented message translation in notification-hook.sh | ~252 |
+| #1291 | " | 🟣 | Added translation functionality to subagent-stop-hook.sh | ~183 |
+| #1290 | " | 🟣 | Implemented internationalization support in notification-hook.sh | ~189 |
+| #1289 | 9:48 PM | 🟣 | Implemented internationalization support in task-completed-hook.sh | ~204 |
+| #1288 | 9:18 PM | 🟣 | Implemented multilingual TTS translation in permission-hook.sh | ~193 |
+| #1287 | " | 🟣 | Added LANGUAGE configuration to load-config.sh for multi-language support | ~209 |
+| #1286 | " | 🟣 | Added translation script sourcing to permission-hook.sh | ~182 |
+| #1285 | " | 🟣 | Created translate.sh translation helper using Google Translate free API | ~240 |
+| #1284 | " | 🟣 | Created translate.sh script with execute permissions | ~149 |
+| #1246 | 9:00 PM | 🔵 | Examined final stop-hook.sh implementation with config system | ~228 |
+| #1245 | " | 🟣 | Implemented centralized TTS configuration loader with validation | ~273 |
+| #1244 | 8:59 PM | 🔵 | Verified permission-hook.sh uses config system | ~181 |
+| #1214 | 8:48 PM | 🟣 | Planned tts-i18n feature for multilingual TTS message support | ~282 |
+| #1207 | 8:34 PM | 🟣 | Completed tts-config feature with 96% match rate | ~254 |
+| #1206 | " | 🟣 | Completed TTS configuration system with 96% match rate | ~271 |
+| #1200 | 8:32 PM | 🔵 | Completed gap analysis for tts-config feature with 96% match rate | ~311 |
+| #1196 | 8:31 PM | 🔵 | Discovered permission-hook.sh loads user configuration | ~186 |
+| #1192 | " | 🟣 | Implemented tts-config feature with configurable voice, rate, and summary settings | ~277 |
+| #1190 | " | 🟣 | Notification hook updated to use config system | ~193 |
+| #1174 | 8:25 PM | 🟣 | Implemented tts-config feature with shared configuration loader | ~259 |
+| #1171 | " | 🔵 | Discovered load-config.sh configuration system for TTS hooks | ~249 |
+| #1168 | 8:24 PM | 🟣 | Improved voice validation in load-config.sh using available voices list | ~219 |
+| #1164 | 8:21 PM | 🟣 | Implemented configuration loading system for TTS settings | ~252 |
+| #1163 | " | 🟣 | Implemented tts-config feature with centralized configuration and shared config loader | ~261 |
+| #1161 | " | 🟣 | Added load-config.sh utility script to hooks directory | ~151 |
+| #1159 | " | 🟣 | Created example configuration file for TTS hooks | ~185 |
+| #1128 | 8:17 PM | 🟣 | Implemented configurable TTS in stop-hook.sh with first-sentence extraction | ~273 |
+| #1127 | " | 🟣 | Implemented configurable TTS settings in notification-hook.sh | ~244 |
+| #1126 | " | 🟣 | Implemented configurable TTS settings in subagent-stop-hook | ~215 |
+| #1125 | " | 🟣 | Implemented shared configuration loader for TTS hooks | ~225 |
+| #1117 | 8:11 PM | 🟣 | Extended TTS hooks implementation completed with four new hook scripts | ~286 |
+| #1108 | 7:50 PM | 🟣 | Implemented four new TTS hook scripts following extended-tts-hooks design | ~251 |
+| #1101 | 2:49 PM | 🟣 | Completed extended-tts-hooks feature with 99% match rate | ~364 |
+| #1100 | 2:48 PM | 🔵 | Completed gap analysis for extended-tts-hooks feature with 99% match rate | ~350 |
+
+### Feb 17, 2026
+
+| ID | Time | T | Title | Read |
+|----|------|---|-------|------|
+| #1415 | 8:42 AM | ✅ | Created comprehensive design document for CLI interactive commands feature | ~691 |
+| #1410 | 8:30 AM | 🟣 | Committed tts-i18n feature implementation with 93% match rate to git repository | ~301 |
+| #1408 | 8:29 AM | ✅ | Archived tts-i18n feature and staged all implementation files for git commit | ~241 |
+| #1376 | 7:22 AM | 🟣 | Completed tts-i18n internationalization feature with 93% match rate | ~225 |
+| #1372 | 7:21 AM | 🟣 | Completed tts-i18n feature with 93% design match rate and 100% acceptance criteria | ~339 |
 </claude-mem-context>
