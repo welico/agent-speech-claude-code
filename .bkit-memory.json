@@ -1,12 +1,18 @@
 {
   "version": "1.4.8",
   "project": "agent-speech-plugin",
-  "currentFeature": null,
-  "phase": null,
-  "matchRate": null,
-  "activeFeatures": [],
-  "updatedAt": "2026-02-16T19:45:00.000Z",
+  "currentFeature": "extended-tts-hooks",
+  "phase": "completed",
+  "matchRate": 99,
+  "activeFeatures": ["extended-tts-hooks"],
+  "updatedAt": "2026-02-16T21:05:00.000Z",
   "tasks": {
+    "plugin-hooks-convention": {
+      "status": "archived",
+      "phase": "archived",
+      "matchRate": 92,
+      "archivedTo": "docs/archive/2026-02/plugin-hooks-convention"
+    },
     "readme-usage-docs": {
       "status": "archived",
       "phase": "archived",
@@ -17,6 +23,12 @@
       "phase": "archived",
       "matchRate": 96,
       "archivedTo": "docs/archive/2026-02/git-changes-documentation-sync"
+    },
+    "marketplace-distribution": {
+      "status": "archived",
+      "phase": "archived",
+      "matchRate": 100,
+      "archivedTo": "docs/archive/2026-02/marketplace-distribution"
     }
   },
   "history": [
@@ -86,6 +98,74 @@
       "timestamp": "2026-02-16T19:45:00.000Z",
       "matchRate": 96,
       "archivedTo": "docs/archive/2026-02/git-changes-documentation-sync"
+    },
+    {
+      "action": "archive",
+      "feature": "marketplace-distribution",
+      "timestamp": "2026-02-16T20:00:00.000Z",
+      "matchRate": 100,
+      "archivedTo": "docs/archive/2026-02/marketplace-distribution"
+    },
+    {
+      "action": "plan",
+      "feature": "plugin-hooks-convention",
+      "timestamp": "2026-02-16T20:10:00.000Z"
+    },
+    {
+      "action": "design",
+      "feature": "plugin-hooks-convention",
+      "timestamp": "2026-02-16T20:15:00.000Z"
+    },
+    {
+      "action": "do",
+      "feature": "plugin-hooks-convention",
+      "timestamp": "2026-02-16T20:20:00.000Z"
+    },
+    {
+      "action": "check",
+      "feature": "plugin-hooks-convention",
+      "timestamp": "2026-02-16T20:25:00.000Z",
+      "matchRate": 92
+    },
+    {
+      "action": "report",
+      "feature": "plugin-hooks-convention",
+      "timestamp": "2026-02-16T20:30:00.000Z",
+      "matchRate": 92
+    },
+    {
+      "action": "archive",
+      "feature": "plugin-hooks-convention",
+      "timestamp": "2026-02-16T20:35:00.000Z",
+      "matchRate": 92,
+      "archivedTo": "docs/archive/2026-02/plugin-hooks-convention"
+    },
+    {
+      "action": "plan",
+      "feature": "extended-tts-hooks",
+      "timestamp": "2026-02-16T20:40:00.000Z"
+    },
+    {
+      "action": "design",
+      "feature": "extended-tts-hooks",
+      "timestamp": "2026-02-16T20:45:00.000Z"
+    },
+    {
+      "action": "do",
+      "feature": "extended-tts-hooks",
+      "timestamp": "2026-02-16T20:50:00.000Z"
+    },
+    {
+      "action": "check",
+      "feature": "extended-tts-hooks",
+      "timestamp": "2026-02-16T20:55:00.000Z",
+      "matchRate": 99
+    },
+    {
+      "action": "report",
+      "feature": "extended-tts-hooks",
+      "timestamp": "2026-02-16T21:05:00.000Z",
+      "matchRate": 99
     }
   ]
 }

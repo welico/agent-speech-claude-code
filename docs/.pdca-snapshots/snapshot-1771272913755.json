@@ -1,0 +1,175 @@
+{
+  "timestamp": "2026-02-16T20:15:13.754Z",
+  "reason": "compaction",
+  "status": {
+    "version": "2.0",
+    "lastUpdated": "2026-02-13T19:45:00.000Z",
+    "activeFeatures": [],
+    "primaryFeature": null,
+    "features": {
+      "agent-speech-plugin": {
+        "phase": "archived",
+        "level": "Starter",
+        "createdAt": "2026-02-12",
+        "archivedAt": "2026-02-12T21:00:00.000Z",
+        "archivedTo": "docs/archive/2026-02/agent-speech-plugin",
+        "matchRate": 96,
+        "iterations": 1,
+        "tasks": {
+          "plan": "completed",
+          "design": "completed",
+          "do": "completed",
+          "check": "completed",
+          "act": "completed",
+          "report": "completed"
+        }
+      },
+      "debug-env-setup": {
+        "phase": "archived",
+        "level": "N/A",
+        "createdAt": "2026-02-13",
+        "archivedAt": "2026-02-13T19:10:00.000Z",
+        "archivedTo": "docs/archive/2026-02/debug-env-setup",
+        "matchRate": 96,
+        "iterations": 0,
+        "tasks": {
+          "plan": "completed",
+          "design": "completed",
+          "do": "completed",
+          "check": "completed",
+          "act": "completed",
+          "report": "completed"
+        }
+      },
+      "readme-usage-docs": {
+        "phase": "archived",
+        "level": "N/A",
+        "createdAt": "2026-02-13",
+        "archivedAt": "2026-02-13T19:45:00.000Z",
+        "archivedTo": "docs/archive/2026-02/readme-usage-docs",
+        "matchRate": 99,
+        "iterations": 0,
+        "tasks": {
+          "plan": "completed",
+          "design": "completed",
+          "do": "completed",
+          "check": "completed",
+          "act": "completed",
+          "report": "completed"
+        }
+      }
+    },
+    "pipeline": {
+      "currentPhase": 1,
+      "level": "Starter",
+      "phaseHistory": []
+    },
+    "session": {
+      "startedAt": "2026-02-12T07:48:55.411Z",
+      "onboardingCompleted": true,
+      "lastActivity": "2026-02-13T19:45:00.000Z"
+    },
+    "history": [
+      {
+        "action": "plan",
+        "feature": "agent-speech-plugin",
+        "timestamp": "2026-02-12T01:48:00.000Z"
+      },
+      {
+        "action": "design",
+        "feature": "agent-speech-plugin",
+        "timestamp": "2026-02-12T01:48:00.000Z"
+      },
+      {
+        "action": "do",
+        "feature": "agent-speech-plugin",
+        "timestamp": "2026-02-12T02:20:00.000Z"
+      },
+      {
+        "action": "check",
+        "feature": "agent-speech-plugin",
+        "timestamp": "2026-02-12T20:47:00.000Z"
+      },
+      {
+        "action": "act",
+        "feature": "agent-speech-plugin",
+        "timestamp": "2026-02-12T20:53:00.000Z"
+      },
+      {
+        "action": "check",
+        "feature": "agent-speech-plugin",
+        "timestamp": "2026-02-12T20:55:00.000Z"
+      },
+      {
+        "action": "report",
+        "feature": "agent-speech-plugin",
+        "timestamp": "2026-02-12T21:00:00.000Z"
+      },
+      {
+        "action": "archive",
+        "feature": "agent-speech-plugin",
+        "timestamp": "2026-02-12T21:00:00.000Z"
+      },
+      {
+        "action": "plan",
+        "feature": "debug-env-setup",
+        "timestamp": "2026-02-13T14:37:00.000Z"
+      },
+      {
+        "action": "design",
+        "feature": "debug-env-setup",
+        "timestamp": "2026-02-13T14:45:00.000Z"
+      },
+      {
+        "action": "do",
+        "feature": "debug-env-setup",
+        "timestamp": "2026-02-13T14:55:00.000Z"
+      },
+      {
+        "action": "check",
+        "feature": "debug-env-setup",
+        "timestamp": "2026-02-13T19:00:00.000Z"
+      },
+      {
+        "action": "report",
+        "feature": "debug-env-setup",
+        "timestamp": "2026-02-13T19:05:00.000Z"
+      },
+      {
+        "action": "archive",
+        "feature": "debug-env-setup",
+        "timestamp": "2026-02-13T19:10:00.000Z"
+      },
+      {
+        "action": "plan",
+        "feature": "readme-usage-docs",
+        "timestamp": "2026-02-13T19:15:00.000Z"
+      },
+      {
+        "action": "design",
+        "feature": "readme-usage-docs",
+        "timestamp": "2026-02-13T19:20:00.000Z"
+      },
+      {
+        "action": "do",
+        "feature": "readme-usage-docs",
+        "timestamp": "2026-02-13T19:30:00.000Z"
+      },
+      {
+        "action": "check",
+        "feature": "readme-usage-docs",
+        "timestamp": "2026-02-13T19:35:00.000Z"
+      },
+      {
+        "action": "report",
+        "feature": "readme-usage-docs",
+        "timestamp": "2026-02-13T19:40:00.000Z"
+      },
+      {
+        "action": "archive",
+        "feature": "readme-usage-docs",
+        "timestamp": "2026-02-13T19:45:00.000Z"
+      }
+    ]
+  }
+}

@@ -88,3 +88,56 @@
 - `git-changes-documentation-sync.plan.md`
 - `git-changes-documentation-sync.design.md`
 - `git-changes-documentation-sync-completion-report.md`
+
+---
+
+## marketplace-distribution
+
+| Item | Value |
+|------|-------|
+| Archived | 2026-02-16 |
+| Match Rate | 100% |
+| Status | Completed |
+| Path | `docs/archive/2026-02/marketplace-distribution/` |
+
+**Feature**: Claude Code Plugin Marketplace Distribution
+**Description**: Complete implementation enabling users to discover and install the agent-speech-plugin through Claude Code's built-in plugin marketplace system.
+
+**Documents**:
+- `marketplace-distribution.plan.md`
+- `marketplace-distribution.design.md`
+- `marketplace-distribution-v1.0.md`
+
+**Key Achievements:**
+- Marketplace infrastructure implemented (.claude-plugin/ directory)
+- marketplace.json, plugin.json, .mcp.json all configured
+- Automated release script created
+- End-to-end installation verified (English + Korean TTS)
+- Claude Code Stop hook configured for automatic TTS
+
+---
+
+## plugin-hooks-convention
+
+| Item | Value |
+|------|-------|
+| Archived | 2026-02-16 |
+| Match Rate | 92% |
+| Status | Completed |
+| Path | `docs/archive/2026-02/plugin-hooks-convention/` |
+
+**Feature**: Plugin Hooks Convention Migration
+**Description**: Migrated TTS hook from standalone `~/.claude/claude-tts.sh` to official Claude Code plugin convention structure following `ralph-loop` reference pattern.
+
+**Documents**:
+- `plugin-hooks-convention.plan.md`
+- `plugin-hooks-convention.design.md`
+- `plugin-hooks-convention.analysis.md`
+- `plugin-hooks-convention.report.md`
+
+**Key Achievements:**
+- TTS hook migrated to `.claude-plugin/agent-speech-plugin/hooks/` structure
+- hooks.json uses `${CLAUDE_PLUGIN_ROOT}` for portable path resolution
+- python3 dependency removed — pure bash + jq implementation
+- Fixed Stop hook bug: was reading non-existent `response` field; now reads `transcript_path`
+- Non-blocking TTS with `say &` — Claude Code unaffected on TTS failure
