@@ -1,7 +1,7 @@
 {
   "name": "agent-speech",
   "description": "Text-to-speech plugin for Claude Code using macOS native say command. Converts AI responses into speech with configurable voice, rate, and volume. Perfect for developers who prefer listening to long responses or want audio confirmation while multitasking.",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "author": {
     "name": "welico",
     "email": "welico@users.noreply.github.com",
@@ -10,18 +10,6 @@
   "license": "MIT",
   "repository": "https://github.com/welico/agent-speech-claude-code",
   "homepage": "https://github.com/welico/agent-speech-claude-code#readme",
-  "category": "accessibility",
-  "keywords": [
-    "tts",
-    "text-to-speech",
-    "macos",
-    "say",
-    "accessibility",
-    "audio",
-    "voice",
-    "speech",
-    "claude-code"
-  ],
   "mcpServers": {
     "agent-speech": {
       "command": "node",
@@ -83,12 +71,5 @@
         }
       ]
     }
-  },
-  "engines": {
-    "node": ">=18.0.0"
-  },
-  "os": [
-    "darwin"
-  ],
-  "platform": "macos"
+  }
 }
