@@ -25,7 +25,8 @@
     "test:coverage": "vitest --coverage",
     "inspect": "./scripts/inspect.sh",
     "lint": "eslint src/",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "postinstall": "npm run build"
   },
   "keywords": [
     "mcp",
@@ -51,7 +52,8 @@
     "zod": "^4.3.6"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.0.4"
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "typescript": "^5.3.3"
   },
   "files": [
     "dist",
