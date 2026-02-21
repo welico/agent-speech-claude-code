@@ -32,17 +32,12 @@ Create or edit `~/.claude/mcp.json`:
 pwd  # Copy output
 ```
 
-Example:
-```json
-{
-  "mcpServers": {
-    "agent-speech": {
-      "command": "node",
-      "args": ["/Users/warezio/Git/GitHub/welico/agent-speech-claude-code/dist/mcp-server.js"]
-    }
-  }
-}
-```
+> **Development Tip**: For local development, copy the example config:
+> ```bash
+> cp .mcp.json.example .mcp.json
+> # Then edit .mcp.json and update the path to your project directory
+> ```
+> Note: `.mcp.json` is gitignored to avoid committing user-specific paths.
 
 ### Step 3: Initialize Configuration
 

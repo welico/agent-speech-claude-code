@@ -63,7 +63,9 @@ Add to `~/.config/claude-code/config.json`:
 }
 ```
 
-**Important**: Use an absolute path, not a relative path.
+**Important**: Replace `/ABSOLUTE/PATH/TO/agent-speech-claude-code` with your actual project path.
+
+> **Why absolute path?** Claude Code's MCP server requires absolute paths. For development convenience, you can copy `.mcp.json.example` to `.mcp.json` and update the path, but `.mcp.json` is gitignored for security reasons.
 
 ### 3. Restart Claude Code
 
