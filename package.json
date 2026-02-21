@@ -1,6 +1,6 @@
 {
   "name": "agent-speech",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "description": "Claude Code text-to-speech plugin using macOS native say command",
   "type": "module",
   "main": "./dist/index.js",
