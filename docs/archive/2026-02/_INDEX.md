@@ -181,7 +181,7 @@
 | Path | `docs/archive/2026-02/tts-i18n/` |
 
 **Feature**: TTS Internationalization
-**Description**: Google Translate 무료 비공식 API를 사용해 TTS 훅 메세지를 사용자 설정 언어로 자동 번역. `"language": "ko"` 설정 시 모든 훅 메세지(permission, subagent, task, notification, stop 요약)가 한국어로 번역 후 음성 안내된다. 인터넷 없음/API 실패 시 원문 폴백.
+**Description**: Automatically translate TTS hook messages into a user-defined language using the free, unofficial Google Translate API. When `"language": "ko"` is set, all hook messages (permission, subagent, task, notification, stop summary) are translated into Korean and voice guidance is provided. Fallback to original text in case of no internet/API failure.
 
 **Documents**:
 - `tts-i18n.plan.md`
@@ -196,7 +196,7 @@
 - `load-config.sh` updated — exports `LANGUAGE` from config (default: `"en"`)
 - `~/.agent-speech/config.json` updated with `"language": "ko"` for Korean TTS
 - 9/9 acceptance criteria passed (100%)
-- Verified: `"The task has been completed."` → `"작업이 완료되었습니다."`
+- Verified: `"The task has been completed."` → `"The task has been completed."`
 
 ---
 

@@ -1,6 +1,6 @@
 # tts-i18n Planning Document
 
-> **Summary**: Google Translate 무료 비공식 API를 사용하여 모든 TTS 메세지를 사용자 설정 언어로 번역 후 음성 안내한다. 오프라인 폴백으로 원문 그대로 읽는다.
+> **Summary**: All TTS messages are translated into a user-defined language using the free unofficial Google Translate API and then provided voice guidance. Read the original text as it is with offline fallback.
 >
 > **Project**: agent-speech-claude-code
 > **Version**: 0.3.0
@@ -14,30 +14,30 @@
 
 ### 1.1 Purpose
 
-현재 모든 훅 메세지가 영어로 고정되어 있다. 사용자가 `"language": "ko"` 설정 시:
-- "Permission required for Bash" → "Bash에 필요한 권한"
-- "The task has been completed." → "작업이 완료되었습니다."
-- Claude 응답 요약(stop-hook)도 한국어 번역 후 음성 안내
+Currently, all hook messages are set to English. When the user sets `"language": "ko"`:
+- "Permission required for Bash" → "Permissions required for Bash"
+- "The task has been completed." → “The task is complete.”
+- Claude's response summary (stop-hook) is also translated into Korean and provided with voice guidance
 
-### 1.2 번역 방식: Google Translate 무료 비공식 API
+### 1.2 Translation method: Google Translate free unofficial API
 
 ```
 https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=ko&dt=t&q=...
 ```
 
-**검증 완료 (macOS, curl 기본 설치):**
+**Verified (macOS, curl default installation):**
 
-| 입력 | 출력 |
+| input | output |
 |------|------|
-| "The task has been completed." | "작업이 완료되었습니다." |
-| "Permission required for Bash" | "Bash에 필요한 권한" |
-| "The implementation is complete. All 5 hooks updated." | "구현이 완료되었습니다. 5개 후크 모두 업데이트되었습니다." |
+| “The task has been completed.” | “The job is done.” |
+| "Permission required for Bash" | "Permissions required by Bash" |
+| "The implementation is complete. All 5 hooks updated." | "Implementation is complete. All five hooks have been updated." |
 
-**특징:**
-- API 키 불필요
-- `curl` + `jq` (기존 의존성, 추가 설치 없음)
-- 인터넷 연결 필요 (오프라인 시 원문 폴백)
-- 비공식 엔드포인트 (장기적 안정성 보장 없음 — 폴백으로 해소)
+**characteristic:**
+- No API key required
+- `curl` + `jq` (existing dependencies, no additional installation)
+- Internet connection required (original text fallback when offline)
+- Unofficial endpoint (no long-term stability guaranteed — resolved with fallback)
 
 ---
 
@@ -45,27 +45,27 @@ https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=ko&dt=
 
 ### 2.1 In Scope (v0.3.0)
 
-| 기능 | 대상 훅 | 설명 |
+| Features | target hook | Description |
 |------|--------|------|
-| Permission 메세지 번역 | `permission-hook.sh` | "Permission required for {tool}" |
-| Subagent 메세지 번역 | `subagent-stop-hook.sh` | "Subagent {type} completed" |
-| Task 메세지 번역 | `task-completed-hook.sh` | "Task completed: {title}" |
-| Notification 메세지 번역 | `notification-hook.sh` | Claude Code 알림 메세지 |
-| Stop 요약 번역 | `stop-hook.sh` | Claude 응답 first-sentence 요약 번역 |
-| 언어 설정 추가 | `config.json` | `"language": "ko"` 필드 |
-| 번역 헬퍼 | `translate.sh` | curl + jq 번역 함수, 오프라인 폴백 |
+| Permission message translation | `permission-hook.sh` | "Permission required for {tool}" |
+| Subagent message translation | `subagent-stop-hook.sh` | "Subagent {type} completed" |
+| Task message translation | `task-completed-hook.sh` | "Task completed: {title}" |
+| Notification message translation | `notification-hook.sh` | Claude Code notification message |
+| Stop summary translation | `stop-hook.sh` | Claude response first-sentence summary translation |
+| Add language settings | `config.json` | `"language": "ko"` field |
+| Translation Helper | `translate.sh` | curl + jq translation function, offline fallback |
 
 ### 2.2 Out of Scope
 
-- 한국어/영어 외 언어 (구조는 확장 가능하게)
-- 정적 번역 테이블 (API 방식으로 대체)
-- Windows/Linux 지원
+- Languages ​​other than Korean/English (structure can be expanded)
+- Static translation table (replaced by API method)
+- Windows/Linux support
 
 ---
 
-## 3. Config 변경
+## 3. Change Config
 
-### 3.1 추가 필드
+### 3.1 Additional fields
 
 ```json
 {
@@ -80,15 +80,15 @@ https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=ko&dt=
 }
 ```
 
-| 필드 | 타입 | 기본값 | 설명 |
+| field | Type | default | Description |
 |------|------|--------|------|
-| `language` | string | `"en"` | 번역 언어 코드 (`"ko"`, `"en"`) |
+| `language` | string | `"en"` | Translation language code (`"ko"`, `"en"`) |
 
 ---
 
-## 4. translate.sh 설계
+## 4. translate.sh design
 
-### 4.1 번역 함수
+### 4.1 Translation function
 
 ```bash
 #!/bin/bash
@@ -138,17 +138,17 @@ translate() {
 export -f translate
 ```
 
-### 4.2 타임아웃 전략
+### 4.2 Timeout strategy
 
-- `--max-time 3`: 3초 내 응답 없으면 원문 사용
-- TTS는 배경 실행 (`say &`) 이므로 3초 대기는 허용 범위
-- 오프라인 시 curl 즉시 실패 → 원문 그대로 읽음
+- `--max-time 3`: If there is no response within 3 seconds, use the original text.
+- TTS runs in the background (`say &`), so waiting for 3 seconds is within the acceptable range.
+- curl fails immediately when offline → read the original text as is
 
 ---
 
-## 5. load-config.sh 변경
+## 5. Change load-config.sh
 
-기존 변수에 `LANGUAGE` 추가:
+Add `LANGUAGE` to an existing variable:
 
 ```bash
 # Read language code (en, ko, ...)
@@ -163,7 +163,7 @@ export LANGUAGE
 
 ---
 
-## 6. 훅별 변경
+## 6. Change by hook
 
 ### permission-hook.sh
 
@@ -176,7 +176,7 @@ say -v "$VOICE" -r "$RATE" "$MSG" &
 
 ### subagent-stop-hook.sh, task-completed-hook.sh
 
-같은 패턴 — `translate "$MESSAGE"` 후 `say`
+Same pattern — `translate "$MESSAGE"` followed by `say`
 
 ### notification-hook.sh
 
@@ -187,53 +187,53 @@ say -v "$VOICE" -r "$RATE" "$MSG" &
 
 ### stop-hook.sh
 
-요약 추출 후 번역 추가:
+After extracting the summary, add translation:
 
 ```bash
-SUMMARY=$(extract_summary "$LAST_TEXT")  # 기존 로직
+SUMMARY=$(extract_summary "$LAST_TEXT") # Existing logic
 TRANSLATED=$(translate "$SUMMARY")
 say -v "$VOICE" -r "$RATE" "$TRANSLATED" &
 ```
 
 ---
 
-## 7. 성공 기준
+## 7. Success criteria
 
-- [ ] `"language": "ko"` 설정 시 permission/subagent/task 메세지 한국어
-- [ ] "The task has been completed." → 한국어 번역 후 Yuna 음성 안내
-- [ ] 오프라인 시 원문 영어 그대로 읽음 (폴백)
-- [ ] `"language": "en"` 또는 없을 시 번역 없음 (API 호출 안 함)
-- [ ] 번역 실패 시 (API 오류) 원문 폴백
-- [ ] stop-hook 요약도 번역됨
-- [ ] 캐시 동기화 완료
+- [ ] When setting `"language": "ko"`, permission/subagent/task message is in Korean.
+- [ ] "The task has been completed." → Yuna voice guidance after Korean translation
+- [ ] When offline, the original text is read in English (fallback)
+- [ ] `"language": "en"` or if not present, no translation (no API call)
+- [ ] When translation fails (API error), fall back to the original text.
+- [ ] stop-hook summary also translated
+- [ ] Cache synchronization completed
 
 ---
 
 ## 8. Risks and Mitigation
 
-| Risk | 대응 |
+| Risk | Response |
 |------|------|
-| Google API 막힘/변경 | 3초 타임아웃 + 원문 폴백 → TTS 항상 작동 |
-| 인터넷 없음 | curl 즉시 실패 → 원문 폴백 |
-| python3 없음 | URL 인코딩 실패 → 원문 폴백 |
-| 번역 품질 낮음 | 고정 메세지는 충분, stop 요약은 수용 가능 수준 |
-| 번역 시간 지연 | 3초 max-time, TTS는 백그라운드 실행 |
+| Google API blocking/changing | 3 second timeout + original text fallback → TTS always works |
+| No internet | curl fails immediately → fallback to original |
+| no python3 | URL encoding failure → original text fallback |
+| Low translation quality | Fixed message is sufficient, stop summary is acceptable |
+| translation time delay | 3 second max-time, TTS runs in background |
 
 ---
 
 ## 9. Implementation Order
 
-1. `translate.sh` 작성
-2. `load-config.sh` — `LANGUAGE` 필드 추가
-3. `permission-hook.sh` 업데이트
-4. `subagent-stop-hook.sh` 업데이트
-5. `task-completed-hook.sh` 업데이트
-6. `notification-hook.sh` 업데이트
-7. `stop-hook.sh` 업데이트
-8. `~/.agent-speech/config.json`에 `"language": "ko"` 추가
-9. `config.example.json` 업데이트
-10. 캐시 동기화
-11. 동작 검증
+1. Write `translate.sh`
+2. `load-config.sh` — Add `LANGUAGE` field
+3. Update `permission-hook.sh`
+4. Update `subagent-stop-hook.sh`
+5. Update `task-completed-hook.sh`
+6. Update `notification-hook.sh`
+7. Update `stop-hook.sh`
+8. Add `"language": "ko"` to `~/.agent-speech/config.json`
+9. Update `config.example.json`
+10. Cache Sync
+11. Operation verification
 
 ---
 

@@ -1,6 +1,6 @@
 # plugin-hooks-convention Design Document
 
-> **Summary**: ralph-loop 공식 컨벤션 기반으로 TTS Hook을 .claude-plugin/agent-speech-claude-code/hooks/ 로 이동하고 jq 기반 스크립트로 교체한다.
+> **Summary**: Based on the ralph-loop official convention, move the TTS Hook to .claude-plugin/agent-speech-claude-code/hooks/ and replace it with a jq-based script.
 >
 > **Project**: agent-speech-claude-code
 > **Version**: 0.1.0
@@ -15,53 +15,53 @@
 
 ### 1.1 Design Goals
 
-- `hooks/hooks.json` + `${CLAUDE_PLUGIN_ROOT}` 변수 기반으로 Hook 경로 이식성 확보
-- `jq`를 사용한 bash-native JSON 파싱으로 python3 의존성 제거
-- ralph-loop 공식 플러그인 구조와 100% 일치하는 레이아웃 적용
+- Securing hook route portability based on `hooks/hooks.json` + `${CLAUDE_PLUGIN_ROOT}` variable
+- Remove python3 dependency with bash-native JSON parsing using `jq`
+- Apply a layout that 100% matches the ralph-loop official plugin structure
 
 ### 1.2 Design Principles
 
-- ralph-loop 구조를 레퍼런스 구현으로 삼아 동일한 패턴 적용
-- 단순성 우선: 최소한의 변경으로 컨벤션 준수
-- 이식성: 절대경로 제거, `${CLAUDE_PLUGIN_ROOT}` 변수 사용
+- Apply the same pattern using the ralph-loop structure as a reference implementation.
+- Simplicity first: conforms to conventions with minimal changes
+- Portability: Remove absolute path, use `${CLAUDE_PLUGIN_ROOT}` variable
 
 ---
 
 ## 2. Architecture
 
-### 2.1 Before / After 구조
+### 2.1 Before / After structure
 
 ```
-Before (현재):
+Before:
 ~/.claude/
-├── claude-tts.sh              ← 독립 스크립트 (비표준)
-└── settings.json              ← Stop hook 절대경로 하드코딩
+├── claude-tts.sh ← Standalone script (non-standard)
+└── settings.json ← Stop hook absolute path hard coding
 
-After (목표):
+After (goal):
 repo/.claude-plugin/
 └── agent-speech-claude-code/
     ├── hooks/
-    │   ├── hooks.json          ← Hook 설정 (${CLAUDE_PLUGIN_ROOT} 참조)
-    │   └── stop-hook.sh        ← TTS 스크립트 (jq 기반)
+│ ├── hooks.json ← Hook settings (see ${CLAUDE_PLUGIN_ROOT})
+│ └── stop-hook.sh ← TTS script (jq based)
     ├── plugin.json
     ├── .mcp.json
     └── README.md
 
 ~/.claude/
-└── settings.json              ← hooks 섹션 제거 (hooks.json 자동 적용)
-                                  * 자동 적용 불가 시: ${CLAUDE_PLUGIN_ROOT} 참조 유지
+└── settings.json ← Remove hooks section (automatically applies hooks.json)
+* If automatic application is not possible: keep reference to ${CLAUDE_PLUGIN_ROOT}
 ```
 
 ### 2.2 Data Flow
 
 ```
-Claude Code 응답 완료
-    → Stop 이벤트 발생
-    → hooks.json의 Stop hook 실행
-    → stop-hook.sh 실행
-    → transcript_path에서 JSONL 읽기 (jq)
-    → 마지막 assistant text 블록 추출
-    → say 명령으로 TTS 실행 (백그라운드)
+Claude Code response complete
+→ Stop event occurs
+→ Execute Stop hook in hooks.json
+→ Run stop-hook.sh
+→ Read JSONL from transcript_path (jq)
+→ Extract the last assistant text block
+→ Run TTS with say command (background)
 ```
 
 ---
@@ -70,7 +70,7 @@ Claude Code 응답 완료
 
 ### 3.1 `hooks/hooks.json`
 
-ralph-loop의 `hooks.json`과 동일한 구조:
+Same structure as ralph-loop's `hooks.json`:
 
 ```json
 {
@@ -90,11 +90,11 @@ ralph-loop의 `hooks.json`과 동일한 구조:
 }
 ```
 
-**핵심**: `${CLAUDE_PLUGIN_ROOT}` 변수가 플러그인 설치 경로로 자동 치환됨
+**Key**: The `${CLAUDE_PLUGIN_ROOT}` variable is automatically replaced with the plugin installation path.
 
 ### 3.2 `hooks/stop-hook.sh`
 
-ralph-loop의 `stop-hook.sh` 방식(jq 사용)을 채택:
+Adapting ralph-loop's `stop-hook.sh` approach (using jq):
 
 ```bash
 #!/bin/bash
@@ -131,12 +131,12 @@ say -v "Samantha" -r 200 "$LAST_TEXT" &
 exit 0
 ```
 
-**개선점**:
-- `set -euo pipefail` 적용 (ralph-loop 방식)
-- `jq` 기반 파싱 (python3 제거)
-- `grep '"role":"assistant"'` 직접 검색 (ralph-loop 방식)
+**Improvements**:
+- Apply `set -euo pipefail` (ralph-loop method)
+- `jq` based parsing (python3 removed)
+- `grep '"role":"assistant"'` direct search (ralph-loop method)
 
-### 3.3 `~/.claude/settings.json` 변경
+### 3.3 Changes to `~/.claude/settings.json`
 
 **Before**:
 ```json
@@ -155,12 +155,12 @@ exit 0
 }
 ```
 
-**After** (Option A - hooks.json 자동 적용):
+**After** (Option A - hooks.json automatically applied):
 ```json
 "hooks": {}
 ```
 
-**After** (Option B - ${CLAUDE_PLUGIN_ROOT} 참조, 자동 적용 불가 시 fallback):
+**After** (Option B - See ${CLAUDE_PLUGIN_ROOT}, fallback if automatic application is not possible):
 ```json
 "hooks": {
   "Stop": [
@@ -176,29 +176,29 @@ exit 0
 }
 ```
 
-> **검증 필요**: Option A(자동 적용) 먼저 시도, 동작 안 할 경우 Option B 적용
+> **Verification required**: Try Option A (automatically applied) first, if it does not work, apply Option B
 
 ---
 
 ## 4. Implementation Order
 
-1. [ ] `.claude-plugin/agent-speech-claude-code/hooks/` 디렉토리 생성
-2. [ ] `hooks/hooks.json` 작성
-3. [ ] `hooks/stop-hook.sh` 작성 + 실행 권한 부여
-4. [ ] `~/.claude/settings.json` Stop hook 교체 (Option B 우선)
-5. [ ] `~/.claude/claude-tts.sh` 삭제
-6. [ ] 동작 확인 (Claude 응답 후 음성 출력)
+1. [ ] Create directory `.claude-plugin/agent-speech-claude-code/hooks/`
+2. [ ] Create `hooks/hooks.json`
+3. [ ] Write `hooks/stop-hook.sh` + grant execution permission
+4. [ ] Replace `~/.claude/settings.json` Stop hook (Option B first)
+5. [ ] Delete `~/.claude/claude-tts.sh`
+6. [ ] Check operation (voice output after Claude responds)
 
 ---
 
 ## 5. Test Plan
 
-| 케이스 | 기대 결과 |
+| case | Expected results |
 |--------|----------|
-| Claude 응답 완료 후 | 음성 자동 출력 (Samantha, 200WPM) |
-| 짧은 응답 (10자 미만) | TTS 스킵, 조용히 종료 |
-| 긴 응답 (500자 초과) | 앞 500자만 읽기 |
-| transcript 파일 없음 | exit 0 (오류 없이 종료) |
+| After completing Claude's response | Automatic voice output (Samantha, 200WPM) |
+| Short response (less than 10 characters) | Skip TTS, quietly exit |
+| Long response (>500 characters) | Read only the first 500 characters |
+| No transcript file | exit 0 (exit without error) |
 
 ---
 

@@ -26,44 +26,44 @@
 |----|-------------|-------|--------|
 | FR-01 | hooks.json defines Stop hook via `${CLAUDE_PLUGIN_ROOT}` | 100% | Pass |
 | FR-02 | stop-hook.sh extracts assistant text + TTS | 100% | Pass |
-| FR-03 | jq-based JSON parsing (python3 제거) | 100% | Pass |
-| FR-04 | settings.json 하드코딩 경로 제거 | 50% | Fail |
-| FR-05 | hooks.json 자동 등록 | 75% | Warning |
+| FR-03 | jq-based JSON parsing (python3 removed) | 100% | Pass |
+| FR-04 | Remove hardcoded path in settings.json | 50% | Fail |
+| FR-05 | hooks.json auto-registration | 75% | Warning |
 
 ---
 
 ## Primary Gap
 
-### settings.json 경로 이식성 문제
+### settings.json path portability issue
 
-**Design 목표**: `"hooks": {}` (Option A) 또는 `${CLAUDE_PLUGIN_ROOT}` 참조 (Option B)
+**Design Goal**: See `"hooks": {}` (Option A) or `${CLAUDE_PLUGIN_ROOT}` (Option B)
 
-**실제 구현**:
+**Practical Implementation**:
 ```json
 "command": "/Users/warezio/.claude/plugins/cache/welico/agent-speech-claude-code/0.1.0/.claude-plugin/agent-speech-claude-code/hooks/stop-hook.sh"
 ```
 
-**영향**: 버전 업그레이드 시 경로 수동 업데이트 필요. 다른 사용자 환경에서 미작동.
+**Impact**: Requires manual update of paths when upgrading version. Doesn't work in other user environments.
 
-**해결 방안**:
-- Option A: hooks 섹션 완전 제거 (hooks.json 자동 등록 확인 필요)
-- Option B: `${CLAUDE_PLUGIN_ROOT}` 변수가 settings.json에서 지원되는지 확인
-- Option C: 플랫폼 제약으로 문서화
+**Solution**:
+- Option A: Completely remove the hooks section (requires automatic registration confirmation of hooks.json)
+- Option B: Check if the `${CLAUDE_PLUGIN_ROOT}` variable is supported in settings.json.
+- Option C: Documentation due to platform constraints
 
 ---
 
 ## What Was Implemented Correctly
 
-- `hooks/` 디렉토리가 `.claude-plugin/agent-speech-claude-code/` 하위에 생성됨
-- `hooks.json`이 ralph-loop 패턴과 동일한 구조
-- `stop-hook.sh`에 실행 권한 부여됨
-- `jq` 기반 파싱 구현 (python3 의존성 제거)
-- 500자 제한 적용
-- 구버전 `~/.claude/claude-tts.sh` 삭제 완료
-- 소스 레포 + 설치 캐시 모두 동기화됨
+- The `hooks/` directory is created under `.claude-plugin/agent-speech-claude-code/`
+- `hooks.json` has the same structure as the ralph-loop pattern.
+- Execution permission granted to `stop-hook.sh`
+- `jq` based parsing implementation (python3 dependency removed)
+- 500 character limit applies
+- Old version `~/.claude/claude-tts.sh` has been deleted.
+- Source repo + installation cache all synced
 
 ---
 
 ## Conclusion
 
-92% 달성으로 통과 기준(≥90%) 충족. settings.json 이식성 이슈가 유일한 주요 갭이며, 플랫폼 제약 여부 확인 후 문서화 또는 수정 필요.
+92% achieved, meeting passing criteria (≥90%). The settings.json portability issue is the only major gap and needs to be documented or modified after checking for platform constraints.

@@ -14,46 +14,46 @@
 
 ### 1.1 Purpose
 
-현재 TTS는 `Stop` hook에서만 동작한다 (Claude가 응답을 완료할 때). 그러나 Claude Code에는 사용자가 인지해야 할 다양한 이벤트가 존재하며, 화면을 보지 않는 상황(멀티태스킹)에서는 이러한 이벤트를 놓치기 쉽다.
+Currently TTS only works with the `Stop` hook (when Claude completes the response). However, there are various events in Claude Code that users need to be aware of, and it is easy to miss these events in situations where the user is not looking at the screen (multitasking).
 
-이 기능은 주요 Claude Code 생명주기 이벤트에 TTS를 추가하여, 터미널을 보지 않아도 AI 상태를 청각으로 파악할 수 있도록 한다.
+This feature adds TTS to key Claude Code lifecycle events, allowing you to hear the state of the AI ​​without having to look at the terminal.
 
 ### 1.2 Motivation
 
-| 상황 | 현재 문제 | TTS로 개선 |
+| Situation | Current Issues | Improvements with TTS |
 |------|-----------|-----------|
-| 권한 요청 대기 | 화면 확인 필요 | "Permission requested for Bash" 자동 안내 |
-| 서브에이전트 완료 | 언제 끝났는지 모름 | "Subagent task completed" 자동 안내 |
-| 태스크 완료 | 알림 놓침 | "Task completed" 자동 안내 |
-| 시스템 알림 | 팝업 놓침 | 알림 내용 TTS 읽기 |
-| 팀원 에이전트 대기 | 응답 놓침 | "Teammate is idle" 자동 안내 |
+| Waiting for permission request | Need to check screen | Automatic notification of “Permission requested for Bash” |
+| Subagent completed | I don't know when it ended | Automatic notification of “Subagent task completed” |
+| Task Completed | Missed Notification | “Task completed” automatic notification |
+| System Notifications | Missed pop-up | Read notification content TTS |
+| Team member agent waiting | Missed response | “Teammate is idle” automatic notification |
 
 ### 1.3 Reference
 
-- Claude Code Hooks 공식 문서: https://code.claude.com/docs/en/hooks-guide
-- 현재 구현: `.claude-plugin/agent-speech-claude-code/hooks/stop-hook.sh`
-- 참조 구현: `hookify` plugin (`hooks/hooks.json` — 4개 hook 타입 사용)
+- Claude Code Hooks official documentation: https://code.claude.com/docs/en/hooks-guide
+- Current implementation: `.claude-plugin/agent-speech-claude-code/hooks/stop-hook.sh`
+- Reference implementation: `hookify` plugin (`hooks/hooks.json` — uses 4 hook types)
 
 ---
 
-## 2. Claude Code Hook Types (전체 목록)
+## 2. Claude Code Hook Types (full list)
 
-Research 결과 확인된 전체 Hook 타입:
+All Hook types confirmed as a result of research:
 
-| Hook 타입 | 트리거 시점 | TTS 적합도 | 계획 |
+| Hook type | Trigger Point | TTS fitness | planning |
 |-----------|------------|-----------|------|
-| `Stop` | Claude 응답 완료 | ★★★★★ | ✅ 현재 구현 |
-| `Notification` | 시스템 알림 (권한, 유휴 등) | ★★★★★ | ✅ 추가 |
-| `PermissionRequest` | 권한 요청 팝업 | ★★★★★ | ✅ 추가 |
-| `SubagentStop` | 서브에이전트 완료 | ★★★★☆ | ✅ 추가 |
-| `TaskCompleted` | 태스크 완료 | ★★★★☆ | ✅ 추가 |
-| `TeammateIdle` | 팀원 에이전트 대기 | ★★★☆☆ | ✅ 추가 (optional) |
-| `SessionStart` | 세션 시작/재개 | ★★☆☆☆ | 🔵 옵션 (짧은 인사) |
-| `PostToolUse` | 도구 실행 후 | ★☆☆☆☆ | ❌ 너무 빈번 |
-| `PreToolUse` | 도구 실행 전 | ★☆☆☆☆ | ❌ 부적합 |
-| `UserPromptSubmit` | 사용자 입력 전 | ★☆☆☆☆ | ❌ 부적합 |
-| `PreCompact` | 컨텍스트 압축 전 | ★☆☆☆☆ | ❌ 내부 이벤트 |
-| `SessionEnd` | 세션 종료 | ★★☆☆☆ | 🔵 옵션 |
+| `Stop` | Claude response completed | ★★★★★ | ✅ Current implementation |
+| `Notification` | System notifications (permissions, idle, etc.) | ★★★★★ | ✅ Add |
+| `PermissionRequest` | Permission request pop-up | ★★★★★ | ✅ Add |
+| `SubagentStop` | Subagent completed | ★★★★☆ | ✅ Add |
+| `TaskCompleted` | Task Completed | ★★★★☆ | ✅ Add |
+| `TeammateIdle` | Team member agent waiting | ★★★☆☆ | ✅ Additional (optional) |
+| `SessionStart` | Start/Resume Session | ★★☆☆☆ | 🔵 Options (short greeting) |
+| `PostToolUse` | After running the tool | ★☆☆☆☆ | ❌ Too frequent |
+| `PreToolUse` | Before running the tool | ★☆☆☆☆ | ❌ Inappropriate |
+| `UserPromptSubmit` | Before user input | ★☆☆☆☆ | ❌ Inappropriate |
+| `PreCompact` | Before context compression | ★☆☆☆☆ | ❌ Internal Event |
+| `SessionEnd` | Session End | ★★☆☆☆ | 🔵 Options |
 
 ---
 
@@ -61,25 +61,25 @@ Research 결과 확인된 전체 Hook 타입:
 
 ### 3.1 In Scope (Phase 1 - Core)
 
-| Hook | Script | TTS 내용 | 예시 |
+| Hook | Script | TTS content | Example |
 |------|--------|---------|------|
-| `Notification` | `notification-hook.sh` | 알림 메시지 읽기 | "Permission request: Bash command" |
-| `PermissionRequest` | `permission-hook.sh` | 권한 요청 안내 | "Bash permission requested" |
-| `SubagentStop` | `subagent-stop-hook.sh` | 서브에이전트 완료 | "Subagent task completed" |
-| `TaskCompleted` | `task-completed-hook.sh` | 태스크 완료 | "Task: [name] completed" |
+| `Notification` | `notification-hook.sh` | Read notification message | "Permission request: Bash command" |
+| `PermissionRequest` | `permission-hook.sh` | Permission request information | "Bash permission requested" |
+| `SubagentStop` | `subagent-stop-hook.sh` | Subagent completed | "Subagent task completed" |
+| `TaskCompleted` | `task-completed-hook.sh` | Task Completed | "Task: [name] completed" |
 
 ### 3.2 Optional (Phase 2 - Extra)
 
-| Hook | Script | TTS 내용 | 조건 |
+| Hook | Script | TTS content | Conditions |
 |------|--------|---------|------|
-| `TeammateIdle` | `teammate-idle-hook.sh` | 팀원 대기 안내 | 팀 세션에서만 의미 있음 |
-| `SessionStart` | `session-start-hook.sh` | 세션 시작 인사 | 짧은 메시지만 |
+| `TeammateIdle` | `teammate-idle-hook.sh` | Team member waiting information | Meaningful only in team sessions |
+| `SessionStart` | `session-start-hook.sh` | Session start greetings | Short message only |
 
 ### 3.3 Out of Scope
 
-- `PostToolUse` / `PreToolUse` — 너무 빈번, TTS 노이즈 발생
-- `UserPromptSubmit` / `PreCompact` — 사용자 응답이 아닌 내부 이벤트
-- Hook 로직 변경 (Stop hook 자체 수정 없음)
+- `PostToolUse` / `PreToolUse` — too frequent, generates TTS noise
+- `UserPromptSubmit` / `PreCompact` — Internal events, not user responses
+- Hook logic change (no modification of stop hook itself)
 
 ---
 
@@ -89,23 +89,23 @@ Research 결과 확인된 전체 Hook 타입:
 
 | ID | Requirement | Priority | Status |
 |----|-------------|----------|--------|
-| FR-01 | `Notification` hook이 알림 메시지를 TTS로 읽음 | High | Pending |
-| FR-02 | `PermissionRequest` hook이 권한 요청 도구명을 TTS로 안내 | High | Pending |
-| FR-03 | `SubagentStop` hook이 서브에이전트 완료를 TTS로 알림 | Medium | Pending |
-| FR-04 | `TaskCompleted` hook이 태스크 완료를 TTS로 알림 | Medium | Pending |
-| FR-05 | `hooks.json`이 모든 새 hook을 `${CLAUDE_PLUGIN_ROOT}` 기준으로 정의 | High | Pending |
-| FR-06 | 각 hook 스크립트가 실패 시 exit 0 반환 (Claude Code 동작 무중단) | High | Pending |
-| FR-07 | 짧은 fixed TTS 메시지 (동적 content 불필요한 경우) | Medium | Pending |
-| FR-08 | Hook별 메시지 길이 제한 (Notification: 200자, 기타: 100자) | Medium | Pending |
+| FR-01 | `Notification` hook reads notification message as TTS | High | Pending |
+| FR-02 | `PermissionRequest` hook informs the permission request tool name in TTS | High | Pending |
+| FR-03 | `SubagentStop` hook notifies subagent completion with TTS | Medium | Pending |
+| FR-04 | `TaskCompleted` hook notifies task completion with TTS | Medium | Pending |
+| FR-05 | `hooks.json` defines all new hooks relative to `${CLAUDE_PLUGIN_ROOT}` | High | Pending |
+| FR-06 | When each hook script fails, exit 0 is returned (Claude Code operation is uninterrupted) | High | Pending |
+| FR-07 | Short fixed TTS message (if dynamic content is unnecessary) | Medium | Pending |
+| FR-08 | Message length limit per Hook (Notification: 200 characters, Others: 100 characters) | Medium | Pending |
 
 ### 4.2 Non-Functional Requirements
 
 | Category | Criteria |
 |----------|----------|
-| Non-blocking | 모든 TTS는 백그라운드 실행 (`say &`) |
-| Portability | `${CLAUDE_PLUGIN_ROOT}` 사용, 하드코딩 경로 없음 |
-| Reliability | exit 0 보장 — TTS 실패가 Claude Code에 영향 없음 |
-| Performance | hook 스크립트 실행 < 100ms (TTS는 비동기) |
+| Non-blocking | All TTS runs in the background (`say &`) |
+| Portability | Use `${CLAUDE_PLUGIN_ROOT}`, no hardcoding path |
+| Reliability | exit 0 guaranteed — TTS failure has no effect on Claude Code |
+| Performance | Hook script execution < 100ms (TTS is asynchronous) |
 
 ---
 
@@ -159,12 +159,12 @@ Research 결과 확인된 전체 Hook 타입:
 
 ```
 .claude-plugin/agent-speech-claude-code/hooks/
-├── hooks.json                    ← 모든 hook 정의 (업데이트)
-├── stop-hook.sh                  ← 현재 구현 (변경 없음)
-├── notification-hook.sh          ← 신규: Notification TTS
-├── permission-hook.sh            ← 신규: PermissionRequest TTS
-├── subagent-stop-hook.sh         ← 신규: SubagentStop TTS
-└── task-completed-hook.sh        ← 신규: TaskCompleted TTS
+├── hooks.json ← All hook definitions (updated)
+├── stop-hook.sh ← Current implementation (no changes)
+├── notification-hook.sh ← New: Notification TTS
+├── permission-hook.sh ← New: PermissionRequest TTS
+├── subagent-stop-hook.sh ← New: SubagentStop TTS
+└── task-completed-hook.sh ← New: TaskCompleted TTS
 ```
 
 ### 6.2 Updated hooks.json Structure
@@ -172,18 +172,18 @@ Research 결과 확인된 전체 Hook 타입:
 ```json
 {
   "hooks": {
-    "Stop": [...],                    // 기존 유지
-    "Notification": [...],            // 신규
-    "PermissionRequest": [...],       // 신규
-    "SubagentStop": [...],            // 신규
-    "TaskCompleted": [...]            // 신규
+"Stop": [...], // keep existing
+"Notification": [...], // new
+"PermissionRequest": [...], // new
+"SubagentStop": [...], // new
+"TaskCompleted": [...] // new
   }
 }
 ```
 
 ### 6.3 Common Script Pattern
 
-모든 새 hook 스크립트는 동일한 패턴 따름:
+All new hook scripts follow the same pattern:
 
 ```bash
 #!/bin/bash
@@ -211,12 +211,12 @@ exit 0
 
 ## 7. TTS Messages Design
 
-| Hook | Dynamic? | TTS 메시지 예시 |
+| Hook | Dynamic? | TTS message example |
 |------|----------|---------------|
-| `Notification` | ✅ 메시지 읽기 | "Permission requested: Bash command" |
-| `PermissionRequest` | ✅ 도구명 | "Permission required for Bash" |
-| `SubagentStop` | ✅ 에이전트 타입 | "Subagent Bash completed" |
-| `TaskCompleted` | ✅ 태스크 제목 | "Task completed" |
+| `Notification` | ✅ Read messages | "Permission requested: Bash command" |
+| `PermissionRequest` | ✅ Tool name | "Permission required for Bash" |
+| `SubagentStop` | ✅ Agent Type | "Subagent Bash completed" |
+| `TaskCompleted` | ✅ Task Title | "Task completed" |
 
 ---
 
@@ -224,19 +224,19 @@ exit 0
 
 ### 8.1 Definition of Done
 
-- [ ] `Notification` hook 동작 확인 (알림 발생 시 TTS)
-- [ ] `PermissionRequest` hook 동작 확인 (권한 요청 시 TTS)
-- [ ] `SubagentStop` hook 동작 확인 (서브에이전트 완료 시 TTS)
-- [ ] `TaskCompleted` hook 동작 확인 (태스크 완료 시 TTS)
-- [ ] 기존 `Stop` hook 동작 유지 (회귀 없음)
-- [ ] 모든 스크립트 exit 0 보장
-- [ ] hooks.json 업데이트 + 캐시 동기화
+- [ ] Check `Notification` hook operation (TTS when notification occurs)
+- [ ] Check `PermissionRequest` hook operation (TTS when requesting permission)
+- [ ] Check `SubagentStop` hook operation (TTS when subagent completes)
+- [ ] Check `TaskCompleted` hook operation (TTS when task is completed)
+- [ ] Maintain existing `Stop` hook operation (no regression)
+- [ ] Guarantees exit 0 for all scripts
+- [ ] hooks.json update + cache synchronization
 
 ### 8.2 Quality Criteria
 
-- [ ] 모든 스크립트가 `jq` 기반 JSON 파싱
-- [ ] `${CLAUDE_PLUGIN_ROOT}` 사용 (하드코딩 없음)
-- [ ] 백그라운드 실행 (`say &`)
+- [ ] All scripts parse JSON based on `jq`
+- [ ] Use `${CLAUDE_PLUGIN_ROOT}` (no hardcoding)
+- [ ] Background execution (`say &`)
 
 ---
 
@@ -244,18 +244,18 @@ exit 0
 
 | Risk | Impact | Likelihood | Mitigation |
 |------|--------|------------|------------|
-| `PermissionRequest`/`TaskCompleted` hook이 실제로 지원 안 될 수 있음 | Medium | Medium | 각 hook 타입 실제 동작 테스트 필수 |
-| Notification hook이 너무 자주 발생 | Low | Medium | 중복 발화 방지 (`pkill say` 불필요) |
-| stdin JSON 필드명이 예상과 다를 수 있음 | Medium | Medium | 다중 필드 fallback: `.message // .title // empty` |
-| 여러 TTS가 동시 실행되면 겹침 | Low | High | `pkill say` 후 새 say 실행 (option) |
+| `PermissionRequest`/`TaskCompleted` hooks may not actually be supported | Medium | Medium | Actual operation test for each hook type is required |
+| Notification hook occurs too often | Low | Medium | Prevent duplicate utterances (no need for `pkill say`) |
+| stdin JSON field name may be different than expected | Medium | Medium | Multi-field fallback: `.message // .title // empty` |
+| When multiple TTSs run simultaneously, they overlap | Low | High | Execute new say after `pkill say` (option) |
 
 ---
 
 ## 10. Next Steps
 
-1. [ ] Design 문서 작성 (`extended-tts-hooks.design.md`)
-2. [ ] 각 hook 타입의 실제 stdin JSON 필드 확인 (테스트 또는 공식 문서)
-3. [ ] 스크립트 구현 및 hooks.json 업데이트
+1. [ ] Create a Design document (`extended-tts-hooks.design.md`)
+2. [ ] Check the actual stdin JSON field of each hook type (test or official document)
+3. [ ] Implement script and update hooks.json
 
 ---
 

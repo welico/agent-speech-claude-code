@@ -1,6 +1,6 @@
 # tts-i18n Design Document
 
-> **Summary**: Google Translate 무료 비공식 API를 사용해 TTS 메세지를 사용자 설정 언어로 번역. translate.sh 헬퍼 + load-config.sh LANGUAGE 필드 + 5개 훅 업데이트.
+> **Summary**: Translate TTS messages into a custom language using Google Translate's free, unofficial API. Updated translate.sh helper + load-config.sh LANGUAGE field + 5 hooks.
 >
 > **Project**: agent-speech-claude-code
 > **Version**: 0.3.0

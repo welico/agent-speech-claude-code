@@ -1,6 +1,6 @@
 # extended-tts-hooks Design Document
 
-> **Summary**: `Stop` 외 4개 Claude Code hook 이벤트(`Notification`, `PermissionRequest`, `SubagentStop`, `TaskCompleted`)에 TTS를 추가한다. 각각 독립 bash 스크립트로 구현하며, 기존 `stop-hook.sh` 패턴을 동일하게 따른다.
+> **Summary**: Add TTS to `Stop` and 4 other Claude Code hook events (`Notification`, `PermissionRequest`, `SubagentStop`, `TaskCompleted`). Each is implemented as an independent bash script and follows the existing `stop-hook.sh` pattern.
 >
 > **Project**: agent-speech-claude-code
 > **Version**: 0.1.1
@@ -17,16 +17,16 @@
 Before (0.1.0):
 hooks/
 ├── hooks.json          # Stop only
-└── stop-hook.sh        # transcript 읽어 TTS
+└── stop-hook.sh # Read transcript TTS
 
 After (0.1.1):
 hooks/
 ├── hooks.json                  # Stop + Notification + PermissionRequest + SubagentStop + TaskCompleted
-├── stop-hook.sh                # 변경 없음
-├── notification-hook.sh        # 신규: .message 읽어 TTS
-├── permission-hook.sh          # 신규: .tool_name 읽어 TTS
-├── subagent-stop-hook.sh       # 신규: .subagent_type 읽어 TTS
-└── task-completed-hook.sh      # 신규: .task_title 읽어 TTS
+├── stop-hook.sh # No change
+├── notification-hook.sh # New: Read .message TTS
+├── permission-hook.sh # New: Read TTS from .tool_name
+├── subagent-stop-hook.sh # New: .subagent_type read TTS
+└── task-completed-hook.sh # New: Read .task_title TTS
 ```
 
 ### 1.2 Hook Flow
@@ -37,14 +37,14 @@ Claude Code Event
       ▼
 hooks.json (${CLAUDE_PLUGIN_ROOT}/hooks/)
       │
-      ├── Stop             → stop-hook.sh            → transcript 파싱 → say
+├── Stop → stop-hook.sh → transcript parsing → say
       ├── Notification     → notification-hook.sh    → .message       → say
       ├── PermissionRequest→ permission-hook.sh      → .tool_name     → say
       ├── SubagentStop     → subagent-stop-hook.sh   → .subagent_type → say
       └── TaskCompleted    → task-completed-hook.sh  → .task_title    → say
                                                               │
                                                               ▼
-                                                    say -v Samantha -r 200 & (비동기)
+say -v Samantha -r 200 & (asynchronous)
 ```
 
 ---
@@ -117,12 +117,12 @@ hooks.json (${CLAUDE_PLUGIN_ROOT}/hooks/)
 
 ### 3.1 Common Pattern
 
-모든 신규 스크립트는 다음 패턴을 따름:
+All new scripts follow this pattern:
 
 ```bash
 #!/bin/bash
 # [Hook Name] Hook
-# [설명]
+# [explanation]
 set -euo pipefail
 
 HOOK_INPUT=$(cat)
@@ -135,7 +135,7 @@ if [[ -z "$MESSAGE" ]]; then
   MESSAGE="[FALLBACK_TEXT]"
 fi
 
-# 3. Limit length (각 hook별 상이)
+# 3. Limit length (different for each hook)
 if [[ ${#MESSAGE} -gt [LIMIT] ]]; then
   MESSAGE="${MESSAGE:0:[LIMIT]}"
 fi
@@ -150,7 +150,7 @@ exit 0
 
 ### 3.2 notification-hook.sh
 
-**Hook 타입**: `Notification`
+**Hook type**: `Notification`
 
 **stdin JSON**:
 ```json
@@ -162,7 +162,7 @@ exit 0
 }
 ```
 
-**TTS 전략**: `.message` 필드 직접 읽기. 200자 제한 (notification은 짧아야 함).
+**TTS strategy**: Read `.message` field directly. 200 character limit (notification must be short).
 
 **Full Script**:
 ```bash
@@ -192,13 +192,13 @@ say -v "Samantha" -r 200 "$MESSAGE" &
 exit 0
 ```
 
-**예시 TTS 출력**: *"Waiting for your input on the Bash command"*
+**Example TTS output**: *"Waiting for your input on the Bash command"*
 
 ---
 
 ### 3.3 permission-hook.sh
 
-**Hook 타입**: `PermissionRequest`
+**Hook type**: `PermissionRequest`
 
 **stdin JSON**:
 ```json
@@ -210,7 +210,7 @@ exit 0
 }
 ```
 
-**TTS 전략**: `tool_name`을 읽어 "Permission required for [Tool]" 형태로 조합. 고정 포맷.
+**TTS strategy**: Read `tool_name` and combine it into "Permission required for [Tool]". Fixed format.
 
 **Full Script**:
 ```bash
@@ -237,13 +237,13 @@ say -v "Samantha" -r 200 "$MESSAGE" &
 exit 0
 ```
 
-**예시 TTS 출력**: *"Permission required for Bash"*
+**Example TTS output**: *"Permission required for Bash"*
 
 ---
 
 ### 3.4 subagent-stop-hook.sh
 
-**Hook 타입**: `SubagentStop`
+**Hook Type**: `SubagentStop`
 
 **stdin JSON**:
 ```json
@@ -255,7 +255,7 @@ exit 0
 }
 ```
 
-**TTS 전략**: `subagent_type` 포함한 완료 안내. 짧은 고정 포맷.
+**TTS Strategy**: Completion instructions including `subagent_type`. Short fixed format.
 
 **Full Script**:
 ```bash
@@ -282,15 +282,15 @@ say -v "Samantha" -r 200 "$MESSAGE" &
 exit 0
 ```
 
-**예시 TTS 출력**: *"Subagent Bash completed"*
+**Example TTS output**: *"Subagent Bash completed"*
 
 ---
 
 ### 3.5 task-completed-hook.sh
 
-**Hook 타입**: `TaskCompleted`
+**Hook type**: `TaskCompleted`
 
-**stdin JSON** (예상):
+**stdin JSON** (expected):
 ```json
 {
   "session_id": "...",
@@ -300,7 +300,7 @@ exit 0
 }
 ```
 
-**TTS 전략**: `task_title` 있으면 읽기, 없으면 고정 메시지. 100자 제한.
+**TTS strategy**: Read `task_title` if present, fixed message if not. 100 character limit.
 
 **Full Script**:
 ```bash
@@ -331,33 +331,33 @@ say -v "Samantha" -r 200 "$MESSAGE" &
 exit 0
 ```
 
-**예시 TTS 출력**: *"Task completed: Implement authentication"*
+**Example TTS output**: *"Task completed: Implement authentication"*
 
 ---
 
 ## 4. Character Limits by Hook
 
-| Hook | Limit | 이유 |
+| Hook | Limit | Reason |
 |------|:-----:|------|
-| `Stop` | 500자 | 전체 응답 (기존 유지) |
-| `Notification` | 200자 | 알림 메시지는 보통 짧음 |
-| `PermissionRequest` | N/A | 고정 포맷 ("Permission required for X") |
-| `SubagentStop` | N/A | 고정 포맷 ("Subagent X completed") |
-| `TaskCompleted` | 80자 (title) | 제목 읽기 |
+| `Stop` | 500 characters | All responses (keep existing) |
+| `Notification` | 200 characters | Notification messages are usually short |
+| `PermissionRequest` | N/A | Fixed Format ("Permission required for X") |
+| `SubagentStop` | N/A | Fixed Format ("Subagent X completed") |
+| `TaskCompleted` | 80 characters (title) | Read Title |
 
 ---
 
 ## 5. File Sync Plan
 
-구현 후 아래 3개 위치에 동기화 필요:
+After implementation, synchronization is required in the following 3 locations:
 
-| 위치 | 용도 |
+| location | Use |
 |------|------|
-| `./` (source repo) | 소스 코드 관리 |
-| `~/.claude/plugins/cache/welico/agent-speech-claude-code/0.1.0/` | 실제 동작 위치 (현재 버전) |
-| `~/.claude/plugins/marketplaces/welico/` | 마켓플레이스 클론 |
+| `./` (source repo) | Source code management |
+| `~/.claude/plugins/cache/welico/agent-speech-claude-code/0.1.0/` | Actual operating location (current version) |
+| `~/.claude/plugins/marketplaces/welico/` | Marketplace Clone |
 
-**sync 명령어**:
+**sync command**:
 ```bash
 CACHE_DIR=~/.claude/plugins/cache/welico/agent-speech-claude-code/0.1.0/.claude-plugin/agent-speech-claude-code/hooks
 SRC_DIR=./.claude-plugin/agent-speech-claude-code/hooks
@@ -374,35 +374,35 @@ chmod +x $CACHE_DIR/*.sh
 
 ## 6. Implementation Order
 
-1. **hooks.json 업데이트** — 4개 hook 항목 추가
-2. **notification-hook.sh** 작성 + 실행 권한
-3. **permission-hook.sh** 작성 + 실행 권한
-4. **subagent-stop-hook.sh** 작성 + 실행 권한
-5. **task-completed-hook.sh** 작성 + 실행 권한
-6. **캐시/마켓플레이스 동기화**
-7. **동작 검증** — 각 hook 타입별 트리거 테스트
+1. **hooks.json update** — Added 4 hook items
+2. Create **notification-hook.sh** + execute permission
+3. Write **permission-hook.sh** + execute permission
+4. Create **subagent-stop-hook.sh** + execute permission
+5. Create **task-completed-hook.sh** + execute permission
+6. **Cache/Marketplace Sync**
+7. **Operation verification** — Trigger test for each hook type
 
 ---
 
 ## 7. Risk Details
 
-### 7.1 stdin JSON 필드명 불확실성
+### 7.1 stdin JSON field name uncertainty
 
-`TaskCompleted` hook의 실제 JSON 필드명이 문서와 다를 수 있음. 이를 대비해 다중 필드 fallback 사용:
+The actual JSON field name of the `TaskCompleted` hook may be different from the document. Use a multi-field fallback for this:
 
 ```bash
 TASK_TITLE=$(echo "$HOOK_INPUT" | jq -r '.task_title // .title // .subject // empty')
 ```
 
-### 7.2 동시 TTS 겹침
+### 7.2 Simultaneous TTS overlap
 
-여러 hook이 짧은 시간에 동시 발화될 경우 TTS가 겹칠 수 있음. 현재 설계는 단순 `say &`를 사용하므로 이전 TTS를 중단하지 않음.
+If multiple hooks are fired simultaneously in a short period of time, TTS may overlap. The current design uses a simple `say &` and therefore does not break previous TTS.
 
-**옵션**: 새 TTS 시작 전 `pkill -x say 2>/dev/null || true` 추가 — 구현 시 판단.
+**Option**: Before starting a new TTS, `pkill -x say 2>/dev/null || true` added — Implementation decision.
 
-### 7.3 미지원 hook 타입
+### 7.3 Unsupported hook type
 
-`PermissionRequest`, `TaskCompleted`가 현재 Claude Code 버전에서 지원되지 않을 수 있음. hooks.json에 등록해도 이벤트가 발생하지 않을 경우 실제 동작 불가 — 구현 후 검증 필수.
+`PermissionRequest`, `TaskCompleted` may not be supported in current Claude Code version. If an event does not occur even if registered in hooks.json, actual operation is not possible — verification is required after implementation.
 
 ---
 
@@ -410,14 +410,14 @@ TASK_TITLE=$(echo "$HOOK_INPUT" | jq -r '.task_title // .title // .subject // em
 
 | ID | Criterion |
 |----|-----------|
-| AC-01 | `Notification` 이벤트 발생 시 `.message` 내용이 TTS로 읽힘 |
-| AC-02 | 권한 요청 시 "Permission required for [Tool]" TTS 발화 |
-| AC-03 | 서브에이전트 완료 시 "Subagent [Type] completed" TTS 발화 |
-| AC-04 | 태스크 완료 시 "Task completed" 또는 제목 TTS 발화 |
-| AC-05 | 기존 `Stop` hook TTS 동작 유지 (회귀 없음) |
-| AC-06 | 모든 스크립트 `exit 0` 보장 (예외 발생 시에도) |
-| AC-07 | 모든 스크립트 실행 권한 `+x` 부여 |
-| AC-08 | 캐시 및 마켓플레이스 경로 동기화 완료 |
+| AC-01 | When the `Notification` event occurs, the contents of `.message` are read as TTS |
+| AC-02 | “Permission required for [Tool]” TTS utterance when requesting permission |
+| AC-03 | “Subagent [Type] completed” TTS utterance when subagent is completed |
+| AC-04 | When a task is completed, say "Task completed" or title TTS utterance |
+| AC-05 | Maintain existing `Stop` hook TTS operation (no regression) |
+| AC-06 | Guaranteed `exit 0` for all scripts (even when exceptions occur) |
+| AC-07 | Grant all script execution permissions `+x` |
+| AC-08 | Cache and Marketplace Path Sync Completed |
 
 ---
 
