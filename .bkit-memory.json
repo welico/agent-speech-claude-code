@@ -1,304 +1,304 @@
 {
-  "version": "1.5.0",
-  "project": "agent-speech",
-  "currentFeature": null,
-  "phase": "completed",
-  "matchRate": 98,
-  "activeFeatures": [],
-  "updatedAt": "2026-02-17T21:00:00.000Z",
-  "tasks": {
-    "plugin-hooks-convention": {
-      "status": "archived",
-      "phase": "archived",
-      "matchRate": 92,
-      "archivedTo": "docs/archive/2026-02/plugin-hooks-convention"
+    "version": "1.5.0",
+    "project": "agent-speech-claude-code",
+    "currentFeature": null,
+    "phase": "completed",
+    "matchRate": 98,
+    "activeFeatures": [],
+    "updatedAt": "2026-02-17T21:00:00.000Z",
+    "tasks": {
+        "plugin-hooks-convention": {
+            "status": "archived",
+            "phase": "archived",
+            "matchRate": 92,
+            "archivedTo": "docs/archive/2026-02/plugin-hooks-convention"
+        },
+        "readme-usage-docs": {
+            "status": "archived",
+            "phase": "archived",
+            "matchRate": 99,
+            "archivedTo": "docs/archive/2026-02/readme-usage-docs"
+        },
+        "git-changes-documentation-sync": {
+            "status": "archived",
+            "phase": "archived",
+            "matchRate": 96,
+            "archivedTo": "docs/archive/2026-02/git-changes-documentation-sync"
+        },
+        "marketplace-distribution": {
+            "status": "archived",
+            "phase": "archived",
+            "matchRate": 100,
+            "archivedTo": "docs/archive/2026-02/marketplace-distribution"
+        },
+        "tts-config": {
+            "status": "archived",
+            "phase": "archived",
+            "matchRate": 96,
+            "archivedTo": "docs/archive/2026-02/tts-config"
+        },
+        "tts-i18n": {
+            "status": "archived",
+            "phase": "archived",
+            "matchRate": 93,
+            "archivedTo": "docs/archive/2026-02/tts-i18n"
+        },
+        "cli-interactive-commands": {
+            "status": "archived",
+            "phase": "archived",
+            "matchRate": 98,
+            "archivedTo": "docs/archive/2026-02/cli-interactive-commands"
+        },
+        "project-completion": {
+            "status": "completed",
+            "phase": "completed",
+            "matchRate": 100,
+            "completedAt": "2026-02-17T21:00:00.000Z"
+        }
     },
-    "readme-usage-docs": {
-      "status": "archived",
-      "phase": "archived",
-      "matchRate": 99,
-      "archivedTo": "docs/archive/2026-02/readme-usage-docs"
-    },
-    "git-changes-documentation-sync": {
-      "status": "archived",
-      "phase": "archived",
-      "matchRate": 96,
-      "archivedTo": "docs/archive/2026-02/git-changes-documentation-sync"
-    },
-    "marketplace-distribution": {
-      "status": "archived",
-      "phase": "archived",
-      "matchRate": 100,
-      "archivedTo": "docs/archive/2026-02/marketplace-distribution"
-    },
-    "tts-config": {
-      "status": "archived",
-      "phase": "archived",
-      "matchRate": 96,
-      "archivedTo": "docs/archive/2026-02/tts-config"
-    },
-    "tts-i18n": {
-      "status": "archived",
-      "phase": "archived",
-      "matchRate": 93,
-      "archivedTo": "docs/archive/2026-02/tts-i18n"
-    },
-    "cli-interactive-commands": {
-      "status": "archived",
-      "phase": "archived",
-      "matchRate": 98,
-      "archivedTo": "docs/archive/2026-02/cli-interactive-commands"
-    },
-    "project-completion": {
-      "status": "completed",
-      "phase": "completed",
-      "matchRate": 100,
-      "completedAt": "2026-02-17T21:00:00.000Z"
-    }
-  },
-  "history": [
-    {
-      "action": "plan",
-      "feature": "readme-usage-docs",
-      "timestamp": "2026-02-13T19:15:00.000Z"
-    },
-    {
-      "action": "design",
-      "feature": "readme-usage-docs",
-      "timestamp": "2026-02-13T19:20:00.000Z"
-    },
-    {
-      "action": "do",
-      "feature": "readme-usage-docs",
-      "timestamp": "2026-02-13T19:30:00.000Z"
-    },
-    {
-      "action": "check",
-      "feature": "readme-usage-docs",
-      "timestamp": "2026-02-13T19:35:00.000Z",
-      "matchRate": 99
-    },
-    {
-      "action": "report",
-      "feature": "readme-usage-docs",
-      "timestamp": "2026-02-13T19:40:00.000Z",
-      "matchRate": 99
-    },
-    {
-      "action": "archive",
-      "feature": "readme-usage-docs",
-      "timestamp": "2026-02-13T19:45:00.000Z",
-      "matchRate": 99
-    },
-    {
-      "action": "plan",
-      "feature": "git-changes-documentation-sync",
-      "timestamp": "2026-02-16T17:05:42.597Z"
-    },
-    {
-      "action": "design",
-      "feature": "git-changes-documentation-sync",
-      "timestamp": "2026-02-16T17:05:42.597Z"
-    },
-    {
-      "action": "do",
-      "feature": "git-changes-documentation-sync",
-      "timestamp": "2026-02-16T18:54:05.708Z"
-    },
-    {
-      "action": "check",
-      "feature": "git-changes-documentation-sync",
-      "timestamp": "2026-02-16T18:54:05.708Z",
-      "matchRate": 96
-    },
-    {
-      "action": "report",
-      "feature": "git-changes-documentation-sync",
-      "timestamp": "2026-02-16T19:30:00.000Z",
-      "matchRate": 96
-    },
-    {
-      "action": "archive",
-      "feature": "git-changes-documentation-sync",
-      "timestamp": "2026-02-16T19:45:00.000Z",
-      "matchRate": 96,
-      "archivedTo": "docs/archive/2026-02/git-changes-documentation-sync"
-    },
-    {
-      "action": "archive",
-      "feature": "marketplace-distribution",
-      "timestamp": "2026-02-16T20:00:00.000Z",
-      "matchRate": 100,
-      "archivedTo": "docs/archive/2026-02/marketplace-distribution"
-    },
-    {
-      "action": "plan",
-      "feature": "plugin-hooks-convention",
-      "timestamp": "2026-02-16T20:10:00.000Z"
-    },
-    {
-      "action": "design",
-      "feature": "plugin-hooks-convention",
-      "timestamp": "2026-02-16T20:15:00.000Z"
-    },
-    {
-      "action": "do",
-      "feature": "plugin-hooks-convention",
-      "timestamp": "2026-02-16T20:20:00.000Z"
-    },
-    {
-      "action": "check",
-      "feature": "plugin-hooks-convention",
-      "timestamp": "2026-02-16T20:25:00.000Z",
-      "matchRate": 92
-    },
-    {
-      "action": "report",
-      "feature": "plugin-hooks-convention",
-      "timestamp": "2026-02-16T20:30:00.000Z",
-      "matchRate": 92
-    },
-    {
-      "action": "archive",
-      "feature": "plugin-hooks-convention",
-      "timestamp": "2026-02-16T20:35:00.000Z",
-      "matchRate": 92,
-      "archivedTo": "docs/archive/2026-02/plugin-hooks-convention"
-    },
-    {
-      "action": "plan",
-      "feature": "extended-tts-hooks",
-      "timestamp": "2026-02-16T20:40:00.000Z"
-    },
-    {
-      "action": "design",
-      "feature": "extended-tts-hooks",
-      "timestamp": "2026-02-16T20:45:00.000Z"
-    },
-    {
-      "action": "do",
-      "feature": "extended-tts-hooks",
-      "timestamp": "2026-02-16T20:50:00.000Z"
-    },
-    {
-      "action": "check",
-      "feature": "extended-tts-hooks",
-      "timestamp": "2026-02-16T20:55:00.000Z",
-      "matchRate": 99
-    },
-    {
-      "action": "report",
-      "feature": "extended-tts-hooks",
-      "timestamp": "2026-02-16T21:05:00.000Z",
-      "matchRate": 99
-    },
-    {
-      "action": "plan",
-      "feature": "tts-config",
-      "timestamp": "2026-02-16T21:15:00.000Z"
-    },
-    {
-      "action": "design",
-      "feature": "tts-config",
-      "timestamp": "2026-02-16T21:30:00.000Z"
-    },
-    {
-      "action": "do",
-      "feature": "tts-config",
-      "timestamp": "2026-02-16T21:45:00.000Z"
-    },
-    {
-      "action": "check",
-      "feature": "tts-config",
-      "timestamp": "2026-02-16T22:00:00.000Z",
-      "matchRate": 96
-    },
-    {
-      "action": "report",
-      "feature": "tts-config",
-      "timestamp": "2026-02-16T22:10:000.000Z",
-      "matchRate": 96
-    },
-    {
-      "action": "archive",
-      "feature": "tts-config",
-      "timestamp": "2026-02-16T22:20:00.000Z",
-      "matchRate": 96,
-      "archivedTo": "docs/archive/2026-02/tts-config"
-    },
-    {
-      "action": "plan",
-      "feature": "tts-i18n",
-      "timestamp": "2026-02-16T22:30:00.000Z"
-    },
-    {
-      "action": "design",
-      "feature": "tts-i18n",
-      "timestamp": "2026-02-16T23:00:00.000Z"
-    },
-    {
-      "action": "do",
-      "feature": "tts-i18n",
-      "timestamp": "2026-02-16T23:10:00.000Z"
-    },
-    {
-      "action": "check",
-      "feature": "tts-i18n",
-      "timestamp": "2026-02-16T23:20:00.000Z",
-      "matchRate": 93
-    },
-    {
-      "action": "report",
-      "feature": "tts-i18n",
-      "timestamp": "2026-02-17T00:00:00.000Z",
-      "matchRate": 93
-    },
-    {
-      "action": "archive",
-      "feature": "tts-i18n",
-      "timestamp": "2026-02-17T00:10:00.000Z",
-      "matchRate": 93,
-      "archivedTo": "docs/archive/2026-02/tts-i18n"
-    },
-    {
-      "action": "plan",
-      "feature": "cli-interactive-commands",
-      "timestamp": "2026-02-17T14:35:00.000Z"
-    },
-    {
-      "action": "design",
-      "feature": "cli-interactive-commands",
-      "timestamp": "2026-02-17T14:40:00.000Z"
-    },
-    {
-      "action": "do",
-      "feature": "cli-interactive-commands",
-      "timestamp": "2026-02-17T19:18:00.000Z"
-    },
-    {
-      "action": "check",
-      "feature": "cli-interactive-commands",
-      "timestamp": "2026-02-17T19:30:00.000Z",
-      "matchRate": 98
-    },
-    {
-      "action": "report",
-      "feature": "cli-interactive-commands",
-      "timestamp": "2026-02-17T19:35:00.000Z",
-      "matchRate": 98
-    },
-    {
-      "action": "archive",
-      "feature": "cli-interactive-commands",
-      "timestamp": "2026-02-17T19:40:00.000Z",
-      "matchRate": 98,
-      "archivedTo": "docs/archive/2026-02/cli-interactive-commands"
-    },
-    {
-      "action": "report",
-      "feature": "project-completion",
-      "timestamp": "2026-02-17T21:00:00.000Z",
-      "matchRate": 100
-    }
-  ]
+    "history": [
+        {
+            "action": "plan",
+            "feature": "readme-usage-docs",
+            "timestamp": "2026-02-13T19:15:00.000Z"
+        },
+        {
+            "action": "design",
+            "feature": "readme-usage-docs",
+            "timestamp": "2026-02-13T19:20:00.000Z"
+        },
+        {
+            "action": "do",
+            "feature": "readme-usage-docs",
+            "timestamp": "2026-02-13T19:30:00.000Z"
+        },
+        {
+            "action": "check",
+            "feature": "readme-usage-docs",
+            "timestamp": "2026-02-13T19:35:00.000Z",
+            "matchRate": 99
+        },
+        {
+            "action": "report",
+            "feature": "readme-usage-docs",
+            "timestamp": "2026-02-13T19:40:00.000Z",
+            "matchRate": 99
+        },
+        {
+            "action": "archive",
+            "feature": "readme-usage-docs",
+            "timestamp": "2026-02-13T19:45:00.000Z",
+            "matchRate": 99
+        },
+        {
+            "action": "plan",
+            "feature": "git-changes-documentation-sync",
+            "timestamp": "2026-02-16T17:05:42.597Z"
+        },
+        {
+            "action": "design",
+            "feature": "git-changes-documentation-sync",
+            "timestamp": "2026-02-16T17:05:42.597Z"
+        },
+        {
+            "action": "do",
+            "feature": "git-changes-documentation-sync",
+            "timestamp": "2026-02-16T18:54:05.708Z"
+        },
+        {
+            "action": "check",
+            "feature": "git-changes-documentation-sync",
+            "timestamp": "2026-02-16T18:54:05.708Z",
+            "matchRate": 96
+        },
+        {
+            "action": "report",
+            "feature": "git-changes-documentation-sync",
+            "timestamp": "2026-02-16T19:30:00.000Z",
+            "matchRate": 96
+        },
+        {
+            "action": "archive",
+            "feature": "git-changes-documentation-sync",
+            "timestamp": "2026-02-16T19:45:00.000Z",
+            "matchRate": 96,
+            "archivedTo": "docs/archive/2026-02/git-changes-documentation-sync"
+        },
+        {
+            "action": "archive",
+            "feature": "marketplace-distribution",
+            "timestamp": "2026-02-16T20:00:00.000Z",
+            "matchRate": 100,
+            "archivedTo": "docs/archive/2026-02/marketplace-distribution"
+        },
+        {
+            "action": "plan",
+            "feature": "plugin-hooks-convention",
+            "timestamp": "2026-02-16T20:10:00.000Z"
+        },
+        {
+            "action": "design",
+            "feature": "plugin-hooks-convention",
+            "timestamp": "2026-02-16T20:15:00.000Z"
+        },
+        {
+            "action": "do",
+            "feature": "plugin-hooks-convention",
+            "timestamp": "2026-02-16T20:20:00.000Z"
+        },
+        {
+            "action": "check",
+            "feature": "plugin-hooks-convention",
+            "timestamp": "2026-02-16T20:25:00.000Z",
+            "matchRate": 92
+        },
+        {
+            "action": "report",
+            "feature": "plugin-hooks-convention",
+            "timestamp": "2026-02-16T20:30:00.000Z",
+            "matchRate": 92
+        },
+        {
+            "action": "archive",
+            "feature": "plugin-hooks-convention",
+            "timestamp": "2026-02-16T20:35:00.000Z",
+            "matchRate": 92,
+            "archivedTo": "docs/archive/2026-02/plugin-hooks-convention"
+        },
+        {
+            "action": "plan",
+            "feature": "extended-tts-hooks",
+            "timestamp": "2026-02-16T20:40:00.000Z"
+        },
+        {
+            "action": "design",
+            "feature": "extended-tts-hooks",
+            "timestamp": "2026-02-16T20:45:00.000Z"
+        },
+        {
+            "action": "do",
+            "feature": "extended-tts-hooks",
+            "timestamp": "2026-02-16T20:50:00.000Z"
+        },
+        {
+            "action": "check",
+            "feature": "extended-tts-hooks",
+            "timestamp": "2026-02-16T20:55:00.000Z",
+            "matchRate": 99
+        },
+        {
+            "action": "report",
+            "feature": "extended-tts-hooks",
+            "timestamp": "2026-02-16T21:05:00.000Z",
+            "matchRate": 99
+        },
+        {
+            "action": "plan",
+            "feature": "tts-config",
+            "timestamp": "2026-02-16T21:15:00.000Z"
+        },
+        {
+            "action": "design",
+            "feature": "tts-config",
+            "timestamp": "2026-02-16T21:30:00.000Z"
+        },
+        {
+            "action": "do",
+            "feature": "tts-config",
+            "timestamp": "2026-02-16T21:45:00.000Z"
+        },
+        {
+            "action": "check",
+            "feature": "tts-config",
+            "timestamp": "2026-02-16T22:00:00.000Z",
+            "matchRate": 96
+        },
+        {
+            "action": "report",
+            "feature": "tts-config",
+            "timestamp": "2026-02-16T22:10:000.000Z",
+            "matchRate": 96
+        },
+        {
+            "action": "archive",
+            "feature": "tts-config",
+            "timestamp": "2026-02-16T22:20:00.000Z",
+            "matchRate": 96,
+            "archivedTo": "docs/archive/2026-02/tts-config"
+        },
+        {
+            "action": "plan",
+            "feature": "tts-i18n",
+            "timestamp": "2026-02-16T22:30:00.000Z"
+        },
+        {
+            "action": "design",
+            "feature": "tts-i18n",
+            "timestamp": "2026-02-16T23:00:00.000Z"
+        },
+        {
+            "action": "do",
+            "feature": "tts-i18n",
+            "timestamp": "2026-02-16T23:10:00.000Z"
+        },
+        {
+            "action": "check",
+            "feature": "tts-i18n",
+            "timestamp": "2026-02-16T23:20:00.000Z",
+            "matchRate": 93
+        },
+        {
+            "action": "report",
+            "feature": "tts-i18n",
+            "timestamp": "2026-02-17T00:00:00.000Z",
+            "matchRate": 93
+        },
+        {
+            "action": "archive",
+            "feature": "tts-i18n",
+            "timestamp": "2026-02-17T00:10:00.000Z",
+            "matchRate": 93,
+            "archivedTo": "docs/archive/2026-02/tts-i18n"
+        },
+        {
+            "action": "plan",
+            "feature": "cli-interactive-commands",
+            "timestamp": "2026-02-17T14:35:00.000Z"
+        },
+        {
+            "action": "design",
+            "feature": "cli-interactive-commands",
+            "timestamp": "2026-02-17T14:40:00.000Z"
+        },
+        {
+            "action": "do",
+            "feature": "cli-interactive-commands",
+            "timestamp": "2026-02-17T19:18:00.000Z"
+        },
+        {
+            "action": "check",
+            "feature": "cli-interactive-commands",
+            "timestamp": "2026-02-17T19:30:00.000Z",
+            "matchRate": 98
+        },
+        {
+            "action": "report",
+            "feature": "cli-interactive-commands",
+            "timestamp": "2026-02-17T19:35:00.000Z",
+            "matchRate": 98
+        },
+        {
+            "action": "archive",
+            "feature": "cli-interactive-commands",
+            "timestamp": "2026-02-17T19:40:00.000Z",
+            "matchRate": 98,
+            "archivedTo": "docs/archive/2026-02/cli-interactive-commands"
+        },
+        {
+            "action": "report",
+            "feature": "project-completion",
+            "timestamp": "2026-02-17T21:00:00.000Z",
+            "matchRate": 100
+        }
+    ]
 }
