@@ -1,6 +1,6 @@
 # Marketplace Setup Guide
 
-This guide explains how to set up and distribute the agent-speech-plugin through Claude Code's plugin marketplace.
+This guide explains how to set up and distribute the agent-speech-claude-code through Claude Code's plugin marketplace.
 
 ## Marketplace Architecture
 
@@ -9,10 +9,10 @@ Claude Code discovers and installs plugins through marketplace repositories. Eac
 ### File Structure
 
 ```
-agent-speech-plugin/                    # Plugin repository
+agent-speech-claude-code/                    # Plugin repository
 ├── .claude-plugin/                     # Marketplace metadata
 │   ├── marketplace.json               # Marketplace definition
-│   └── agent-speech-plugin/           # Plugin definition
+│   └── agent-speech-claude-code/           # Plugin definition
 │       ├── plugin.json               # Plugin metadata
 │       ├── .mcp.json                 # MCP server config
 │       └── README.md                 # Plugin documentation
@@ -26,9 +26,9 @@ agent-speech-plugin/                    # Plugin repository
 
 1. User adds marketplace: `claude plugin marketplace add welico <url>`
 2. Claude clones repo to: `~/.claude/plugins/marketplaces/welico/`
-3. User installs plugin: `claude plugin install agent-speech-plugin`
-4. Plugin is cached at: `~/.claude/plugins/cache/welico/agent-speech-plugin/<version>/`
-5. MCP server path becomes: `~/.claude/plugins/cache/welico/agent-speech-plugin/<version>/dist/mcp-server.js`
+3. User installs plugin: `claude plugin install agent-speech-claude-code`
+4. Plugin is cached at: `~/.claude/plugins/cache/welico/agent-speech-claude-code/<version>/`
+5. MCP server path becomes: `~/.claude/plugins/cache/welico/agent-speech-claude-code/<version>/dist/mcp-server.js`
 
 ## Setting Up Your Marketplace
 
@@ -48,17 +48,17 @@ Located at `.claude-plugin/marketplace.json`:
   },
   "plugins": [
     {
-      "name": "agent-speech-plugin",
+      "name": "agent-speech-claude-code",
       "description": "Text-to-speech plugin...",
       "version": "0.1.0",
       "author": {
         "name": "welico",
         "url": "https://github.com/welico"
       },
-      "repository": "https://github.com/welico/agent-speech-plugin",
+      "repository": "https://github.com/welico/agent-speech-claude-code",
       "source": {
         "source": "url",
-        "url": "https://github.com/welico/agent-speech-plugin.git"
+        "url": "https://github.com/welico/agent-speech-claude-code.git"
       },
       "category": "accessibility",
       "keywords": ["tts", "text-to-speech", "macos"]
@@ -69,11 +69,11 @@ Located at `.claude-plugin/marketplace.json`:
 
 ### 2. Plugin Metadata (`plugin.json`)
 
-Located at `.claude-plugin/agent-speech-plugin/plugin.json`:
+Located at `.claude-plugin/agent-speech-claude-code/plugin.json`:
 
 ```json
 {
-  "name": "agent-speech-plugin",
+  "name": "agent-speech-claude-code",
   "description": "...",
   "version": "0.1.0",
   "author": {
@@ -100,7 +100,7 @@ Located at `.claude-plugin/agent-speech-plugin/plugin.json`:
 1. Update version numbers:
    - `package.json` version
    - `.claude-plugin/marketplace.json` version
-   - `.claude-plugin/agent-speech-plugin/plugin.json` version
+   - `.claude-plugin/agent-speech-claude-code/plugin.json` version
 
 2. Build the project:
 ```bash
@@ -130,8 +130,8 @@ git push origin v0.1.0
 Users can now install:
 
 ```bash
-claude plugin marketplace add welico https://github.com/welico/agent-speech-plugin
-claude plugin install agent-speech-plugin
+claude plugin marketplace add welico https://github.com/welico/agent-speech-claude-code
+claude plugin install agent-speech-claude-code
 ```
 
 ## Marketplace Source Options
@@ -143,7 +143,7 @@ The marketplace repository IS the plugin repository. This is simplest for single
 ```json
 "source": {
   "source": "url",
-  "url": "https://github.com/welico/agent-speech-plugin.git"
+  "url": "https://github.com/welico/agent-speech-claude-code.git"
 }
 ```
 
@@ -156,7 +156,7 @@ welico-claude-plugins/
 ├── .claude-plugin/
 │   └── marketplace.json
 ├── plugins/
-│   ├── agent-speech-plugin/    # Submodule or reference
+│   ├── agent-speech-claude-code/    # Submodule or reference
 │   └── another-plugin/
 ```
 
@@ -165,10 +165,10 @@ Then in marketplace.json:
 ```json
 "plugins": [
   {
-    "name": "agent-speech-plugin",
+    "name": "agent-speech-claude-code",
     "source": {
       "source": "url",
-      "url": "https://github.com/welico/agent-speech-plugin.git"
+      "url": "https://github.com/welico/agent-speech-claude-code.git"
     }
   }
 ]
@@ -180,10 +180,10 @@ Test your marketplace before publishing:
 
 ```bash
 # Create a test marketplace entry
-claude plugin marketplace add welico-test file:///path/to/agent-speech-plugin
+claude plugin marketplace add welico-test file:///path/to/agent-speech-claude-code
 
 # Install plugin from test marketplace
-claude plugin install agent-speech-plugin
+claude plugin install agent-speech-claude-code
 
 # Verify MCP server is loaded
 # Check Claude Code debug logs
@@ -209,7 +209,7 @@ When releasing a new version:
 
 - [ ] Update `package.json` version
 - [ ] Update `.claude-plugin/marketplace.json` version
-- [ ] Update `.claude-plugin/agent-speech-plugin/plugin.json` version
+- [ ] Update `.claude-plugin/agent-speech-claude-code/plugin.json` version
 - [ ] Run `pnpm build`
 - [ ] Run `pnpm test` to verify
 - [ ] Commit changes

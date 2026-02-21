@@ -316,7 +316,7 @@ src/commands/
 └── status.ts              # Add mute status display
 
 .claude-plugin/
-└── agent-speech-plugin/
+└── agent-speech-claude-code/
     └── hooks/
         └── load-config.sh # Add IS_MUTED export and mute logic
 ```
@@ -324,7 +324,7 @@ src/commands/
 ### Plugin Cache Sync
 After implementation, sync updated hooks to:
 ```
-~/.claude/plugins/cache/welico/agent-speech-plugin/0.1.0/.claude-plugin/
+~/.claude/plugins/cache/welico/agent-speech-claude-code/0.1.0/.claude-plugin/
 ```
 
 ---

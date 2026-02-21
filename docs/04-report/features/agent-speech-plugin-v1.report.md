@@ -2,7 +2,7 @@
 
 > **Status**: Complete
 >
-> **Project**: agent-speech-plugin
+> **Project**: agent-speech-claude-code
 > **Version**: 0.1.0
 > **Author**: Development Team
 > **Completion Date**: 2026-02-17
@@ -338,7 +338,7 @@ Plan → Design → Do → Check → Act → Archive
 ### v0.1.0 (2026-02-17)
 
 **Added:**
-- Complete agent-speech-plugin with TTS functionality
+- Complete agent-speech-claude-code with TTS functionality
 - Interactive CLI commands for language and mute control
 - Multi-language TTS support via Google Translate
 - Marketplace distribution system

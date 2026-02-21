@@ -2,7 +2,7 @@
 
 > **Summary**: Centralized TTS config file (`~/.agent-speech/config.json`) with shared `load-config.sh` loader and first-sentence summary extraction.
 >
-> **Project**: agent-speech-plugin
+> **Project**: agent-speech-claude-code
 > **Version**: 0.2.0
 > **Author**: welico
 > **Date**: 2026-02-16
@@ -34,8 +34,8 @@ All 5 hook scripts currently hardcode `Samantha` voice at 200 wpm. This design i
 | `config.example.json` | **NEW** | Example config with Korean settings |
 
 Sync locations (all 3 must match):
-- Source: `.claude-plugin/agent-speech-plugin/hooks/`
-- Cache: `~/.claude/plugins/cache/welico/agent-speech-plugin/0.1.0/.claude-plugin/agent-speech-plugin/hooks/`
+- Source: `.claude-plugin/agent-speech-claude-code/hooks/`
+- Cache: `~/.claude/plugins/cache/welico/agent-speech-claude-code/0.1.0/.claude-plugin/agent-speech-claude-code/hooks/`
 - User config: `~/.agent-speech/config.json` (runtime, not in repo)
 
 ---

@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document outlines the design for implementing Claude Code skills structure for the agent-speech-plugin. The design reuses all existing CLI functionality while wrapping it in the Claude Code skills format with executable scripts and proper metadata.
+This document outlines the design for implementing Claude Code skills structure for the agent-speech-claude-code. The design reuses all existing CLI functionality while wrapping it in the Claude Code skills format with executable scripts and proper metadata.
 
 ## Design Requirements
 

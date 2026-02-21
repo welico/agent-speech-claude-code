@@ -1,7 +1,7 @@
 # Plan: README Usage Documentation Update
 
 > **Feature**: Update README.md with comprehensive usage documentation
-> **Project**: agent-speech-plugin
+> **Project**: agent-speech-claude-code
 > **Date**: 2026-02-13
 > **Status**: Plan
 > **Author**: welico
@@ -90,7 +90,7 @@ Create comprehensive usage documentation in README.md covering:
 ### 4.1 Proposed Table of Contents
 
 ```markdown
-# agent-speech-plugin
+# agent-speech-claude-code
 
 > Text-to-speech plugin for AI CLI tools (Claude Code, OpenCode, Codex-CLI, Gemini-CLI)
 
@@ -131,7 +131,7 @@ Create comprehensive usage documentation in README.md covering:
 
 1. Install the plugin:
    \`\`\`bash
-   npm install -g agent-speech-plugin
+   npm install -g agent-speech-claude-code
    \`\`\`
 
 2. Add to Claude Code config (~/.config/claude-code/config.json):
@@ -140,7 +140,7 @@ Create comprehensive usage documentation in README.md covering:
      "mcpServers": {
        "agent-speech": {
          "command": "node",
-         "args": ["~/global/node_modules/agent-speech-plugin/dist/mcp-server.js"]
+         "args": ["~/global/node_modules/agent-speech-claude-code/dist/mcp-server.js"]
        }
      }
    }

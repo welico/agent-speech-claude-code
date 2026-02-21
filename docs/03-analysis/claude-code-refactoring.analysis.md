@@ -10,7 +10,7 @@
 
 ## Executive Summary
 
-The Claude Code-specific refactoring has been successfully implemented with a **92% match rate** against the design document. All critical architectural changes have been completed, TypeScript compilation succeeds with zero errors, and the plugin has been renamed from "agent-speech-plugin" to "agent-speech".
+The Claude Code-specific refactoring has been successfully implemented with a **92% match rate** against the design document. All critical architectural changes have been completed, TypeScript compilation succeeds with zero errors, and the plugin has been renamed from "agent-speech-claude-code" to "agent-speech".
 
 **Key Achievements:**
 - ✅ Multi-CLI abstraction completely removed
@@ -166,7 +166,7 @@ The Claude Code-specific refactoring has been successfully implemented with a **
 
 ```bash
 $ pnpm build
-> agent-speech-plugin@0.2.0 build
+> agent-speech-claude-code@0.2.0 build
 > tsc
 
 ✅ SUCCESS - Zero TypeScript errors

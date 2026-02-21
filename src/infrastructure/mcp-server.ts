@@ -28,7 +28,7 @@ export class MCPServer {
   constructor() {
     this.server = new Server(
       {
-        name: 'agent-speech-plugin',
+        name: 'agent-speech-claude-code',
         version: '0.1.0',
       },
       {

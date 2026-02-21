@@ -39,7 +39,7 @@ This project is a plugin that provides text-to-speech (TTS) functionality for AI
 ### Folder Structure
 
 ```
-agent-speech-plugin/
+agent-speech-claude-code/
 ├── src/
 │   ├── core/              # Core TTS Logic
 │   │   ├── tts.ts         # Speech synthesis class

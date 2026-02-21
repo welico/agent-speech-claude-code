@@ -1,7 +1,7 @@
 # Plan: Git Changes Documentation Synchronization
 
 ## Feature Overview
-This plan outlines the comprehensive documentation update process based on current uncommitted Git changes in the agent-speech-plugin project.
+This plan outlines the comprehensive documentation update process based on current uncommitted Git changes in the agent-speech-claude-code project.
 
 ## Current Git Status Analysis
 
@@ -13,9 +13,9 @@ This plan outlines the comprehensive documentation update process based on curre
 
 ### Recent Commits Context
 ```
-20ca261 feat: Implement marketplace distribution for agent-speech-plugin
+20ca261 feat: Implement marketplace distribution for agent-speech-claude-code
 fc9f3e3 feat: Archive readme-usage-docs feature and update documentation
-849d4cd feat: Update README and documentation for agent-speech-plugin
+849d4cd feat: Update README and documentation for agent-speech-claude-code
 ```
 
 ## Documentation Update Strategy

@@ -2,7 +2,7 @@
 
 > **Summary**: Google Translate 무료 비공식 API를 사용해 TTS 메세지를 사용자 설정 언어로 번역. translate.sh 헬퍼 + load-config.sh LANGUAGE 필드 + 5개 훅 업데이트.
 >
-> **Project**: agent-speech-plugin
+> **Project**: agent-speech-claude-code
 > **Version**: 0.3.0
 > **Author**: welico
 > **Date**: 2026-02-16
@@ -36,7 +36,7 @@ All 5 hooks: MSG=$(translate "$MESSAGE") → say "$MSG"
 
 | File | Purpose |
 |------|---------|
-| `.claude-plugin/agent-speech-plugin/hooks/translate.sh` | Translation helper — `translate()` function |
+| `.claude-plugin/agent-speech-claude-code/hooks/translate.sh` | Translation helper — `translate()` function |
 
 ### 1.3 Modified Files
 
@@ -292,7 +292,7 @@ exit 0
 7. Update `stop-hook.sh`
 8. Update `config.example.json` (hooks/) — add `"language": "ko"`
 9. Update `~/.agent-speech/config.json` — add `"language": "ko"`
-10. Sync to plugin cache (`~/.claude/plugins/cache/welico/agent-speech-plugin/0.1.0/`)
+10. Sync to plugin cache (`~/.claude/plugins/cache/welico/agent-speech-claude-code/0.1.0/`)
 11. Verify translations end-to-end
 
 ---

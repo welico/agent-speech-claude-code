@@ -7,5 +7,5 @@
 
 | ID | Time | T | Title | Read |
 |----|------|---|-------|------|
-| #1964 | 6:03 PM | 🔵 | Language command implementation examined | ~261 |
+| #1954 | 5:07 PM | 🔵 | Project uses MCP server extension architecture | ~171 |
 </claude-mem-context>

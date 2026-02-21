@@ -2,7 +2,7 @@
 
 > **Summary**: `Stop` 외 4개 Claude Code hook 이벤트(`Notification`, `PermissionRequest`, `SubagentStop`, `TaskCompleted`)에 TTS를 추가한다. 각각 독립 bash 스크립트로 구현하며, 기존 `stop-hook.sh` 패턴을 동일하게 따른다.
 >
-> **Project**: agent-speech-plugin
+> **Project**: agent-speech-claude-code
 > **Version**: 0.1.1
 > **Date**: 2026-02-16
 > **References**: `extended-tts-hooks.plan.md`, `plugin-hooks-convention` (archived)
@@ -51,7 +51,7 @@ hooks.json (${CLAUDE_PLUGIN_ROOT}/hooks/)
 
 ## 2. hooks.json — Updated Specification
 
-**Path**: `.claude-plugin/agent-speech-plugin/hooks/hooks.json`
+**Path**: `.claude-plugin/agent-speech-claude-code/hooks/hooks.json`
 
 ```json
 {
@@ -354,13 +354,13 @@ exit 0
 | 위치 | 용도 |
 |------|------|
 | `./` (source repo) | 소스 코드 관리 |
-| `~/.claude/plugins/cache/welico/agent-speech-plugin/0.1.0/` | 실제 동작 위치 (현재 버전) |
+| `~/.claude/plugins/cache/welico/agent-speech-claude-code/0.1.0/` | 실제 동작 위치 (현재 버전) |
 | `~/.claude/plugins/marketplaces/welico/` | 마켓플레이스 클론 |
 
 **sync 명령어**:
 ```bash
-CACHE_DIR=~/.claude/plugins/cache/welico/agent-speech-plugin/0.1.0/.claude-plugin/agent-speech-plugin/hooks
-SRC_DIR=./.claude-plugin/agent-speech-plugin/hooks
+CACHE_DIR=~/.claude/plugins/cache/welico/agent-speech-claude-code/0.1.0/.claude-plugin/agent-speech-claude-code/hooks
+SRC_DIR=./.claude-plugin/agent-speech-claude-code/hooks
 
 cp $SRC_DIR/hooks.json $CACHE_DIR/
 cp $SRC_DIR/notification-hook.sh $CACHE_DIR/

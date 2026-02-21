@@ -2,7 +2,7 @@
 
 > **Summary**: Gap analysis comparing design document with implementation, showing 96% match rate
 >
-> **Project**: agent-speech-plugin
+> **Project**: agent-speech-claude-code
 > **Version**: 0.1.0
 > **Author**: welico
 > **Date**: 2026-02-15

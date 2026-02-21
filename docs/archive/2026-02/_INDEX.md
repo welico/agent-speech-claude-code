@@ -37,7 +37,7 @@
 | Report | [debug-env-setup.report.md](./debug-env-setup/debug-env-setup.report.md) | ✅ Complete | 2026-02-13 |
 
 **Feature**: Debug Environment Setup
-**Description**: Comprehensive debugging and testing environment for the agent-speech-plugin MCP server
+**Description**: Comprehensive debugging and testing environment for the agent-speech-claude-code MCP server
 **Level**: N/A (Infrastructure)
 **Match Rate**: 96%
 
@@ -50,14 +50,14 @@
 
 ---
 
-### agent-speech-plugin
+### agent-speech-claude-code
 
 | Phase | Document | Status | Date |
 |-------|----------|--------|------|
-| Plan | [01-plan.md](./agent-speech-plugin/01-plan.md) | ✅ Complete | 2026-02-12 |
-| Design | [02-design.md](./agent-speech-plugin/02-design.md) | ✅ Complete | 2026-02-12 |
-| Check | [03-analysis.md](./agent-speech-plugin/03-analysis.md) | ✅ Complete | 2026-02-12 |
-| Report | [04-report.md](./agent-speech-plugin/04-report.md) | ✅ Complete | 2026-02-12 |
+| Plan | [01-plan.md](./agent-speech-claude-code/01-plan.md) | ✅ Complete | 2026-02-12 |
+| Design | [02-design.md](./agent-speech-claude-code/02-design.md) | ✅ Complete | 2026-02-12 |
+| Check | [03-analysis.md](./agent-speech-claude-code/03-analysis.md) | ✅ Complete | 2026-02-12 |
+| Report | [04-report.md](./agent-speech-claude-code/04-report.md) | ✅ Complete | 2026-02-12 |
 
 ### Summary
 
@@ -101,7 +101,7 @@
 | Path | `docs/archive/2026-02/marketplace-distribution/` |
 
 **Feature**: Claude Code Plugin Marketplace Distribution
-**Description**: Complete implementation enabling users to discover and install the agent-speech-plugin through Claude Code's built-in plugin marketplace system.
+**Description**: Complete implementation enabling users to discover and install the agent-speech-claude-code through Claude Code's built-in plugin marketplace system.
 
 **Documents**:
 - `marketplace-distribution.plan.md`
@@ -136,7 +136,7 @@
 - `plugin-hooks-convention.report.md`
 
 **Key Achievements:**
-- TTS hook migrated to `.claude-plugin/agent-speech-plugin/hooks/` structure
+- TTS hook migrated to `.claude-plugin/agent-speech-claude-code/hooks/` structure
 - hooks.json uses `${CLAUDE_PLUGIN_ROOT}` for portable path resolution
 - python3 dependency removed — pure bash + jq implementation
 - Fixed Stop hook bug: was reading non-existent `response` field; now reads `transcript_path`
@@ -210,7 +210,7 @@
 | Path | `docs/archive/2026-02/cli-interactive-commands/` |
 
 **Feature**: CLI Interactive Commands
-**Description**: Language selection and mute functionality for the agent-speech-plugin CLI with interactive menus and persistent state management.
+**Description**: Language selection and mute functionality for the agent-speech-claude-code CLI with interactive menus and persistent state management.
 
 **Documents**:
 - `cli-interactive-commands.plan.md`

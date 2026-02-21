@@ -1,8 +1,8 @@
 # Debug Environment Setup Completion Report
 
-> **Summary**: Comprehensive debugging and testing environment established for agent-speech-plugin with 96% design match rate
+> **Summary**: Comprehensive debugging and testing environment established for agent-speech-claude-code with 96% design match rate
 >
-> **Project**: agent-speech-plugin
+> **Project**: agent-speech-claude-code
 > **Version**: 0.1.0
 > **Author**: welico
 > **Date**: 2026-02-15

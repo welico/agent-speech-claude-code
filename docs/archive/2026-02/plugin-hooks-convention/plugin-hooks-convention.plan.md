@@ -2,7 +2,7 @@
 
 > **Summary**: Claude Code 공식 플러그인 컨벤션에 맞게 TTS Hook 스크립트를 플러그인 디렉토리 내부로 이동하고 구조를 재편한다.
 >
-> **Project**: agent-speech-plugin
+> **Project**: agent-speech-claude-code
 > **Version**: 0.1.0
 > **Author**: welico
 > **Date**: 2026-02-16
@@ -36,7 +36,7 @@
 
 ### 2.1 In Scope
 
-- [ ] `.claude-plugin/agent-speech-plugin/hooks/` 디렉토리 생성
+- [ ] `.claude-plugin/agent-speech-claude-code/hooks/` 디렉토리 생성
 - [ ] `hooks/hooks.json` 작성 (Stop hook 설정, `${CLAUDE_PLUGIN_ROOT}` 참조)
 - [ ] `hooks/stop-hook.sh` 작성 (현재 `claude-tts.sh` 내용 기반, jq 사용으로 개선)
 - [ ] `~/.claude/settings.json`의 Stop hook을 `hooks.json` 기반으로 전환
@@ -76,8 +76,8 @@
 
 ### 4.1 Definition of Done
 
-- [ ] `.claude-plugin/agent-speech-plugin/hooks/hooks.json` 생성
-- [ ] `.claude-plugin/agent-speech-plugin/hooks/stop-hook.sh` 생성 및 실행 권한 부여
+- [ ] `.claude-plugin/agent-speech-claude-code/hooks/hooks.json` 생성
+- [ ] `.claude-plugin/agent-speech-claude-code/hooks/stop-hook.sh` 생성 및 실행 권한 부여
 - [ ] `hooks.json` 방식으로 Stop hook 동작 확인
 - [ ] `~/.claude/claude-tts.sh` 및 `settings.json` 기존 hook 항목 제거
 - [ ] 응답 음성 출력 정상 동작 확인
@@ -106,7 +106,7 @@
 
 ```
 .claude-plugin/
-└── agent-speech-plugin/
+└── agent-speech-claude-code/
     ├── hooks/                          ← 신규 추가
     │   ├── hooks.json                  ← Hook 설정 (Stop 이벤트)
     │   └── stop-hook.sh               ← TTS 실행 스크립트

@@ -1,8 +1,8 @@
 # Claude Code-Specific Refactoring Planning Document
 
-> **Summary**: Refactor agent-speech-plugin to be Claude Code-specific, simplifying architecture by removing multi-CLI support
+> **Summary**: Refactor agent-speech-claude-code to be Claude Code-specific, simplifying architecture by removing multi-CLI support
 >
-> **Project**: agent-speech-plugin
+> **Project**: agent-speech-claude-code
 > **Version**: 0.1.0
 > **Author**: welico
 > **Date**: 2026-02-20
@@ -14,11 +14,11 @@
 
 ### 1.1 Purpose
 
-Simplify the agent-speech-plugin architecture by making it Claude Code-specific only. This refactoring removes the complexity of supporting multiple CLI tools (OpenCode, Codex-CLI, Gemini-CLI) that were never implemented, allowing the codebase to focus on Claude Code integration exclusively.
+Simplify the agent-speech-claude-code architecture by making it Claude Code-specific only. This refactoring removes the complexity of supporting multiple CLI tools (OpenCode, Codex-CLI, Gemini-CLI) that were never implemented, allowing the codebase to focus on Claude Code integration exclusively.
 
 ### 1.2 Background
 
-The original design envisioned agent-speech-plugin as a universal TTS solution for multiple AI CLI tools. However, in practice:
+The original design envisioned agent-speech-claude-code as a universal TTS solution for multiple AI CLI tools. However, in practice:
 - Only Claude Code integration has been implemented
 - Multi-CLI abstraction layer adds unnecessary complexity
 - Users are specifically Claude Code developers
@@ -32,13 +32,13 @@ The original design envisioned agent-speech-plugin as a universal TTS solution f
 
 **New Naming Convention:**
 - **Marketplace**: `welico` (unchanged - marketplace identity)
-- **Plugin**: `agent-speech` (simplified from `agent-speech-plugin`)
+- **Plugin**: `agent-speech` (simplified from `agent-speech-claude-code`)
 
 ### 1.3 Related Documents
 
 - Current Architecture: `CLAUDE.md`
 - Marketplace Config: `.claude-plugin/marketplace.json`
-- Plugin Config: `.claude-plugin/agent-speech-plugin/plugin.json`
+- Plugin Config: `.claude-plugin/agent-speech-claude-code/plugin.json`
 
 ---
 

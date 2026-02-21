@@ -1,7 +1,7 @@
 # PDCA Design: Claude Code Plugin Marketplace Distribution
 
 ## Design Overview
-This document details the technical design and implementation specifications for Claude Code plugin marketplace distribution of agent-speech-plugin.
+This document details the technical design and implementation specifications for Claude Code plugin marketplace distribution of agent-speech-claude-code.
 
 ---
 
@@ -43,10 +43,10 @@ This document details the technical design and implementation specifications for
 
 ### 2.1 File Structure Specification
 ```
-agent-speech-plugin/                           # Repository root
+agent-speech-claude-code/                           # Repository root
 ├── .claude-plugin/                            # Marketplace metadata (REQUIRED)
 │   ├── marketplace.json                       # Marketplace definition
-│   └── agent-speech-plugin/                   # Plugin directory
+│   └── agent-speech-claude-code/                   # Plugin directory
 │       ├── plugin.json                       # Plugin metadata (REQUIRED)
 │       ├── .mcp.json                         # MCP server config (REQUIRED)
 │       └── README.md                         # Plugin documentation (REQUIRED)
@@ -82,7 +82,7 @@ agent-speech-plugin/                           # Repository root
   },
   "plugins": [
     {
-      "name": "agent-speech-plugin",
+      "name": "agent-speech-claude-code",
       "description": "...",
       "version": "0.1.0",
       "author": {
@@ -92,7 +92,7 @@ agent-speech-plugin/                           # Repository root
       "repository": "...",
       "source": {
         "source": "url",
-        "url": "https://github.com/welico/agent-speech-plugin.git"
+        "url": "https://github.com/welico/agent-speech-claude-code.git"
       },
       "category": "accessibility",
       "keywords": ["tts", "text-to-speech", "macos"]
@@ -104,7 +104,7 @@ agent-speech-plugin/                           # Repository root
 #### 2.2.2 plugin.json Schema
 ```json
 {
-  "name": "agent-speech-plugin",
+  "name": "agent-speech-claude-code",
   "description": "...",
   "version": "0.1.0",
   "author": {
@@ -152,7 +152,7 @@ agent-speech-plugin/                           # Repository root
 #### 2.3.1 package.json Requirements
 ```json
 {
-  "name": "agent-speech-plugin",
+  "name": "agent-speech-claude-code",
   "version": "0.1.0",
   "type": "module",
   "main": "./dist/index.js",
@@ -195,7 +195,7 @@ VERSION=$1
 - All version numbers must be synchronized across:
   - `package.json` (version field)
   - `.claude-plugin/marketplace.json` (version and plugins[0].version)
-  - `.claude-plugin/agent-speech-plugin/plugin.json` (version)
+  - `.claude-plugin/agent-speech-claude-code/plugin.json` (version)
 - Use semantic versioning (MAJOR.MINOR.PATCH)
 - Version bump must be done before each release
 
@@ -204,10 +204,10 @@ VERSION=$1
 #### 2.5.1 User Commands
 ```bash
 # Step 1: Add marketplace
-claude plugin marketplace add welico https://github.com/welico/agent-speech-plugin
+claude plugin marketplace add welico https://github.com/welico/agent-speech-claude-code
 
 # Step 2: Install plugin
-claude plugin install agent-speech-plugin
+claude plugin install agent-speech-claude-code
 
 # Step 3: Configure (optional)
 mkdir -p ~/.agent-speech
@@ -216,8 +216,8 @@ cp config/config.example.json ~/.agent-speech/config.json
 
 #### 2.5.2 System Operations
 1. **Marketplace Addition**: Claude Code clones repository to `~/.claude/plugins/marketplaces/welico/`
-2. **Plugin Installation**: Plugin is cached to `~/.claude/plugins/cache/welico/agent-speech-plugin/v0.1.0/`
-3. **MCP Server Registration**: Path registered as `~/.claude/plugins/cache/welico/agent-speech-plugin/v0.1.0/dist/mcp-server.js`
+2. **Plugin Installation**: Plugin is cached to `~/.claude/plugins/cache/welico/agent-speech-claude-code/v0.1.0/`
+3. **MCP Server Registration**: Path registered as `~/.claude/plugins/cache/welico/agent-speech-claude-code/v0.1.0/dist/mcp-server.js`
 
 ---
 

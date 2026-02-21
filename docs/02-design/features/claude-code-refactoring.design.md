@@ -1,8 +1,8 @@
 # Claude Code-Specific Refactoring Design Document
 
-> **Summary**: Detailed design for simplifying agent-speech-plugin architecture by removing multi-CLI abstraction and making it Claude Code-specific
+> **Summary**: Detailed design for simplifying agent-speech-claude-code architecture by removing multi-CLI abstraction and making it Claude Code-specific
 >
-> **Project**: agent-speech-plugin
+> **Project**: agent-speech-claude-code
 > **Version**: 0.1.0
 > **Author**: welico
 > **Date**: 2026-02-20
@@ -211,7 +211,7 @@ src/adapters/claude-code.ts  →  src/claude-code.ts
 | `config/config.schema.json` | Update JSON schema |
 | `README.md` | Update positioning, remove multi-CLI references |
 | `CLAUDE.md` | Update architecture section |
-| `.claude-plugin/agent-speech-plugin/plugin.json` | Update name field |
+| `.claude-plugin/agent-speech-claude-code/plugin.json` | Update name field |
 | `.claude-plugin/marketplace.json` | Update plugin entry |
 
 ---
@@ -331,7 +331,7 @@ export interface AppConfig { /* ... simplified ... */ }
 
 ### 6.1 Plugin Configuration
 
-**.claude-plugin/agent-speech-plugin/plugin.json:**
+**.claude-plugin/agent-speech-claude-code/plugin.json:**
 ```json
 {
   "name": "agent-speech",
@@ -376,7 +376,7 @@ export interface AppConfig { /* ... simplified ... */ }
 **package.json:**
 ```json
 {
-  "name": "agent-speech-plugin",
+  "name": "agent-speech-claude-code",
   "description": "Claude Code text-to-speech plugin using macOS native say command",
   "keywords": [
     "claude-code",
@@ -437,7 +437,7 @@ This is a **Claude Code-specific plugin** that integrates via MCP (Model Context
 
 ### Folder Structure
 ```
-agent-speech-plugin/
+agent-speech-claude-code/
 ├── src/
 │   ├── core/              # Core TTS Logic
 │   │   ├── tts.ts         # Speech synthesis
@@ -557,7 +557,7 @@ git branch -D feat/claude-code-specific-refactoring
 
 ### Phase 3: Metadata Updates (Priority: Medium)
 
-- [ ] Update `.claude-plugin/agent-speech-plugin/plugin.json`
+- [ ] Update `.claude-plugin/agent-speech-claude-code/plugin.json`
   - [ ] name: "agent-speech"
   - [ ] description: Claude Code-specific
   - [ ] keywords: remove generic, add claude-code

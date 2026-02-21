@@ -2,7 +2,7 @@
 
 > **Analysis Type**: Gap Analysis (Design vs Implementation)
 >
-> **Project**: agent-speech-plugin
+> **Project**: agent-speech-claude-code
 > **Version**: 0.1.0
 > **Date**: 2026-02-16
 > **Match Rate**: 92% (Pass)
@@ -40,7 +40,7 @@
 
 **실제 구현**:
 ```json
-"command": "/Users/welico/.claude/plugins/cache/welico/agent-speech-plugin/0.1.0/.claude-plugin/agent-speech-plugin/hooks/stop-hook.sh"
+"command": "/Users/welico/.claude/plugins/cache/welico/agent-speech-claude-code/0.1.0/.claude-plugin/agent-speech-claude-code/hooks/stop-hook.sh"
 ```
 
 **영향**: 버전 업그레이드 시 경로 수동 업데이트 필요. 다른 사용자 환경에서 미작동.
@@ -54,7 +54,7 @@
 
 ## What Was Implemented Correctly
 
-- `hooks/` 디렉토리가 `.claude-plugin/agent-speech-plugin/` 하위에 생성됨
+- `hooks/` 디렉토리가 `.claude-plugin/agent-speech-claude-code/` 하위에 생성됨
 - `hooks.json`이 ralph-loop 패턴과 동일한 구조
 - `stop-hook.sh`에 실행 권한 부여됨
 - `jq` 기반 파싱 구현 (python3 의존성 제거)

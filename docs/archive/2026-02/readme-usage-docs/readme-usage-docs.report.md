@@ -1,6 +1,6 @@
 # README Usage Documentation Update Completion Report
 
-> **Summary**: Comprehensive documentation update for agent-speech-plugin with 99% match rate
+> **Summary**: Comprehensive documentation update for agent-speech-claude-code with 99% match rate
 > **Author**: welico
 > **Created**: 2026-02-15
 > **Last Modified**: 2026-02-15
@@ -11,7 +11,7 @@
 ## Overview
 
 - **Feature**: README Usage Documentation Update
-- **Project**: agent-speech-plugin
+- **Project**: agent-speech-claude-code
 - **Duration**: 2026-02-13 ~ 2026-02-13 (Single day completion)
 - **Owner**: welico
 
@@ -96,12 +96,12 @@
 ## Files Created/Modified
 
 ### Primary Implementation
-- `/Users/welico/Git/GitHub/welico/agent-speech-plugin/README.md` - Complete rewrite (539 lines)
+- `/Users/welico/Git/GitHub/welico/agent-speech-claude-code/README.md` - Complete rewrite (539 lines)
 
 ### Documentation Framework
-- `/Users/welico/Git/GitHub/welico/agent-speech-plugin/docs/01-plan/features/readme-usage-docs.plan.md` - Planning document
-- `/Users/welico/Git/GitHub/welico/agent-speech-plugin/docs/02-design/features/readme-usage-docs.design.md` - Technical design
-- `/Users/welico/Git/GitHub/welico/agent-speech-plugin/docs/03-analysis/readme-usage-docs-gap.md` - Gap analysis (99% match)
+- `/Users/welico/Git/GitHub/welico/agent-speech-claude-code/docs/01-plan/features/readme-usage-docs.plan.md` - Planning document
+- `/Users/welico/Git/GitHub/welico/agent-speech-claude-code/docs/02-design/features/readme-usage-docs.design.md` - Technical design
+- `/Users/welico/Git/GitHub/welico/agent-speech-claude-code/docs/03-analysis/readme-usage-docs-gap.md` - Gap analysis (99% match)
 
 ---
 

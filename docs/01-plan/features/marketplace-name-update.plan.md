@@ -23,9 +23,9 @@ After comprehensive search, I identified **47 files** containing "welico" refere
 
 #### Primary Marketplace Configuration Files:
 1. **`.claude-plugin/marketplace.json`** - Marketplace definition
-2. **`.claude-plugin/agent-speech-plugin/plugin.json`** - Plugin metadata
-3. **`.claude-plugin/agent-speech-plugin/.mcp.json`** - MCP server config
-4. **`.claude-plugin/agent-speech-plugin/README.md`** - Plugin documentation
+2. **`.claude-plugin/agent-speech-claude-code/plugin.json`** - Plugin metadata
+3. **`.claude-plugin/agent-speech-claude-code/.mcp.json`** - MCP server config
+4. **`.claude-plugin/agent-speech-claude-code/README.md`** - Plugin documentation
 
 #### Documentation and Setup Files:
 5. **`README.md`** - Main project README
@@ -59,12 +59,12 @@ After comprehensive search, I identified **47 files** containing "welico" refere
       "name": "welico" → "agent-speech-marketplace",
       "url": "https://github.com/welico" → "https://github.com/welico/agent-speech-marketplace"
     },
-    "repository": "https://github.com/welico/agent-speech-plugin" → "https://github.com/welico/agent-speech-marketplace/agent-speech-plugin"
+    "repository": "https://github.com/welico/agent-speech-claude-code" → "https://github.com/welico/agent-speech-marketplace/agent-speech-claude-code"
   }]
 }
 ```
 
-#### 3.2 `.claude-plugin/agent-speech-plugin/plugin.json`
+#### 3.2 `.claude-plugin/agent-speech-claude-code/plugin.json`
 ```json
 {
   "author": {
@@ -72,13 +72,13 @@ After comprehensive search, I identified **47 files** containing "welico" refere
     "email": "welico@users.noreply.github.com" → "marketplace@agent-speech-marketplace.com",
     "url": "https://github.com/welico" → "https://github.com/welico/agent-speech-marketplace"
   },
-  "repository": "https://github.com/welico/agent-speech-plugin" → "https://github.com/welico/agent-speech-marketplace/agent-speech-plugin",
-  "homepage": "https://github.com/welico/agent-speech-plugin#readme" → "https://github.com/welico/agent-speech-marketplace/agent-speech-plugin#readme"
+  "repository": "https://github.com/welico/agent-speech-claude-code" → "https://github.com/welico/agent-speech-marketplace/agent-speech-claude-code",
+  "homepage": "https://github.com/welico/agent-speech-claude-code#readme" → "https://github.com/welico/agent-speech-marketplace/agent-speech-claude-code#readme"
 }
 ```
 
 #### 3.3 `README.md`
-- Update Repository URL from `https://github.com/welico/agent-speech-plugin` to `https://github.com/welico/agent-speech-marketplace/agent-speech-plugin`
+- Update Repository URL from `https://github.com/welico/agent-speech-claude-code` to `https://github.com/welico/agent-speech-marketplace/agent-speech-claude-code`
 - Update marketplace installation commands:
   ```bash
   claude plugin marketplace add welico → claude plugin marketplace add agent-speech-marketplace
@@ -90,7 +90,7 @@ After comprehensive search, I identified **47 files** containing "welico" refere
 - Update setup commands
 
 #### 3.5 Supporting Files
-- `.claude-plugin/agent-speech-plugin/README.md` - Installation commands
+- `.claude-plugin/agent-speech-claude-code/README.md` - Installation commands
 - `scripts/release.sh` - Command examples
 - `test-marketplace.sh` - Test script and output messages
 
@@ -107,8 +107,8 @@ After comprehensive search, I identified **47 files** containing "welico" refere
    sed -i '' 's/"name": "welico"/"name": "agent-speech-marketplace"/g' .claude-plugin/marketplace.json
 
    # Update plugin.json
-   sed -i '' 's/"name": "welico"/"name": "agent-speech-marketplace"/g' .claude-plugin/agent-speech-plugin/plugin.json
-   sed -i '' 's/welico@users.noreply.github.com/marketplace@agent-speech-marketplace.com/g' .claude-plugin/agent-speech-plugin/plugin.json
+   sed -i '' 's/"name": "welico"/"name": "agent-speech-marketplace"/g' .claude-plugin/agent-speech-claude-code/plugin.json
+   sed -i '' 's/welico@users.noreply.github.com/marketplace@agent-speech-marketplace.com/g' .claude-plugin/agent-speech-claude-code/plugin.json
    ```
 
 2. **Manual URL Updates**
@@ -155,7 +155,7 @@ grep -r "claude plugin marketplace add welico" .
 ```bash
 # Verify key files
 cat .claude-plugin/marketplace.json | grep -E "name|description|owner"
-cat .claude-plugin/agent-speech-plugin/plugin.json | grep -E "author|repository"
+cat .claude-plugin/agent-speech-claude-code/plugin.json | grep -E "author|repository"
 grep -r "agent-speech-marketplace" docs/
 
 # Test functionality
@@ -207,7 +207,7 @@ grep -r "agent-speech-marketplace" docs/
    git reset --hard HEAD~1
    # Or restore specific files
    git checkout .claude-plugin/marketplace.json
-   git checkout .claude-plugin/agent-speech-plugin/plugin.json
+   git checkout .claude-plugin/agent-speech-claude-code/plugin.json
    ```
 
 2. **Partial rollback** - Restore individual files using git checkout

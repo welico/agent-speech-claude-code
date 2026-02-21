@@ -1,7 +1,7 @@
 # extended-tts-hooks Completion Report
 
 > **Feature**: extended-tts-hooks
-> **Project**: agent-speech-plugin
+> **Project**: agent-speech-claude-code
 > **Version**: 0.1.1
 > **Date**: 2026-02-16
 > **Author**: welico
@@ -12,7 +12,7 @@
 
 ## 1. Executive Summary
 
-The `extended-tts-hooks` feature successfully extends TTS coverage in the agent-speech-plugin from the single `Stop` hook to **5 total Claude Code event types**. Users now receive audio feedback for permission requests, subagent completions, task completions, and system notifications — without looking at the terminal.
+The `extended-tts-hooks` feature successfully extends TTS coverage in the agent-speech-claude-code from the single `Stop` hook to **5 total Claude Code event types**. Users now receive audio feedback for permission requests, subagent completions, task completions, and system notifications — without looking at the terminal.
 
 All 8 functional requirements were fully implemented. Gap analysis achieved 99% match rate, exceeding the 90% threshold for completion.
 
@@ -47,16 +47,16 @@ TTS only fired when Claude finished responding (`Stop` hook). Key events went un
 
 | File | Purpose |
 |------|---------|
-| `.claude-plugin/agent-speech-plugin/hooks/notification-hook.sh` | Reads `.message` and speaks (200-char limit) |
-| `.claude-plugin/agent-speech-plugin/hooks/permission-hook.sh` | Speaks "Permission required for [Tool]" |
-| `.claude-plugin/agent-speech-plugin/hooks/subagent-stop-hook.sh` | Speaks "Subagent [Type] completed" |
-| `.claude-plugin/agent-speech-plugin/hooks/task-completed-hook.sh` | Speaks "Task completed: [Title]" (80-char title limit) |
+| `.claude-plugin/agent-speech-claude-code/hooks/notification-hook.sh` | Reads `.message` and speaks (200-char limit) |
+| `.claude-plugin/agent-speech-claude-code/hooks/permission-hook.sh` | Speaks "Permission required for [Tool]" |
+| `.claude-plugin/agent-speech-claude-code/hooks/subagent-stop-hook.sh` | Speaks "Subagent [Type] completed" |
+| `.claude-plugin/agent-speech-claude-code/hooks/task-completed-hook.sh` | Speaks "Task completed: [Title]" (80-char title limit) |
 
 ### Files Modified
 
 | File | Change |
 |------|--------|
-| `.claude-plugin/agent-speech-plugin/hooks/hooks.json` | Added 4 new hook entries (Notification, PermissionRequest, SubagentStop, TaskCompleted) |
+| `.claude-plugin/agent-speech-claude-code/hooks/hooks.json` | Added 4 new hook entries (Notification, PermissionRequest, SubagentStop, TaskCompleted) |
 
 ### Updated hooks.json Structure
 
@@ -198,6 +198,6 @@ This feature builds directly on `plugin-hooks-convention` (92% match rate, archi
 
 ## 11. Conclusion
 
-The `extended-tts-hooks` feature (v0.1.1) is complete and production-ready. The agent-speech-plugin now provides comprehensive TTS coverage across the 5 most relevant Claude Code lifecycle events, enabling fully audio-driven awareness of AI agent activity without requiring users to watch the terminal.
+The `extended-tts-hooks` feature (v0.1.1) is complete and production-ready. The agent-speech-claude-code now provides comprehensive TTS coverage across the 5 most relevant Claude Code lifecycle events, enabling fully audio-driven awareness of AI agent activity without requiring users to watch the terminal.
 
 **Next step**: Archive this PDCA cycle with `/pdca archive extended-tts-hooks`.

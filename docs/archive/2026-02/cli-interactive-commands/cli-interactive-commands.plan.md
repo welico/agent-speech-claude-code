@@ -140,11 +140,11 @@ if [[ "$IS_MUTED" == "true" ]]; then exit 0; fi
 - `src/cli.ts` — add `language`, `mute` cases to switch
 
 ### Modified files (Bash hooks)
-- `.claude-plugin/agent-speech-plugin/hooks/load-config.sh` — add mute check, export `IS_MUTED`
+- `.claude-plugin/agent-speech-claude-code/hooks/load-config.sh` — add mute check, export `IS_MUTED`
 - All 5 hook scripts — add `if [[ "$IS_MUTED" == "true" ]]; then exit 0; fi`
 
 ### Plugin cache sync
-- Copy updated hooks to `~/.claude/plugins/cache/welico/agent-speech-plugin/0.1.0/.claude-plugin/`
+- Copy updated hooks to `~/.claude/plugins/cache/welico/agent-speech-claude-code/0.1.0/.claude-plugin/`
 
 ---
 

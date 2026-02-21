@@ -1,8 +1,8 @@
 # plugin-hooks-convention Design Document
 
-> **Summary**: ralph-loop 공식 컨벤션 기반으로 TTS Hook을 .claude-plugin/agent-speech-plugin/hooks/ 로 이동하고 jq 기반 스크립트로 교체한다.
+> **Summary**: ralph-loop 공식 컨벤션 기반으로 TTS Hook을 .claude-plugin/agent-speech-claude-code/hooks/ 로 이동하고 jq 기반 스크립트로 교체한다.
 >
-> **Project**: agent-speech-plugin
+> **Project**: agent-speech-claude-code
 > **Version**: 0.1.0
 > **Author**: welico
 > **Date**: 2026-02-16
@@ -39,7 +39,7 @@ Before (현재):
 
 After (목표):
 repo/.claude-plugin/
-└── agent-speech-plugin/
+└── agent-speech-claude-code/
     ├── hooks/
     │   ├── hooks.json          ← Hook 설정 (${CLAUDE_PLUGIN_ROOT} 참조)
     │   └── stop-hook.sh        ← TTS 스크립트 (jq 기반)
@@ -182,7 +182,7 @@ exit 0
 
 ## 4. Implementation Order
 
-1. [ ] `.claude-plugin/agent-speech-plugin/hooks/` 디렉토리 생성
+1. [ ] `.claude-plugin/agent-speech-claude-code/hooks/` 디렉토리 생성
 2. [ ] `hooks/hooks.json` 작성
 3. [ ] `hooks/stop-hook.sh` 작성 + 실행 권한 부여
 4. [ ] `~/.claude/settings.json` Stop hook 교체 (Option B 우선)

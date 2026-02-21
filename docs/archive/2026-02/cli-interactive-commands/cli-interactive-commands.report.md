@@ -31,7 +31,7 @@
   - `src/commands/language.ts` - Interactive language selection
   - `src/commands/mute.ts` - Interactive muting with duration options
   - Modified `src/cli.ts` and `src/commands/index.ts`
-  - Updated `.claude-plugin/agent-speech-plugin/hooks/load-config.sh`
+  - Updated `.claude-plugin/agent-speech-claude-code/hooks/load-config.sh`
   - Added mute guards to all hook scripts
 - **Actual duration**: ~4.5 hours
 
@@ -246,4 +246,4 @@ Key achievements include:
 - Full TypeScript type safety
 - Excellent performance with minimal overhead
 
-This feature transforms the user experience from requiring manual file editing to a simple, interactive CLI interface, making the agent-speech-plugin much more accessible to non-technical users while maintaining all advanced functionality for power users.
+This feature transforms the user experience from requiring manual file editing to a simple, interactive CLI interface, making the agent-speech-claude-code much more accessible to non-technical users while maintaining all advanced functionality for power users.

@@ -1,11 +1,11 @@
 # Changelog
 
-All notable changes to the agent-speech-plugin project will be documented in this file.
+All notable changes to the agent-speech-claude-code project will be documented in this file.
 
 ## [2026-02-17] - Project Completion v1.0
 
 ### Added
-- Complete agent-speech-plugin v1.0 implementation
+- Complete agent-speech-claude-code v1.0 implementation
 - Comprehensive completion report documenting all 7 features
 - Multi-language TTS support with 8 languages via Google Translate
 - Interactive CLI commands (`agent-speech language`, `agent-speech mute`)

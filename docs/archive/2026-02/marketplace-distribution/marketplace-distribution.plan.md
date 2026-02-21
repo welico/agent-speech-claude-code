@@ -1,7 +1,7 @@
 # PDCA Plan: Claude Code Plugin Marketplace Distribution
 
 ## Feature Overview
-Implement Claude Code plugin marketplace distribution for agent-speech-plugin, enabling users to discover and install the plugin through Claude Code's `/plugin` command marketplace.
+Implement Claude Code plugin marketplace distribution for agent-speech-claude-code, enabling users to discover and install the plugin through Claude Code's `/plugin` command marketplace.
 
 ## Current Status
 **Phase**: Plan → Design → Do → Check → Act
@@ -13,7 +13,7 @@ Implement Claude Code plugin marketplace distribution for agent-speech-plugin, e
 ## 1. Plan Phase (Completed)
 
 ### 1.1 Problem Statement
-Users currently need to manually clone and install the agent-speech-plugin. The goal is to enable distribution through Claude Code's built-in plugin marketplace system for easier discovery and installation.
+Users currently need to manually clone and install the agent-speech-claude-code. The goal is to enable distribution through Claude Code's built-in plugin marketplace system for easier discovery and installation.
 
 ### 1.2 Objectives
 - [x] Implement marketplace discovery via `/plugin` command
@@ -38,7 +38,7 @@ Users currently need to manually clone and install the agent-speech-plugin. The 
 Repository Structure:
 ├── .claude-plugin/                     # Marketplace directory
 │   ├── marketplace.json              # Marketplace definition
-│   └── agent-speech-plugin/          # Plugin directory
+│   └── agent-speech-claude-code/          # Plugin directory
 │       ├── plugin.json                # Plugin metadata
 │       ├── .mcp.json                  # MCP server config
 │       └── README.md                  # Plugin documentation
@@ -66,8 +66,8 @@ Repository Structure:
 
 ### 3.1 Implementation Tasks
 - [x] Created `.claude-plugin/marketplace.json`
-- [x] Created `.claude-plugin/agent-speech-plugin/plugin.json`
-- [x] Created `.claude-plugin/agent-speech-plugin/.mcp.json`
+- [x] Created `.claude-plugin/agent-speech-claude-code/plugin.json`
+- [x] Created `.claude-plugin/agent-speech-claude-code/.mcp.json`
 - [x] Updated `package.json` files array
 - [x] Created marketplace documentation
 - [x] Created release automation script
@@ -78,8 +78,8 @@ Repository Structure:
 - `package.json` - Added `.claude-plugin` to files array
 - Added new files:
   - `.claude-plugin/marketplace.json`
-  - `.claude-plugin/agent-speech-plugin/plugin.json`
-  - `.claude-plugin/agent-speech-plugin/.mcp.json`
+  - `.claude-plugin/agent-speech-claude-code/plugin.json`
+  - `.claude-plugin/agent-speech-claude-code/.mcp.json`
   - `docs/marketplace-setup.md`
   - `docs/marketplace-implementation-summary.md`
   - `scripts/release.sh`
@@ -147,10 +147,10 @@ git push --tags
 ### 6.2 Installation Flow for Users
 ```bash
 # Add marketplace
-claude plugin marketplace add welico https://github.com/welico/agent-speech-plugin
+claude plugin marketplace add welico https://github.com/welico/agent-speech-claude-code
 
 # Install plugin
-claude plugin install agent-speech-plugin
+claude plugin install agent-speech-claude-code
 
 # Configure (optional)
 mkdir -p ~/.agent-speech
@@ -159,8 +159,8 @@ cp config/config.example.json ~/.agent-speech/config.json
 
 ### 6.3 Deployment Locations
 - Marketplace: `~/.claude/plugins/marketplaces/welico/`
-- Plugin cache: `~/.claude/plugins/cache/welico/agent-speech-plugin/`
-- MCP server: `~/.claude/plugins/cache/welico/agent-speech-plugin/v0.1.0/dist/mcp-server.js`
+- Plugin cache: `~/.claude/plugins/cache/welico/agent-speech-claude-code/`
+- MCP server: `~/.claude/plugins/cache/welico/agent-speech-claude-code/v0.1.0/dist/mcp-server.js`
 
 ---
 

@@ -2,7 +2,7 @@
 
 > **Summary**: Establish comprehensive debugging and testing environment for Claude Code plugin (MCP server) development
 >
-> **Project**: agent-speech-plugin
+> **Project**: agent-speech-claude-code
 > **Version**: 0.1.0
 > **Author**: welico
 > **Date**: 2026-02-13
@@ -14,7 +14,7 @@
 
 ### 1.1 Purpose
 
-This feature aims to create a robust debugging and testing environment for the agent-speech-plugin MCP server. The goal is to enable efficient development, testing, and debugging of the text-to-speech plugin that integrates with Claude Code and other AI CLI tools.
+This feature aims to create a robust debugging and testing environment for the agent-speech-claude-code MCP server. The goal is to enable efficient development, testing, and debugging of the text-to-speech plugin that integrates with Claude Code and other AI CLI tools.
 
 ### 1.2 Background
 
@@ -27,8 +27,8 @@ Claude Code plugins are implemented as MCP (Model Context Protocol) servers. Dev
 ### 1.3 Related Documents
 
 - MCP Specification: https://modelcontextprotocol.io/
-- agent-speech-plugin CLAUDE.md: `/Users/welico/Git/GitHub/welico/agent-speech-plugin/CLAUDE.md`
-- Archived PDCA documents: `docs/archive/2026-02/agent-speech-plugin/`
+- agent-speech-claude-code CLAUDE.md: `/Users/welico/Git/GitHub/welico/agent-speech-claude-code/CLAUDE.md`
+- Archived PDCA documents: `docs/archive/2026-02/agent-speech-claude-code/`
 
 ---
 

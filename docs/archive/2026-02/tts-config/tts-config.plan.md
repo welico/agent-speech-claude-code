@@ -2,7 +2,7 @@
 
 > **Summary**: 사용자가 TTS 언어/목소리/속도를 설정할 수 있는 config 파일을 도입하고, 응답 요약 방식을 개선한다.
 >
-> **Project**: agent-speech-plugin
+> **Project**: agent-speech-claude-code
 > **Version**: 0.2.0
 > **Author**: welico
 > **Date**: 2026-02-16

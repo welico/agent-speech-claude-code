@@ -1,6 +1,6 @@
 # Claude Code Integration Guide
 
-This guide shows how to configure Claude Code to use the agent-speech-plugin locally for development and testing.
+This guide shows how to configure Claude Code to use the agent-speech-claude-code locally for development and testing.
 
 ## Configuration
 
@@ -19,7 +19,7 @@ Add the following to your `config.json`:
     "agent-speech-dev": {
       "command": "node",
       "args": [
-        "/Users/welico/Git/GitHub/welico/agent-speech-plugin/dist/mcp-server.js"
+        "/Users/welico/Git/GitHub/welico/agent-speech-claude-code/dist/mcp-server.js"
       ],
       "env": {
         "DEBUG": "true",
@@ -30,7 +30,7 @@ Add the following to your `config.json`:
 }
 ```
 
-**Important**: Replace `/Users/welico/Git/GitHub/welico/agent-speech-plugin` with your actual project path.
+**Important**: Replace `/Users/welico/Git/GitHub/welico/agent-speech-claude-code` with your actual project path.
 
 ### Full Example Config
 
@@ -42,7 +42,7 @@ Here's a complete example with other common settings:
     "agent-speech-dev": {
       "command": "node",
       "args": [
-        "/Users/welico/Git/GitHub/welico/agent-speech-plugin/dist/mcp-server.js"
+        "/Users/welico/Git/GitHub/welico/agent-speech-claude-code/dist/mcp-server.js"
       ],
       "env": {
         "DEBUG": "true",
@@ -166,7 +166,7 @@ For active development:
 
 For production deployment (e.g., npm install), the plugin will be installed to:
 ```
-node_modules/agent-speech-plugin/dist/mcp-server.js
+node_modules/agent-speech-claude-code/dist/mcp-server.js
 ```
 
 Update the config path accordingly.

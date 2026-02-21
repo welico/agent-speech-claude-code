@@ -7,12 +7,12 @@
     "activeFeatures": [],
     "primaryFeature": null,
     "features": {
-      "agent-speech-plugin": {
+      "agent-speech-claude-code": {
         "phase": "archived",
         "level": "Starter",
         "createdAt": "2026-02-12",
         "archivedAt": "2026-02-12T21:00:00.000Z",
-        "archivedTo": "docs/archive/2026-02/agent-speech-plugin",
+        "archivedTo": "docs/archive/2026-02/agent-speech-claude-code",
         "matchRate": 96,
         "iterations": 1,
         "tasks": {
@@ -72,42 +72,42 @@
     "history": [
       {
         "action": "plan",
-        "feature": "agent-speech-plugin",
+        "feature": "agent-speech-claude-code",
         "timestamp": "2026-02-12T01:48:00.000Z"
       },
       {
         "action": "design",
-        "feature": "agent-speech-plugin",
+        "feature": "agent-speech-claude-code",
         "timestamp": "2026-02-12T01:48:00.000Z"
       },
       {
         "action": "do",
-        "feature": "agent-speech-plugin",
+        "feature": "agent-speech-claude-code",
         "timestamp": "2026-02-12T02:20:00.000Z"
       },
       {
         "action": "check",
-        "feature": "agent-speech-plugin",
+        "feature": "agent-speech-claude-code",
         "timestamp": "2026-02-12T20:47:00.000Z"
       },
       {
         "action": "act",
-        "feature": "agent-speech-plugin",
+        "feature": "agent-speech-claude-code",
         "timestamp": "2026-02-12T20:53:00.000Z"
       },
       {
         "action": "check",
-        "feature": "agent-speech-plugin",
+        "feature": "agent-speech-claude-code",
         "timestamp": "2026-02-12T20:55:00.000Z"
       },
       {
         "action": "report",
-        "feature": "agent-speech-plugin",
+        "feature": "agent-speech-claude-code",
         "timestamp": "2026-02-12T21:00:00.000Z"
       },
       {
         "action": "archive",
-        "feature": "agent-speech-plugin",
+        "feature": "agent-speech-claude-code",
         "timestamp": "2026-02-12T21:00:00.000Z"
       },
       {

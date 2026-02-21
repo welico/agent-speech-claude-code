@@ -2,7 +2,7 @@
 
 > **Status**: Complete
 >
-> **Project**: agent-speech-plugin
+> **Project**: agent-speech-claude-code
 > **Version**: 0.3.0
 > **Author**: welico
 > **Completion Date**: 2026-02-17
@@ -38,7 +38,7 @@
 
 ### 1.3 Executive Summary
 
-The `tts-i18n` feature delivers full TTS internationalization for the agent-speech-plugin. When a user sets `"language": "ko"` in the configuration file, all hook-generated speech messages are automatically translated to Korean before being spoken aloud via the macOS `say` command. The implementation uses the Google Translate unofficial free API, requiring no API key. A robust fallback chain ensures TTS always functions even when translation fails or the network is unavailable. The feature was implemented exactly as designed, achieving a 93% match rate. All 8 minor deviations are defensive enhancements that improve robustness beyond the original design specification.
+The `tts-i18n` feature delivers full TTS internationalization for the agent-speech-claude-code. When a user sets `"language": "ko"` in the configuration file, all hook-generated speech messages are automatically translated to Korean before being spoken aloud via the macOS `say` command. The implementation uses the Google Translate unofficial free API, requiring no API key. A robust fallback chain ensures TTS always functions even when translation fails or the network is unavailable. The feature was implemented exactly as designed, achieving a 93% match rate. All 8 minor deviations are defensive enhancements that improve robustness beyond the original design specification.
 
 ---
 
@@ -57,7 +57,7 @@ The `tts-i18n` feature delivers full TTS internationalization for the agent-spee
 
 ### 3.1 Problem Solved
 
-Prior to this feature, all hook messages in the agent-speech-plugin were hard-coded in English. Users who operate in non-English environments had no way to receive TTS notifications in their native language. This created a significant usability gap for Korean-speaking developers who rely on the plugin for audio feedback while multitasking.
+Prior to this feature, all hook messages in the agent-speech-claude-code were hard-coded in English. Users who operate in non-English environments had no way to receive TTS notifications in their native language. This created a significant usability gap for Korean-speaking developers who rely on the plugin for audio feedback while multitasking.
 
 ### 3.2 Solution
 
@@ -84,18 +84,18 @@ Out of scope for v0.3.0:
 
 | File | Purpose |
 |------|---------|
-| `.claude-plugin/agent-speech-plugin/hooks/translate.sh` | Translation helper — `translate()` bash function using Google Translate unofficial API |
+| `.claude-plugin/agent-speech-claude-code/hooks/translate.sh` | Translation helper — `translate()` bash function using Google Translate unofficial API |
 
 ### 4.2 Files Modified
 
 | File | Change |
 |------|--------|
-| `.claude-plugin/agent-speech-plugin/hooks/load-config.sh` | Added `LANGUAGE` variable read, validation (en/ko), and export |
-| `.claude-plugin/agent-speech-plugin/hooks/permission-hook.sh` | Source `translate.sh`, wrap message with `translate()` |
-| `.claude-plugin/agent-speech-plugin/hooks/subagent-stop-hook.sh` | Source `translate.sh`, wrap message with `translate()` |
-| `.claude-plugin/agent-speech-plugin/hooks/task-completed-hook.sh` | Source `translate.sh`, wrap message with `translate()` |
-| `.claude-plugin/agent-speech-plugin/hooks/notification-hook.sh` | Source `translate.sh`, wrap message with `translate()` |
-| `.claude-plugin/agent-speech-plugin/hooks/stop-hook.sh` | Source `translate.sh`, translate SUMMARY before `say` |
+| `.claude-plugin/agent-speech-claude-code/hooks/load-config.sh` | Added `LANGUAGE` variable read, validation (en/ko), and export |
+| `.claude-plugin/agent-speech-claude-code/hooks/permission-hook.sh` | Source `translate.sh`, wrap message with `translate()` |
+| `.claude-plugin/agent-speech-claude-code/hooks/subagent-stop-hook.sh` | Source `translate.sh`, wrap message with `translate()` |
+| `.claude-plugin/agent-speech-claude-code/hooks/task-completed-hook.sh` | Source `translate.sh`, wrap message with `translate()` |
+| `.claude-plugin/agent-speech-claude-code/hooks/notification-hook.sh` | Source `translate.sh`, wrap message with `translate()` |
+| `.claude-plugin/agent-speech-claude-code/hooks/stop-hook.sh` | Source `translate.sh`, translate SUMMARY before `say` |
 | `config/config.example.json` | Added `"language": "ko"` field |
 | `~/.agent-speech/config.json` | Added `"language": "ko"` field |
 

@@ -2,7 +2,7 @@
 
 > **Status**: Complete
 >
-> **Project**: agent-speech-plugin
+> **Project**: agent-speech-claude-code
 > **Version**: 1.4.8
 > **Author**: welico
 > **Completion Date**: 2026-02-16
@@ -128,11 +128,11 @@ Key planning decisions:
 
 | Deliverable | Location | Status |
 |-------------|----------|--------|
-| Updated CLAUDE.md | `/agent-speech-plugin/CLAUDE.md` | Complete |
-| Updated .bkit-memory.json | `/agent-speech-plugin/.bkit-memory.json` | Complete |
-| Updated docs/.bkit-memory.json | `/agent-speech-plugin/docs/.bkit-memory.json` | Complete |
-| Updated prd.md | `/agent-speech-plugin/.claude/docs/prd.md` | Complete |
-| Updated cli-plugin-specialist.md | `/agent-speech-plugin/.claude/agents/cli-plugin-specialist.md` | Complete |
+| Updated CLAUDE.md | `/agent-speech-claude-code/CLAUDE.md` | Complete |
+| Updated .bkit-memory.json | `/agent-speech-claude-code/.bkit-memory.json` | Complete |
+| Updated docs/.bkit-memory.json | `/agent-speech-claude-code/docs/.bkit-memory.json` | Complete |
+| Updated prd.md | `/agent-speech-claude-code/.claude/docs/prd.md` | Complete |
+| Updated cli-plugin-specialist.md | `/agent-speech-claude-code/.claude/agents/cli-plugin-specialist.md` | Complete |
 | Completion report (this document) | `docs/04-report/features/` | Complete |
 
 ---
@@ -191,10 +191,10 @@ Key planning decisions:
 
 ### 7.2 Marketplace Distribution Verification
 
-The design called for verification that commit 20ca261 (feat: Implement marketplace distribution for agent-speech-plugin) was fully reflected in documentation. Verification confirmed:
+The design called for verification that commit 20ca261 (feat: Implement marketplace distribution for agent-speech-claude-code) was fully reflected in documentation. Verification confirmed:
 
 - `.claude-plugin/marketplace.json` - Present and configured
-- `.claude-plugin/agent-speech-plugin/plugin.json` - Present and configured
+- `.claude-plugin/agent-speech-claude-code/plugin.json` - Present and configured
 - `dist/mcp-server.js` - Present and operational
 
 All marketplace metadata files were verified as present and properly referenced in updated documentation.

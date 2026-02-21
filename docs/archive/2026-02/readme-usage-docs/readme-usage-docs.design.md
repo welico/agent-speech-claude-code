@@ -1,7 +1,7 @@
 # Design: README Usage Documentation
 
 > **Feature**: Update README.md with comprehensive usage documentation
-> **Project**: agent-speech-plugin
+> **Project**: agent-speech-claude-code
 > **Date**: 2026-02-13
 > **Status**: Design
 > **Author**: welico
@@ -44,7 +44,7 @@ README.md (309 lines)
 ## 2. Target README Structure
 
 ```markdown
-# agent-speech-plugin
+# agent-speech-claude-code
 
 [Badges]
 
@@ -108,7 +108,7 @@ README.md (309 lines)
   "mcpServers": {
     "agent-speech": {
       "command": "node",
-      "args": ["/path/to/agent-speech-plugin/dist/mcp-server.js"]
+      "args": ["/path/to/agent-speech-claude-code/dist/mcp-server.js"]
     }
   }
 }
@@ -138,8 +138,8 @@ That's it! Claude will now use the `speak_text` tool to read responses aloud.
 
 \`\`\`bash
 # Clone the repository
-git clone https://github.com/welico/agent-speech-plugin.git
-cd agent-speech-plugin
+git clone https://github.com/welico/agent-speech-claude-code.git
+cd agent-speech-claude-code
 
 # Install dependencies
 pnpm install
@@ -154,7 +154,7 @@ pnpm test
 ### Option 2: Global Install (via npm)
 
 \`\`\`bash
-npm install -g agent-speech-plugin
+npm install -g agent-speech-claude-code
 
 # Verify
 agent-speech status
@@ -400,7 +400,7 @@ This opens a browser-based tool for testing MCP tools.
 ### Project Structure
 
 \`\`\`
-agent-speech-plugin/
+agent-speech-claude-code/
 ├── src/
 │   ├── core/              # Core TTS logic
 │   │   ├── tts.ts         # Text-to-speech implementation

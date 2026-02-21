@@ -5,11 +5,11 @@
     "version": "2.0",
     "lastUpdated": "2026-02-12T07:48:55.411Z",
     "activeFeatures": [
-      "agent-speech-plugin"
+      "agent-speech-claude-code"
     ],
-    "primaryFeature": "agent-speech-plugin",
+    "primaryFeature": "agent-speech-claude-code",
     "features": {
-      "agent-speech-plugin": {
+      "agent-speech-claude-code": {
         "phase": "do",
         "level": "Starter",
         "createdAt": "2026-02-12",
@@ -32,17 +32,17 @@
     "history": [
       {
         "action": "plan",
-        "feature": "agent-speech-plugin",
+        "feature": "agent-speech-claude-code",
         "timestamp": "2026-02-12T01:48:00.000Z"
       },
       {
         "action": "design",
-        "feature": "agent-speech-plugin",
+        "feature": "agent-speech-claude-code",
         "timestamp": "2026-02-12T01:48:00.000Z"
       },
       {
         "action": "do",
-        "feature": "agent-speech-plugin",
+        "feature": "agent-speech-claude-code",
         "timestamp": "2026-02-12T02:20:00.000Z"
       }
     ]

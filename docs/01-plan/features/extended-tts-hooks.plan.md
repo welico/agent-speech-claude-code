@@ -2,7 +2,7 @@
 
 > **Summary**: Extend TTS trigger coverage beyond `Stop` hook to support all relevant Claude Code lifecycle events — Notification, SubagentStop, PermissionRequest, TaskCompleted, and TeammateIdle.
 >
-> **Project**: agent-speech-plugin
+> **Project**: agent-speech-claude-code
 > **Version**: 0.1.1
 > **Author**: welico
 > **Date**: 2026-02-16
@@ -31,7 +31,7 @@
 ### 1.3 Reference
 
 - Claude Code Hooks 공식 문서: https://code.claude.com/docs/en/hooks-guide
-- 현재 구현: `.claude-plugin/agent-speech-plugin/hooks/stop-hook.sh`
+- 현재 구현: `.claude-plugin/agent-speech-claude-code/hooks/stop-hook.sh`
 - 참조 구현: `hookify` plugin (`hooks/hooks.json` — 4개 hook 타입 사용)
 
 ---
@@ -158,7 +158,7 @@ Research 결과 확인된 전체 Hook 타입:
 ### 6.1 Target File Structure
 
 ```
-.claude-plugin/agent-speech-plugin/hooks/
+.claude-plugin/agent-speech-claude-code/hooks/
 ├── hooks.json                    ← 모든 hook 정의 (업데이트)
 ├── stop-hook.sh                  ← 현재 구현 (변경 없음)
 ├── notification-hook.sh          ← 신규: Notification TTS

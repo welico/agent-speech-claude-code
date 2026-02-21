@@ -1,7 +1,7 @@
 # Agent Speech Plugin v1 Completion Summary
 
 > **Status**: Complete ✅
-> **Project**: agent-speech-plugin
+> **Project**: agent-speech-claude-code
 > **Version**: 0.1.0
 > **Completion Date**: 2026-02-17
 > **Total Features**: 7
@@ -188,7 +188,7 @@ The project transforms AI CLI responses into accessible audio output while maint
 ## Files Created
 
 ### Documentation
-- `/docs/04-report/features/agent-speech-plugin-v1.report.md` - Complete project report
+- `/docs/04-report/features/agent-speech-claude-code-v1.report.md` - Complete project report
 - `/docs/04-report/changelog.md` - Updated changelog with v1.0 completion
 - `/docs/archive/2026-02/` - All feature documentation archived
 

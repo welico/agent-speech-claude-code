@@ -2,7 +2,7 @@
 
 > **Report Type**: PDCA Completion Report
 >
-> **Project**: agent-speech-plugin
+> **Project**: agent-speech-claude-code
 > **Version**: 0.1.0
 > **Feature**: plugin-hooks-convention
 > **Date**: 2026-02-16
@@ -12,7 +12,7 @@
 
 ## Executive Summary
 
-Successfully migrated TTS hook from standalone `~/.claude/claude-tts.sh` to the official Claude Code plugin convention structure. The implementation follows the `ralph-loop` official plugin as reference, placing hooks inside `.claude-plugin/agent-speech-plugin/hooks/` with `hooks.json` + `stop-hook.sh`. Core functionality is fully working and matches the design specification at 92% overall.
+Successfully migrated TTS hook from standalone `~/.claude/claude-tts.sh` to the official Claude Code plugin convention structure. The implementation follows the `ralph-loop` official plugin as reference, placing hooks inside `.claude-plugin/agent-speech-claude-code/hooks/` with `hooks.json` + `stop-hook.sh`. Core functionality is fully working and matches the design specification at 92% overall.
 
 ---
 
@@ -51,7 +51,7 @@ Before:
 ~/.claude/settings.json (hooks)       ← absolute path /Users/welico/.claude/claude-tts.sh
 
 After:
-.claude-plugin/agent-speech-plugin/
+.claude-plugin/agent-speech-claude-code/
 └── hooks/
     ├── hooks.json                    ← ${CLAUDE_PLUGIN_ROOT} based config
     └── stop-hook.sh                  ← jq-based, 500 char limit, background TTS
@@ -71,8 +71,8 @@ After:
 
 | File | Location | Status |
 |------|----------|--------|
-| `hooks/hooks.json` | `.claude-plugin/agent-speech-plugin/hooks/` | ✅ Created |
-| `hooks/stop-hook.sh` | `.claude-plugin/agent-speech-plugin/hooks/` | ✅ Created (+x) |
+| `hooks/hooks.json` | `.claude-plugin/agent-speech-claude-code/hooks/` | ✅ Created |
+| `hooks/stop-hook.sh` | `.claude-plugin/agent-speech-claude-code/hooks/` | ✅ Created (+x) |
 | `hooks/hooks.json` | Plugin cache path (0.1.0) | ✅ Synced |
 | `hooks/stop-hook.sh` | Plugin cache path (0.1.0) | ✅ Synced |
 
@@ -125,7 +125,7 @@ exit 0
 
 **Current state**: `~/.claude/settings.json` still contains:
 ```json
-"command": "/Users/welico/.claude/plugins/cache/welico/agent-speech-plugin/0.1.0/.claude-plugin/agent-speech-plugin/hooks/stop-hook.sh"
+"command": "/Users/welico/.claude/plugins/cache/welico/agent-speech-claude-code/0.1.0/.claude-plugin/agent-speech-claude-code/hooks/stop-hook.sh"
 ```
 
 **Impact**: Requires manual update on version upgrade; not portable to other user environments.

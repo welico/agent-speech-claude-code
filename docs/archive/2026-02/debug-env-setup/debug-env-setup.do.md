@@ -2,7 +2,7 @@
 
 > **Summary**: Step-by-step implementation guide for debug environment including logger, VS Code config, Vitest, MCP Inspector, and Claude Code integration
 >
-> **Project**: agent-speech-plugin
+> **Project**: agent-speech-claude-code
 > **Version**: 0.1.0
 > **Author**: welico
 > **Date**: 2026-02-13
@@ -565,9 +565,9 @@ export default defineConfig({
 
 ```bash
 #!/bin/bash
-# MCP Inspector launcher for agent-speech-plugin
+# MCP Inspector launcher for agent-speech-claude-code
 
-echo "Starting MCP Inspector for agent-speech-plugin..."
+echo "Starting MCP Inspector for agent-speech-claude-code..."
 echo "Browser will open to http://localhost:5173"
 echo ""
 echo "Available tools:"

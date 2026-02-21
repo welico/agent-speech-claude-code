@@ -11,7 +11,7 @@
 
 ## Summary
 
-Introduced a centralized TTS configuration system for agent-speech-plugin. Users can now set their preferred voice, speech rate, volume, and summary extraction mode in `~/.agent-speech/config.json` — a single file that all 5 hook scripts read at runtime via a shared `load-config.sh` loader.
+Introduced a centralized TTS configuration system for agent-speech-claude-code. Users can now set their preferred voice, speech rate, volume, and summary extraction mode in `~/.agent-speech/config.json` — a single file that all 5 hook scripts read at runtime via a shared `load-config.sh` loader.
 
 Korean users can now configure `"voice": "Yuna"` to receive all announcements in Korean. The stop hook's summary extraction was upgraded from simple character truncation to first-sentence extraction, producing more natural audio output.
 
@@ -34,8 +34,8 @@ Korean users can now configure `"voice": "Yuna"` to receive all announcements in
 
 | File | Description |
 |------|-------------|
-| `.claude-plugin/agent-speech-plugin/hooks/load-config.sh` | Shared config loader; reads `~/.agent-speech/config.json`, validates voice via `say -v ?`, exports `$VOICE $RATE $VOLUME $SUMMARY_MAX_CHARS $SUMMARY_MODE` |
-| `.claude-plugin/agent-speech-plugin/hooks/config.example.json` | Config example in hooks directory |
+| `.claude-plugin/agent-speech-claude-code/hooks/load-config.sh` | Shared config loader; reads `~/.agent-speech/config.json`, validates voice via `say -v ?`, exports `$VOICE $RATE $VOLUME $SUMMARY_MAX_CHARS $SUMMARY_MODE` |
+| `.claude-plugin/agent-speech-claude-code/hooks/config.example.json` | Config example in hooks directory |
 | `config/config.example.json` | Updated repo-root example to tts-config schema |
 
 ### Updated Files

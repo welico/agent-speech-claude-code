@@ -2,7 +2,7 @@
 
 > **Summary**: Technical design for debugging and testing environment including logger utility, VS Code debug config, Vitest setup, and MCP Inspector integration
 >
-> **Project**: agent-speech-plugin
+> **Project**: agent-speech-claude-code
 > **Version**: 0.1.0
 > **Author**: welico
 > **Date**: 2026-02-13
@@ -229,7 +229,7 @@ tests/
 **Script**:
 ```bash
 #!/bin/bash
-# Start MCP Inspector for agent-speech-plugin
+# Start MCP Inspector for agent-speech-claude-code
 npx @modelcontextprotocol/inspector node dist/mcp-server.js
 ```
 
@@ -255,7 +255,7 @@ chmod +x scripts/inspect.sh
   "mcpServers": {
     "agent-speech-dev": {
       "command": "node",
-      "args": ["/absolute/path/to/agent-speech-plugin/dist/mcp-server.js"],
+      "args": ["/absolute/path/to/agent-speech-claude-code/dist/mcp-server.js"],
       "env": {
         "DEBUG": "true",
         "LOG_FILE": "/tmp/agent-speech-debug.log"
