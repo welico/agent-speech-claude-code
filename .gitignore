@@ -25,7 +25,7 @@ coverage/
 # Config (user-specific)
 .config/
 *.local.json
-.mcp.json
+# .mcp.json - included for plugin distribution
 
 # Temporary files
 *.tmp
