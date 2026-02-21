@@ -1,18 +1,328 @@
 {
-  "version": "2.0",
-  "lastUpdated": "2026-02-20T22:08:09.205Z",
-  "activeFeatures": [],
-  "primaryFeature": null,
-  "features": {},
-  "pipeline": {
-    "currentPhase": 1,
-    "level": "Dynamic",
-    "phaseHistory": []
-  },
-  "session": {
-    "startedAt": "2026-02-20T22:08:09.205Z",
-    "onboardingCompleted": false,
-    "lastActivity": "2026-02-20T22:08:09.205Z"
-  },
-  "history": []
+    "version": "2.0",
+    "lastUpdated": "2026-02-20T19:04:10.706Z",
+    "activeFeatures": [
+        "agent-speech-claude-code",
+        "core",
+        "commands",
+        "infrastructure"
+    ],
+    "primaryFeature": "agent-speech-claude-code",
+    "features": {
+        "agent-speech-claude-code": {
+            "phase": "do",
+            "level": "Starter",
+            "createdAt": "2026-02-12",
+            "archivedAt": "2026-02-12T21:00:00.000Z",
+            "archivedTo": "docs/archive/2026-02/agent-speech-claude-code",
+            "matchRate": 96,
+            "iterations": 1,
+            "tasks": {
+                "plan": "completed",
+                "design": "completed",
+                "do": "completed",
+                "check": "completed",
+                "act": "completed",
+                "report": "completed"
+            },
+            "phaseNumber": 3,
+            "lastFile": "/Users/warezio/Git/GitHub/welico/agent-speech-claude-code/src/cli.ts",
+            "timestamps": {
+                "lastUpdated": "2026-02-20T19:04:10.706Z"
+            }
+        },
+        "debug-env-setup": {
+            "phase": "archived",
+            "level": "N/A",
+            "createdAt": "2026-02-13",
+            "archivedAt": "2026-02-13T19:10:00.000Z",
+            "archivedTo": "docs/archive/2026-02/debug-env-setup",
+            "matchRate": 96,
+            "iterations": 0,
+            "tasks": {
+                "plan": "completed",
+                "design": "completed",
+                "do": "completed",
+                "check": "completed",
+                "act": "completed",
+                "report": "completed"
+            }
+        },
+        "readme-usage-docs": {
+            "phase": "archived",
+            "level": "N/A",
+            "createdAt": "2026-02-13",
+            "archivedAt": "2026-02-13T19:45:00.000Z",
+            "archivedTo": "docs/archive/2026-02/readme-usage-docs",
+            "matchRate": 99,
+            "iterations": 0,
+            "tasks": {
+                "plan": "completed",
+                "design": "completed",
+                "do": "completed",
+                "check": "completed",
+                "act": "completed",
+                "report": "completed"
+            }
+        },
+        "core": {
+            "phase": "do",
+            "phaseNumber": 3,
+            "matchRate": null,
+            "iterationCount": 0,
+            "requirements": [],
+            "documents": {},
+            "timestamps": {
+                "started": "2026-02-20T18:59:36.974Z",
+                "lastUpdated": "2026-02-20T19:02:51.809Z"
+            },
+            "lastFile": "/Users/warezio/Git/GitHub/welico/agent-speech-claude-code/src/core/config.ts"
+        },
+        "commands": {
+            "phase": "do",
+            "phaseNumber": 3,
+            "matchRate": null,
+            "iterationCount": 0,
+            "requirements": [],
+            "documents": {},
+            "timestamps": {
+                "started": "2026-02-20T19:02:16.916Z",
+                "lastUpdated": "2026-02-20T19:02:41.039Z"
+            },
+            "lastFile": "/Users/warezio/Git/GitHub/welico/agent-speech-claude-code/src/commands/init.ts"
+        },
+        "infrastructure": {
+            "phase": "do",
+            "phaseNumber": 3,
+            "matchRate": null,
+            "iterationCount": 0,
+            "requirements": [],
+            "documents": {},
+            "timestamps": {
+                "started": "2026-02-20T19:02:46.859Z",
+                "lastUpdated": "2026-02-20T19:02:46.859Z"
+            },
+            "lastFile": "/Users/warezio/Git/GitHub/welico/agent-speech-claude-code/src/infrastructure/mcp-server.ts"
+        }
+    },
+    "pipeline": {
+        "currentPhase": 1,
+        "level": "Starter",
+        "phaseHistory": []
+    },
+    "session": {
+        "startedAt": "2026-02-12T07:48:55.411Z",
+        "onboardingCompleted": true,
+        "lastActivity": "2026-02-20T19:04:10.706Z"
+    },
+    "history": [
+        {
+            "action": "plan",
+            "feature": "agent-speech-claude-code",
+            "timestamp": "2026-02-12T01:48:00.000Z"
+        },
+        {
+            "action": "design",
+            "feature": "agent-speech-claude-code",
+            "timestamp": "2026-02-12T01:48:00.000Z"
+        },
+        {
+            "action": "do",
+            "feature": "agent-speech-claude-code",
+            "timestamp": "2026-02-12T02:20:00.000Z"
+        },
+        {
+            "action": "check",
+            "feature": "agent-speech-claude-code",
+            "timestamp": "2026-02-12T20:47:00.000Z"
+        },
+        {
+            "action": "act",
+            "feature": "agent-speech-claude-code",
+            "timestamp": "2026-02-12T20:53:00.000Z"
+        },
+        {
+            "action": "check",
+            "feature": "agent-speech-claude-code",
+            "timestamp": "2026-02-12T20:55:00.000Z"
+        },
+        {
+            "action": "report",
+            "feature": "agent-speech-claude-code",
+            "timestamp": "2026-02-12T21:00:00.000Z"
+        },
+        {
+            "action": "archive",
+            "feature": "agent-speech-claude-code",
+            "timestamp": "2026-02-12T21:00:00.000Z"
+        },
+        {
+            "action": "plan",
+            "feature": "debug-env-setup",
+            "timestamp": "2026-02-13T14:37:00.000Z"
+        },
+        {
+            "action": "design",
+            "feature": "debug-env-setup",
+            "timestamp": "2026-02-13T14:45:00.000Z"
+        },
+        {
+            "action": "do",
+            "feature": "debug-env-setup",
+            "timestamp": "2026-02-13T14:55:00.000Z"
+        },
+        {
+            "action": "check",
+            "feature": "debug-env-setup",
+            "timestamp": "2026-02-13T19:00:00.000Z"
+        },
+        {
+            "action": "report",
+            "feature": "debug-env-setup",
+            "timestamp": "2026-02-13T19:05:00.000Z"
+        },
+        {
+            "action": "archive",
+            "feature": "debug-env-setup",
+            "timestamp": "2026-02-13T19:10:00.000Z"
+        },
+        {
+            "action": "plan",
+            "feature": "readme-usage-docs",
+            "timestamp": "2026-02-13T19:15:00.000Z"
+        },
+        {
+            "action": "design",
+            "feature": "readme-usage-docs",
+            "timestamp": "2026-02-13T19:20:00.000Z"
+        },
+        {
+            "action": "do",
+            "feature": "readme-usage-docs",
+            "timestamp": "2026-02-13T19:30:00.000Z"
+        },
+        {
+            "action": "check",
+            "feature": "readme-usage-docs",
+            "timestamp": "2026-02-13T19:35:00.000Z"
+        },
+        {
+            "action": "report",
+            "feature": "readme-usage-docs",
+            "timestamp": "2026-02-13T19:40:00.000Z"
+        },
+        {
+            "action": "archive",
+            "feature": "readme-usage-docs",
+            "timestamp": "2026-02-13T19:45:00.000Z"
+        },
+        {
+            "timestamp": "2026-02-20T18:59:01.077Z",
+            "feature": "agent-speech-claude-code",
+            "phase": "do",
+            "action": "updated"
+        },
+        {
+            "timestamp": "2026-02-20T18:59:07.102Z",
+            "feature": "agent-speech-claude-code",
+            "phase": "do",
+            "action": "updated"
+        },
+        {
+            "timestamp": "2026-02-20T18:59:14.323Z",
+            "feature": "agent-speech-claude-code",
+            "phase": "do",
+            "action": "updated"
+        },
+        {
+            "timestamp": "2026-02-20T18:59:20.746Z",
+            "feature": "agent-speech-claude-code",
+            "phase": "do",
+            "action": "updated"
+        },
+        {
+            "timestamp": "2026-02-20T18:59:36.974Z",
+            "feature": "core",
+            "phase": "do",
+            "action": "updated"
+        },
+        {
+            "timestamp": "2026-02-20T19:02:16.916Z",
+            "feature": "commands",
+            "phase": "do",
+            "action": "updated"
+        },
+        {
+            "timestamp": "2026-02-20T19:02:17.281Z",
+            "feature": "commands",
+            "phase": "do",
+            "action": "updated"
+        },
+        {
+            "timestamp": "2026-02-20T19:02:18.494Z",
+            "feature": "commands",
+            "phase": "do",
+            "action": "updated"
+        },
+        {
+            "timestamp": "2026-02-20T19:02:31.416Z",
+            "feature": "commands",
+            "phase": "do",
+            "action": "updated"
+        },
+        {
+            "timestamp": "2026-02-20T19:02:32.005Z",
+            "feature": "commands",
+            "phase": "do",
+            "action": "updated"
+        },
+        {
+            "timestamp": "2026-02-20T19:02:32.325Z",
+            "feature": "commands",
+            "phase": "do",
+            "action": "updated"
+        },
+        {
+            "timestamp": "2026-02-20T19:02:40.106Z",
+            "feature": "commands",
+            "phase": "do",
+            "action": "updated"
+        },
+        {
+            "timestamp": "2026-02-20T19:02:41.039Z",
+            "feature": "commands",
+            "phase": "do",
+            "action": "updated"
+        },
+        {
+            "timestamp": "2026-02-20T19:02:46.859Z",
+            "feature": "infrastructure",
+            "phase": "do",
+            "action": "updated"
+        },
+        {
+            "timestamp": "2026-02-20T19:02:47.907Z",
+            "feature": "agent-speech-claude-code",
+            "phase": "do",
+            "action": "updated"
+        },
+        {
+            "timestamp": "2026-02-20T19:02:51.083Z",
+            "feature": "core",
+            "phase": "do",
+            "action": "updated"
+        },
+        {
+            "timestamp": "2026-02-20T19:02:51.809Z",
+            "feature": "core",
+            "phase": "do",
+            "action": "updated"
+        },
+        {
+            "timestamp": "2026-02-20T19:04:10.706Z",
+            "feature": "agent-speech-claude-code",
+            "phase": "do",
+            "action": "updated"
+        }
+    ]
 }
