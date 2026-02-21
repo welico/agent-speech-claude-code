@@ -3,7 +3,7 @@
  * Bundled with esbuild to include all dependencies except @modelcontextprotocol/sdk
  */
 import { MCPServer } from './mcp-server.bundle.js';
-import { ConfigManager } from './config.js';
+import { ConfigManager } from './core/config.js';
 
 async function main() {
   const integration = new MCPServer();
