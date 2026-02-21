@@ -59,7 +59,6 @@ agent-speech status
 Expected output:
 ```
 [agent-speech] Configuration status:
-[agent-speech]   version: 0.1.0
 [agent-speech]   enabled: true
 [agent-speech]   voice: Samantha
 [agent-speech]   rate: 200 WPM
@@ -128,7 +127,6 @@ Configuration is stored in `~/.agent-speech/config.json`:
 ```json
 {
   "$schema": "./config.schema.json",
-  "version": "0.1.0",
   "global": {
     "enabled": true,
     "voice": "Samantha",

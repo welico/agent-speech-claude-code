@@ -1,6 +1,6 @@
-# agent-speech
+# agent-speech-claude-code
 
-> **Text-to-speech plugin for Claude Code**
+> **Text-to-speech plugin for AI CLI tools (Claude Code, OpenCode, Codex-CLI, Gemini-CLI)**
 > **Platform**: macOS | **Level**: Starter
 > **Repository**: https://github.com/welico/agent-speech-claude-code
 
@@ -10,7 +10,14 @@
 
 A macOS-exclusive plugin that converts AI responses into speech using the built-in `say` command. Perfect for developers who prefer listening to long responses or want audio confirmation while multitasking.
 
-### Key Features
+### Supported CLI Tools
+
+| Tool | Status | Integration |
+|------|--------|-------------|
+| **Claude Code** | ✅ Available | MCP Server |
+| **OpenCode** | 🚧 Planned | Config Adapter |
+| **Codex-CLI** | 🚧 Planned | OpenAI Functions |
+| **Gemini-CLI** | 🚧 Planned | Google Tools |
 
 ### Key Features
 
@@ -30,7 +37,7 @@ Get speech output in under 2 minutes with Claude Code:
 ```bash
 # Add the marketplace and install
 claude plugin marketplace add welico https://github.com/welico/agent-speech-claude-code
-claude plugin install agent-speech
+claude plugin install agent-speech-claude-code
 
 # Restart Claude Code
 ```
@@ -63,9 +70,7 @@ Add to `~/.config/claude-code/config.json`:
 }
 ```
 
-**Important**: Replace `/ABSOLUTE/PATH/TO/agent-speech-claude-code` with your actual project path.
-
-> **Why absolute path?** Claude Code's MCP server requires absolute paths. For development convenience, you can copy `.mcp.json.example` to `.mcp.json` and update the path, but `.mcp.json` is gitignored for security reasons.
+**Important**: Use an absolute path, not a relative path.
 
 ### 3. Restart Claude Code
 
@@ -96,7 +101,7 @@ Use Claude Code's built-in plugin marketplace:
 claude plugin marketplace add welico https://github.com/welico/agent-speech-claude-code
 
 # Install the plugin
-claude plugin install agent-speech
+claude plugin install agent-speech-claude-code
 ```
 
 The plugin will be installed to `~/.claude/plugins/marketplace/welico/` and automatically configured.
@@ -115,10 +120,10 @@ pnpm install
 pnpm build
 ```
 
-### Option 3: Global Install (via npm)
+### Option 2: Global Install (via npm)
 
 ```bash
-npm install -g agent-speech
+npm install -g agent-speech-claude-code
 ```
 
 ### Verify Installation
@@ -175,7 +180,13 @@ Configuration is stored at: `~/.agent-speech/config.json`
   "rate": 200,
   "volume": 50,
   "minLength": 10,
-  "filterSensitive": false
+  "filterSensitive": false,
+  "tools": {
+    "claude-code": {
+      "enabled": true,
+      "voice": "Samantha"
+    }
+  }
 }
 ```
 
@@ -245,10 +256,11 @@ agent-speech init
 
 #### `agent-speech enable [tool]`
 
-Enable TTS.
+Enable TTS. Optionally specify a tool (default: claude-code).
 
 ```bash
-agent-speech enable           # Enable for Claude Code
+agent-speech enable           # Enable globally
+agent-speech enable opencode  # Enable for opencode
 ```
 
 #### `agent-speech disable [tool]`
@@ -412,7 +424,7 @@ tail -f /tmp/agent-speech-debug.log
 ### Project Structure
 
 ```
-agent-speech/
+agent-speech-claude-code/
 ├── src/
 │   ├── core/              # Core TTS logic
 │   │   ├── tts.ts         # Text-to-speech implementation
@@ -424,6 +436,9 @@ agent-speech/
 │   │   └── fs.ts          # File system operations
 │   ├── adapters/          # CLI tool adapters
 │   │   ├── claude-code.ts # Claude Code adapter (MCP)
+│   │   ├── opencode.ts    # OpenCode adapter (stub)
+│   │   ├── codex-cli.ts   # Codex-CLI adapter (stub)
+│   │   ├── gemini-cli.ts  # Gemini-CLI adapter (stub)
 │   │   └── registry.ts    # Adapter registry
 │   ├── commands/          # CLI commands
 │   │   ├── init.ts
@@ -548,4 +563,4 @@ MIT
 
 ---
 
-**Status**: Active Development | **Version**: 0.2.0
+**Status**: Active Development

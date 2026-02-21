@@ -27,8 +27,8 @@ agent-speech-claude-code/                    # Plugin repository
 1. User adds marketplace: `claude plugin marketplace add welico <url>`
 2. Claude clones repo to: `~/.claude/plugins/marketplaces/welico/`
 3. User installs plugin: `claude plugin install agent-speech-claude-code`
-4. Plugin is cached at: `~/.claude/plugins/cache/welico/agent-speech-claude-code/<version>/`
-5. MCP server path becomes: `~/.claude/plugins/cache/welico/agent-speech-claude-code/<version>/dist/mcp-server.js`
+4. Plugin is cached at: `~/.claude/plugins/cache/welico/agent-speech-claude-code/`
+5. MCP server path becomes: `~/.claude/plugins/cache/welico/agent-speech-claude-code/dist/mcp-server.js`
 
 ## Setting Up Your Marketplace
 
@@ -40,7 +40,7 @@ Located at `.claude-plugin/marketplace.json`:
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "welico",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Plugin marketplace by welico",
   "owner": {
     "name": "welico",
@@ -50,7 +50,7 @@ Located at `.claude-plugin/marketplace.json`:
     {
       "name": "agent-speech-claude-code",
       "description": "Text-to-speech plugin...",
-      "version": "0.1.0",
+      "version": "1.0.0",
       "author": {
         "name": "welico",
         "url": "https://github.com/welico"
@@ -75,7 +75,7 @@ Located at `.claude-plugin/agent-speech-claude-code/plugin.json`:
 {
   "name": "agent-speech-claude-code",
   "description": "...",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": {
     "name": "welico"
   },
@@ -115,8 +115,8 @@ node dist/mcp-server.js
 ### Step 2: Create Git Tag
 
 ```bash
-git tag v0.1.0
-git push origin v0.1.0
+git tag v1.0.0
+git push origin v1.0.0
 ```
 
 ### Step 3: Update GitHub Release
