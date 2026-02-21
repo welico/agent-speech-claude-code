@@ -1,7 +1,7 @@
 {
   "name": "agent-speech",
   "description": "Text-to-speech plugin for Claude Code using macOS native say command. Converts AI responses into speech with configurable voice, rate, and volume. Perfect for developers who prefer listening to long responses or want audio confirmation while multitasking.",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "author": {
     "name": "welico",
     "email": "welico@users.noreply.github.com",
@@ -15,61 +15,6 @@
       "command": "node",
       "args": ["dist/mcp-server.js"],
       "description": "MCP server providing text-to-speech capabilities using macOS say command"
-    }
-  },
-  "hooks": {
-    "description": "Agent Speech Plugin — automatic TTS for Claude Code events",
-    "hooks": {
-      "Stop": [
-        {
-          "hooks": [
-            {
-              "type": "command",
-              "command": "${CLAUDE_PLUGIN_ROOT}/hooks/stop-hook.sh"
-            }
-          ]
-        }
-      ],
-      "Notification": [
-        {
-          "hooks": [
-            {
-              "type": "command",
-              "command": "${CLAUDE_PLUGIN_ROOT}/hooks/notification-hook.sh"
-            }
-          ]
-        }
-      ],
-      "PermissionRequest": [
-        {
-          "hooks": [
-            {
-              "type": "command",
-              "command": "${CLAUDE_PLUGIN_ROOT}/hooks/permission-hook.sh"
-            }
-          ]
-        }
-      ],
-      "SubagentStop": [
-        {
-          "hooks": [
-            {
-              "type": "command",
-              "command": "${CLAUDE_PLUGIN_ROOT}/hooks/subagent-stop-hook.sh"
-            }
-          ]
-        }
-      ],
-      "TaskCompleted": [
-        {
-          "hooks": [
-            {
-              "type": "command",
-              "command": "${CLAUDE_PLUGIN_ROOT}/hooks/task-completed-hook.sh"
-            }
-          ]
-        }
-      ]
     }
   }
 }
