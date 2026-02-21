@@ -22,7 +22,7 @@
 
 - `ralph-loop` 공식 플러그인 구조 분석 결과, Hook 스크립트는 플러그인 디렉토리 내 `hooks/` 폴더에 위치해야 함
 - `hooks/hooks.json`이 Hook 설정을 정의하고, `${CLAUDE_PLUGIN_ROOT}` 변수로 절대경로를 참조
-- 현재 `~/.claude/settings.json`에 절대경로(`/Users/welico/.claude/claude-tts.sh`)가 하드코딩되어 다른 사용자 환경에서 동작하지 않음
+- 현재 `~/.claude/settings.json`에 절대경로(`/Users/warezio/.claude/claude-tts.sh`)가 하드코딩되어 다른 사용자 환경에서 동작하지 않음
 - 플러그인이 설치되면 Hook이 자동 등록되어야 하며, 이를 위해 `hooks.json` 기반 구조가 필요
 
 ### 1.3 Reference
@@ -142,7 +142,7 @@
 "hooks": {
   "Stop": [{
     "matcher": "",
-    "hooks": [{"type": "command", "command": "/Users/welico/.claude/claude-tts.sh"}]
+    "hooks": [{"type": "command", "command": "/Users/warezio/.claude/claude-tts.sh"}]
   }]
 }
 ```

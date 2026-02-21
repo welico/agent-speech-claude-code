@@ -38,7 +38,7 @@ Example:
   "mcpServers": {
     "agent-speech": {
       "command": "node",
-      "args": ["/Users/welico/Git/GitHub/welico/agent-speech-claude-code/dist/mcp-server.js"]
+      "args": ["/Users/warezio/Git/GitHub/welico/agent-speech-claude-code/dist/mcp-server.js"]
     }
   }
 }

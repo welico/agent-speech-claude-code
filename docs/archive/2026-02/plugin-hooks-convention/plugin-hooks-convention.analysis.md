@@ -40,7 +40,7 @@
 
 **실제 구현**:
 ```json
-"command": "/Users/welico/.claude/plugins/cache/welico/agent-speech-claude-code/0.1.0/.claude-plugin/agent-speech-claude-code/hooks/stop-hook.sh"
+"command": "/Users/warezio/.claude/plugins/cache/welico/agent-speech-claude-code/0.1.0/.claude-plugin/agent-speech-claude-code/hooks/stop-hook.sh"
 ```
 
 **영향**: 버전 업그레이드 시 경로 수동 업데이트 필요. 다른 사용자 환경에서 미작동.

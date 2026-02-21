@@ -27,7 +27,7 @@ Claude Code plugins are implemented as MCP (Model Context Protocol) servers. Dev
 ### 1.3 Related Documents
 
 - MCP Specification: https://modelcontextprotocol.io/
-- agent-speech-claude-code CLAUDE.md: `/Users/welico/Git/GitHub/welico/agent-speech-claude-code/CLAUDE.md`
+- agent-speech-claude-code CLAUDE.md: `/Users/warezio/Git/GitHub/welico/agent-speech-claude-code/CLAUDE.md`
 - Archived PDCA documents: `docs/archive/2026-02/agent-speech-claude-code/`
 
 ---

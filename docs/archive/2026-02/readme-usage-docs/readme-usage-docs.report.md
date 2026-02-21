@@ -96,12 +96,12 @@
 ## Files Created/Modified
 
 ### Primary Implementation
-- `/Users/welico/Git/GitHub/welico/agent-speech-claude-code/README.md` - Complete rewrite (539 lines)
+- `/Users/warezio/Git/GitHub/welico/agent-speech-claude-code/README.md` - Complete rewrite (539 lines)
 
 ### Documentation Framework
-- `/Users/welico/Git/GitHub/welico/agent-speech-claude-code/docs/01-plan/features/readme-usage-docs.plan.md` - Planning document
-- `/Users/welico/Git/GitHub/welico/agent-speech-claude-code/docs/02-design/features/readme-usage-docs.design.md` - Technical design
-- `/Users/welico/Git/GitHub/welico/agent-speech-claude-code/docs/03-analysis/readme-usage-docs-gap.md` - Gap analysis (99% match)
+- `/Users/warezio/Git/GitHub/welico/agent-speech-claude-code/docs/01-plan/features/readme-usage-docs.plan.md` - Planning document
+- `/Users/warezio/Git/GitHub/welico/agent-speech-claude-code/docs/02-design/features/readme-usage-docs.design.md` - Technical design
+- `/Users/warezio/Git/GitHub/welico/agent-speech-claude-code/docs/03-analysis/readme-usage-docs-gap.md` - Gap analysis (99% match)
 
 ---
 

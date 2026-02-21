@@ -147,7 +147,7 @@ exit 0
       "hooks": [
         {
           "type": "command",
-          "command": "/Users/welico/.claude/claude-tts.sh"
+          "command": "/Users/warezio/.claude/claude-tts.sh"
         }
       ]
     }

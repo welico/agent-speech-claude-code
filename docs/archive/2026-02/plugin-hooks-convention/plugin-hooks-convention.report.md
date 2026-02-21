@@ -33,7 +33,7 @@ Successfully migrated TTS hook from standalone `~/.claude/claude-tts.sh` to the 
 
 **Root Problem Identified**:
 - `~/.claude/claude-tts.sh` was a standalone script outside plugin structure
-- `~/.claude/settings.json` used hardcoded absolute path `/Users/welico/.claude/claude-tts.sh`
+- `~/.claude/settings.json` used hardcoded absolute path `/Users/warezio/.claude/claude-tts.sh`
 - Plugin was not following `ralph-loop` official hook convention
 - python3 dependency for JSON parsing (fragile, non-native)
 
@@ -48,7 +48,7 @@ Successfully migrated TTS hook from standalone `~/.claude/claude-tts.sh` to the 
 ```
 Before:
 ~/.claude/claude-tts.sh               ← standalone, hardcoded path
-~/.claude/settings.json (hooks)       ← absolute path /Users/welico/.claude/claude-tts.sh
+~/.claude/settings.json (hooks)       ← absolute path /Users/warezio/.claude/claude-tts.sh
 
 After:
 .claude-plugin/agent-speech-claude-code/
@@ -125,7 +125,7 @@ exit 0
 
 **Current state**: `~/.claude/settings.json` still contains:
 ```json
-"command": "/Users/welico/.claude/plugins/cache/welico/agent-speech-claude-code/0.1.0/.claude-plugin/agent-speech-claude-code/hooks/stop-hook.sh"
+"command": "/Users/warezio/.claude/plugins/cache/welico/agent-speech-claude-code/0.1.0/.claude-plugin/agent-speech-claude-code/hooks/stop-hook.sh"
 ```
 
 **Impact**: Requires manual update on version upgrade; not portable to other user environments.

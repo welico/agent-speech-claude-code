@@ -23,7 +23,7 @@ graph TD
 ### 1. File-Level Specifications
 
 #### 1.1 CLAUDE.md Updates
-**Target File**: `/Users/welico/Git/GitHub/welico/agent-speech-claude-code/CLAUDE.md`
+**Target File**: `/Users/warezio/Git/GitHub/welico/agent-speech-claude-code/CLAUDE.md`
 
 **Required Changes**:
 ```markdown
@@ -45,7 +45,7 @@ const replacement = '"startedAt": "2026-02-16T17:05:42.597Z"';
 ```
 
 #### 1.2 .bkit-memory.json Updates
-**Target File**: `/Users/welico/Git/GitHub/welico/agent-speech-claude-code/docs/.bkit-memory.json`
+**Target File**: `/Users/warezio/Git/GitHub/welico/agent-speech-claude-code/docs/.bkit-memory.json`
 
 **Validation Requirements**:
 - Verify data structure integrity
@@ -67,7 +67,7 @@ const replacement = '"startedAt": "2026-02-16T17:05:42.597Z"';
 ```
 
 #### 1.3 Product Requirements Documentation (prd.md)
-**Target File**: `/Users/welico/Git/GitHub/welico/agent-speech-claude-code/.claude/docs/prd.md`
+**Target File**: `/Users/warezio/Git/GitHub/welico/agent-speech-claude-code/.claude/docs/prd.md`
 
 **Update Requirements**:
 - Verify marketplace distribution feature implementation
