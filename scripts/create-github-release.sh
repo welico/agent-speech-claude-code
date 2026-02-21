@@ -1,5 +1,5 @@
 #!/bin/bash
-# Create GitHub Release for agent-speech-plugin
+# Create GitHub Release for agent-speech
 # Usage: ./scripts/create-github-release.sh [version]
 
 set -e

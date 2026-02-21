@@ -3,10 +3,10 @@ template: report
 version: 1.2
 description: PDCA Act phase document (completion report)
 variables:
-  - feature: agent-speech-plugin
+  - feature: agent-speech
   - date: 2026-02-12
   - author: welico
-  - project: agent-speech-plugin
+  - project: agent-speech
   - version: 0.1.0
 ---
 
@@ -14,7 +14,7 @@ variables:
 
 > **Status**: Complete
 >
-> **Project**: agent-speech-plugin
+> **Project**: agent-speech
 > **Version**: 0.1.0
 > **Author**: welico
 > **Completion Date**: 2026-02-12
@@ -51,9 +51,9 @@ variables:
 
 | Phase | Document | Status |
 |-------|----------|--------|
-| Plan | [agent-speech-plugin.plan.md](../../01-plan/features/agent-speech-plugin.plan.md) | ✅ Finalized |
-| Design | [agent-speech-plugin.design.md](../../02-design/features/agent-speech-plugin.design.md) | ✅ Finalized |
-| Check | [agent-speech-plugin.analysis.md](../../03-analysis/features/agent-speech-plugin.analysis.md) | ✅ Complete |
+| Plan | [agent-speech.plan.md](../../01-plan/features/agent-speech.plan.md) | ✅ Finalized |
+| Design | [agent-speech.design.md](../../02-design/features/agent-speech.design.md) | ✅ Finalized |
+| Check | [agent-speech.analysis.md](../../03-analysis/features/agent-speech.analysis.md) | ✅ Complete |
 | Act | Current document | ✅ Complete |
 
 ---
@@ -231,7 +231,7 @@ variables:
 ### 10.1 Final Implementation Structure
 
 ```
-agent-speech-plugin/
+agent-speech/
 ├── src/
 │   ├── core/                     # Business Logic Layer
 │   │   ├── tts.ts                # TextToSpeech engine (120 lines)

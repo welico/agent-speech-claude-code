@@ -1,5 +1,5 @@
 #!/bin/bash
-# Test installation script for agent-speech-plugin release
+# Test installation script for agent-speech release
 # Usage: ./scripts/test-installation.sh [version] [install_path]
 
 set -e
@@ -39,7 +39,7 @@ REQUIRED_FILES=(
     "dist/cli.js"
     "dist/mcp-server.js"
     "config/config.schema.json"
-    ".claude-plugin/agent-speech-plugin/plugin.json"
+    ".claude-plugin/agent-speech/plugin.json"
     "README.md"
     "INSTALL.md"
 )

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Release packaging script for agent-speech-plugin
+# Release packaging script for agent-speech
 # Usage: ./scripts/package-release.sh [version]
 
 set -e
@@ -92,7 +92,7 @@ cd -
 # Create release notes
 echo "📝 Creating release notes..."
 cat > "$RELEASE_DIR/RELEASE-NOTES-$VERSION.md" << EOF
-# agent-speech-plugin v$VERSION Release Notes
+# agent-speech v$VERSION Release Notes
 
 ## Installation
 
@@ -100,9 +100,9 @@ cat > "$RELEASE_DIR/RELEASE-NOTES-$VERSION.md" << EOF
 \`\`\`bash
 # Add to ~/.claude/plugins.json
 {
-  "name": "agent-speech-plugin",
+  "name": "agent-speech",
   "version": "$VERSION",
-  "url": "https://github.com/welico/agent-speech-claude-code/releases/download/v$VERSION/agent-speech-plugin-$VERSION.tar.gz"
+  "url": "https://github.com/welico/agent-speech-claude-code/releases/download/v$VERSION/agent-speech-claude-code-$VERSION.tar.gz"
 }
 \`\`\`
 
@@ -110,7 +110,7 @@ cat > "$RELEASE_DIR/RELEASE-NOTES-$VERSION.md" << EOF
 \`\`\`bash
 # Download and extract
 cd ~/.claude/plugins
-curl -L https://github.com/welico/agent-speech-claude-code/releases/download/v$VERSION/agent-speech-plugin-$VERSION.tar.gz | tar xz
+curl -L https://github.com/welico/agent-speech-claude-code/releases/download/v$VERSION/agent-speech-claude-code-$VERSION.tar.gz | tar xz
 
 # Or using homebrew tap (coming soon)
 brew install welico/tap/agent-speech
@@ -128,7 +128,7 @@ brew install welico/tap/agent-speech
 ## File Structure
 
 \`\`\`
-agent-speech-plugin/
+agent-speech/
 ├── dist/                    # Compiled JavaScript
 │   ├── index.js            # Main entry point
 │   ├── cli.js              # CLI commands
@@ -151,10 +151,10 @@ agent-speech-plugin/
 ### Checksums
 \`\`\`bash
 # Verify tar.gz
-shasum -a 256 -c agent-speech-plugin-$VERSION.tar.gz.sha256
+shasum -a 256 -c agent-speech-$VERSION.tar.gz.sha256
 
 # Verify zip
-shasum -a 256 -c agent-speech-plugin-$VERSION.zip.sha256
+shasum -a 256 -c agent-speech-$VERSION.zip.sha256
 \`\`\`
 
 ### Test Installation

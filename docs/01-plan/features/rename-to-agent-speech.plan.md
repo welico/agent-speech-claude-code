@@ -7,11 +7,11 @@
 
 ## Overview
 
-Rename the plugin from "agent-speech-plugin" to "agent-speech" across all files, configurations, and documentation to provide a shorter, more memorable name.
+Rename the plugin from "agent-speech" to "agent-speech" across all files, configurations, and documentation to provide a shorter, more memorable name.
 
 ## Background
 
-The current plugin name "agent-speech-plugin" is descriptive but lengthy. The shorter "agent-speech" name:
+The current plugin name "agent-speech" is descriptive but lengthy. The shorter "agent-speech" name:
 - Is easier to type and remember
 - Follows common naming conventions (e.g., "eslint", "prettier")
 - Reduces redundancy (plugin is implied by context)
@@ -25,10 +25,10 @@ The current plugin name "agent-speech-plugin" is descriptive but lengthy. The sh
    - `package.json` - name field
 
 2. **Directory Structure**
-   - `.claude-plugin/agent-speech-plugin/` → `.claude-plugin/agent-speech/`
+   - `.claude-plugin/agent-speech/` → `.claude-plugin/agent-speech/`
 
 3. **Plugin Configuration**
-   - `.claude-plugin/agent-speech-plugin/plugin.json`
+   - `.claude-plugin/agent-speech/plugin.json`
    - `.claude-plugin/marketplace.json`
 
 4. **Release Artifacts** (scripts)
@@ -43,8 +43,8 @@ The current plugin name "agent-speech-plugin" is descriptive but lengthy. The sh
    - `docs/marketplace-setup.md`
    - `docs/marketplace-implementation-summary.md`
    - `docs/CLAUDE_CODE_INTEGRATION.md`
-   - `docs/04-report/features/agent-speech-plugin-v1.report.md`
-   - `docs/04-report/agent-speech-plugin-v1-completion-summary.md`
+   - `docs/04-report/features/agent-speech-v1.report.md`
+   - `docs/04-report/agent-speech-v1-completion-summary.md`
 
 6. **Source Code References**
    - `.mcp.json`
@@ -60,9 +60,9 @@ The current plugin name "agent-speech-plugin" is descriptive but lengthy. The sh
 ### Text Replacements
 
 All occurrences of the following patterns will be replaced:
-- `"agent-speech-plugin"` → `"agent-speech"` (package name)
-- `agent-speech-plugin` → `agent-speech` (directory/file references)
-- `@agent-speech-plugin` → `@agent-speech` (if used in imports)
+- `"agent-speech"` → `"agent-speech"` (package name)
+- `agent-speech` → `agent-speech` (directory/file references)
+- `@agent-speech` → `@agent-speech` (if used in imports)
 
 ### Exclusions
 
@@ -101,7 +101,7 @@ The following will NOT be changed:
 
 ## Success Criteria
 
-- [ ] All files use "agent-speech" instead of "agent-speech-plugin"
+- [ ] All files use "agent-speech" instead of "agent-speech"
 - [ ] Plugin directory renamed to `.claude-plugin/agent-speech/`
 - [ ] `package.json` name is "agent-speech"
 - [ ] All documentation updated consistently

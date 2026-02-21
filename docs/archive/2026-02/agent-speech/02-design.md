@@ -6,7 +6,7 @@ variables:
   - feature: Agent Speech Plugin
   - date: 2026-02-12
   - author: welico
-  - project: agent-speech-plugin
+  - project: agent-speech
   - version: 0.1.0
 ---
 
@@ -14,12 +14,12 @@ variables:
 
 > **Summary**: macOS-native TTS plugin for terminal AI CLI tools (Claude Code, OpenCode, Codex-CLI, Gemini-CLI) using Core + Adapter architecture
 >
-> **Project**: agent-speech-plugin
+> **Project**: agent-speech
 > **Version**: 0.1.0
 > **Author**: welico
 > **Date**: 2026-02-12
 > **Status**: Draft
-> **Planning Doc**: [agent-speech-plugin.plan.md](../../01-plan/features/agent-speech-plugin.plan.md)
+> **Planning Doc**: [agent-speech.plan.md](../../01-plan/features/agent-speech.plan.md)
 
 ### Pipeline References (if applicable)
 
@@ -580,7 +580,7 @@ class ClaudeCodeAdapter implements CLIAdapter {
   "mcpServers": {
     "agent-speech": {
       "command": "node",
-      "args": ["/path/to/agent-speech-plugin/dist/mcp-server.js"]
+      "args": ["/path/to/agent-speech/dist/mcp-server.js"]
     }
   }
 }

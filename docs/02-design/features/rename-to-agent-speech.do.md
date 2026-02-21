@@ -7,13 +7,13 @@
 ## Changes Implemented
 
 ### ✅ Phase 1: Core Configuration
-- [x] `package.json` - Updated name from "agent-speech-plugin" to "agent-speech"
+- [x] `package.json` - Updated name from "agent-speech" to "agent-speech"
 - [x] `.bkit-memory.json` - Updated project name
 - [x] Build verified successfully (`npm run build` passed)
 
 ### ✅ Phase 2: Directory Structure
-- [x] Renamed `.claude-plugin/agent-speech-plugin/` → `.claude-plugin/agent-speech/`
-- [x] Renamed `docs/archive/2026-02/agent-speech-plugin/` → `docs/archive/2026-02/agent-speech/`
+- [x] Renamed `.claude-plugin/agent-speech/` → `.claude-plugin/agent-speech/`
+- [x] Renamed `docs/archive/2026-02/agent-speech/` → `docs/archive/2026-02/agent-speech/`
 
 ### ✅ Phase 3: Plugin Configuration
 - [x] `.claude-plugin/agent-speech/plugin.json` - Updated repository URLs
@@ -43,8 +43,8 @@
 2. `.bkit-memory.json` - Project name
 
 ### Directories Renamed (2)
-1. `.claude-plugin/agent-speech-plugin/` → `.claude-plugin/agent-speech/`
-2. `docs/archive/2026-02/agent-speech-plugin/` → `docs/archive/2026-02/agent-speech/`
+1. `.claude-plugin/agent-speech/` → `.claude-plugin/agent-speech/`
+2. `docs/archive/2026-02/agent-speech/` → `docs/archive/2026-02/agent-speech/`
 
 ### Plugin Config (2 files)
 3. `.claude-plugin/agent-speech/plugin.json`
@@ -109,11 +109,11 @@ Renamed:   2 directories
 ## Commit Message Suggestion
 
 ```
-refactor: rename plugin from agent-speech-plugin to agent-speech
+refactor: rename plugin from agent-speech to agent-speech
 
 Breaking Change:
-- Package name changed: agent-speech-plugin → agent-speech
-- Repository URLs updated to agent-speech-claude-code
+- Package name changed: agent-speech → agent-speech
+- Repository URLs updated to agent-speech
 
 Changes:
 - Update package.json name field
@@ -124,7 +124,7 @@ Changes:
 
 Migration:
 Users installing from source should use the new repository URL:
-git clone https://github.com/welico/agent-speech-claude-code.git
+git clone https://github.com/welico/agent-speech.git
 
 All functionality remains unchanged.
 ```

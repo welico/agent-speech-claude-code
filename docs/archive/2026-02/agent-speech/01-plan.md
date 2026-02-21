@@ -6,7 +6,7 @@ variables:
   - feature: Agent Speech Plugin
   - date: 2026-02-12
   - author: welico
-  - project: agent-speech-plugin
+  - project: agent-speech
   - version: 0.1.0
 ---
 
@@ -14,7 +14,7 @@ variables:
 
 > **Summary**: A plugin that provides voice guidance for the response results of Terminal CLI AI agents (Claude Code, OpenCode, Codex-CLI, Gemini-CLI)
 >
-> **Project**: agent-speech-plugin
+> **Project**: agent-speech
 > **Version**: 0.1.0
 > **Author**: welico
 > **Date**: 2026-02-12
@@ -215,7 +215,7 @@ Check which conventions already exist in the project:
 
 ## 8. Next Steps
 
-1. [ ] Write design document (`agent-speech-plugin.design.md`)
+1. [ ] Write design document (`agent-speech.design.md`)
 2. [ ] Create TypeScript project setup
 3. [ ] Start implementation
 

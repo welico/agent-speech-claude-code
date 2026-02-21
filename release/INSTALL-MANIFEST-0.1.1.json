@@ -1,23 +1,23 @@
 {
-  "version": "0.1.1",
-  "package": "agent-speech-plugin",
-  "created": "2026-02-20T22:02:11Z",
-  "files": {
-    "tarball": "agent-speech-plugin-0.1.1.tar.gz",
-    "zip": "agent-speech-plugin-0.1.1.zip",
-    "checksums": {
-      "tarball": "agent-speech-plugin-0.1.1.tar.gz.sha256",
-      "zip": "agent-speech-plugin-0.1.1.zip.sha256"
+    "version": "0.1.1",
+    "package": "agent-speech",
+    "created": "2026-02-20T22:02:11Z",
+    "files": {
+        "tarball": "agent-speech-0.1.1.tar.gz",
+        "zip": "agent-speech-0.1.1.zip",
+        "checksums": {
+            "tarball": "agent-speech-0.1.1.tar.gz.sha256",
+            "zip": "agent-speech-0.1.1.zip.sha256"
+        },
+        "notes": "RELEASE-NOTES-0.1.1.md",
+        "manifest": "INSTALL-MANIFEST-0.1.1.json"
     },
-    "notes": "RELEASE-NOTES-0.1.1.md",
-    "manifest": "INSTALL-MANIFEST-0.1.1.json"
-  },
-  "checksums": {
-    "tarball": "76125536178900c3aff6605f1f27c2b0b1278264abde0dc69e72b0ef3be6326a",
-    "zip": "11949fd9c7c9a424a5a4e9e197a3c4813e0e489123e232f89dea431157188bb6"
-  },
-  "sizes": {
-    "tarball": " 64K",
-    "zip": "116K"
-  }
+    "checksums": {
+        "tarball": "76125536178900c3aff6605f1f27c2b0b1278264abde0dc69e72b0ef3be6326a",
+        "zip": "11949fd9c7c9a424a5a4e9e197a3c4813e0e489123e232f89dea431157188bb6"
+    },
+    "sizes": {
+        "tarball": " 64K",
+        "zip": "116K"
+    }
 }
