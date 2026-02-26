@@ -1,4 +1,4 @@
-# agent-speech v0.1.1 Release Notes
+# agent-speech v0.4.2 Release Notes
 
 ## Installation
 
@@ -7,8 +7,8 @@
 # Add to ~/.claude/plugins.json
 {
   "name": "agent-speech",
-  "version": "0.1.1",
-  "url": "https://github.com/welico/agent-speech-claude-code/releases/download/v0.1.1/agent-speech-0.1.1.tar.gz"
+  "version": "0.4.2",
+  "url": "https://github.com/welico/agent-speech-claude-code/releases/download/v0.4.2/agent-speech-claude-code-0.4.2.tar.gz"
 }
 ```
 
@@ -16,7 +16,7 @@
 ```bash
 # Download and extract
 cd ~/.claude/plugins
-curl -L https://github.com/welico/agent-speech-claude-code/releases/download/v0.1.1/agent-speech-0.1.1.tar.gz | tar xz
+curl -L https://github.com/welico/agent-speech-claude-code/releases/download/v0.4.2/agent-speech-claude-code-0.4.2.tar.gz | tar xz
 
 # Or using homebrew tap (coming soon)
 brew install welico/tap/agent-speech
@@ -57,10 +57,10 @@ agent-speech/
 ### Checksums
 ```bash
 # Verify tar.gz
-shasum -a 256 -c agent-speech-0.1.1.tar.gz.sha256
+shasum -a 256 -c agent-speech-0.4.2.tar.gz.sha256
 
 # Verify zip
-shasum -a 256 -c agent-speech-0.1.1.zip.sha256
+shasum -a 256 -c agent-speech-0.4.2.zip.sha256
 ```
 
 ### Test Installation

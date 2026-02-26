@@ -1,0 +1,23 @@
+{
+  "version": "0.4.2",
+  "package": "agent-speech",
+  "created": "2026-02-26T00:14:55Z",
+  "files": {
+    "tarball": "agent-speech-0.4.2.tar.gz",
+    "zip": "agent-speech-0.4.2.zip",
+    "checksums": {
+      "tarball": "agent-speech-0.4.2.tar.gz.sha256",
+      "zip": "agent-speech-0.4.2.zip.sha256"
+    },
+    "notes": "RELEASE-NOTES-0.4.2.md",
+    "manifest": "INSTALL-MANIFEST-0.4.2.json"
+  },
+  "checksums": {
+    "tarball": "c30a71ea2d85392860de3e7b8a5b1b21ec6f6fbddcaad770736195a04fff0d65",
+    "zip": "6f4502f5ff3ebbb9b411e987b2a66f7cbfc1ed34889015186a80742e41bcdfd5"
+  },
+  "sizes": {
+    "tarball": "212K",
+    "zip": "260K"
+  }
+}
