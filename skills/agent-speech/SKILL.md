@@ -10,7 +10,7 @@ description: |
   Commands: status, help, enable, disable, toggle, set-voice, set-rate,
   set-volume, list-voices, reset, language, mute, init
 
-Triggers: tts, speech, voice, mute, audio, say command, voice, speak, mute
+Triggers: tts, speech, voice, mute, audio, say command, speak
 argument-hint: "[command] [args]"
 user-invocable: true
 allowed-tools:
