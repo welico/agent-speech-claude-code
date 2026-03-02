@@ -34,10 +34,10 @@ When this skill is invoked, read the ARGUMENTS provided and execute the correspo
 CLI command using Bash. The CLI is located at:
 
 ```
-/Users/warezio/Git/GitHub/welico/agent-speech-claude-code/dist/cli.js
+agent-speech
 ```
 
-Run it with: `node /Users/warezio/Git/GitHub/welico/agent-speech-claude-code/dist/cli.js [command] [args]`
+Run it with: `agent-speech [command] [args]`
 
 ## Available Commands
 
@@ -45,103 +45,103 @@ Run it with: `node /Users/warezio/Git/GitHub/welico/agent-speech-claude-code/dis
 Show current TTS configuration.
 
 ```bash
-node /Users/warezio/Git/GitHub/welico/agent-speech-claude-code/dist/cli.js status
-node /Users/warezio/Git/GitHub/welico/agent-speech-claude-code/dist/cli.js status claude-code
+agent-speech status
+agent-speech status claude-code
 ```
 
 ### `help`
 Show all available commands and usage.
 
 ```bash
-node /Users/warezio/Git/GitHub/welico/agent-speech-claude-code/dist/cli.js help
+agent-speech help
 ```
 
 ### `enable [tool]`
 Enable TTS globally or for a specific tool.
 
 ```bash
-node /Users/warezio/Git/GitHub/welico/agent-speech-claude-code/dist/cli.js enable
-node /Users/warezio/Git/GitHub/welico/agent-speech-claude-code/dist/cli.js enable claude-code
+agent-speech enable
+agent-speech enable claude-code
 ```
 
 ### `disable [tool]`
 Disable TTS globally or for a specific tool.
 
 ```bash
-node /Users/warezio/Git/GitHub/welico/agent-speech-claude-code/dist/cli.js disable
-node /Users/warezio/Git/GitHub/welico/agent-speech-claude-code/dist/cli.js disable opencode
+agent-speech disable
+agent-speech disable opencode
 ```
 
 ### `toggle [tool]`
 Toggle TTS on/off.
 
 ```bash
-node /Users/warezio/Git/GitHub/welico/agent-speech-claude-code/dist/cli.js toggle
-node /Users/warezio/Git/GitHub/welico/agent-speech-claude-code/dist/cli.js toggle claude-code
+agent-speech toggle
+agent-speech toggle claude-code
 ```
 
 ### `set-voice <voice-name>`
 Set the TTS voice.
 
 ```bash
-node /Users/warezio/Git/GitHub/welico/agent-speech-claude-code/dist/cli.js set-voice Samantha
-node /Users/warezio/Git/GitHub/welico/agent-speech-claude-code/dist/cli.js set-voice Alex
+agent-speech set-voice Samantha
+agent-speech set-voice Alex
 ```
 
 ### `set-rate <rate>`
 Set speech rate in words per minute (50-400).
 
 ```bash
-node /Users/warezio/Git/GitHub/welico/agent-speech-claude-code/dist/cli.js set-rate 200
+agent-speech set-rate 200
 ```
 
 ### `set-volume <volume>`
 Set speech volume (0-100).
 
 ```bash
-node /Users/warezio/Git/GitHub/welico/agent-speech-claude-code/dist/cli.js set-volume 80
+agent-speech set-volume 80
 ```
 
 ### `list-voices`
 List all available macOS voices.
 
 ```bash
-node /Users/warezio/Git/GitHub/welico/agent-speech-claude-code/dist/cli.js list-voices
+agent-speech list-voices
 ```
 
 ### `reset`
 Reset all settings to defaults.
 
 ```bash
-node /Users/warezio/Git/GitHub/welico/agent-speech-claude-code/dist/cli.js reset
+agent-speech reset
 ```
 
 ### `language`
 Interactive language selection (8 languages supported).
 
 ```bash
-node /Users/warezio/Git/GitHub/welico/agent-speech-claude-code/dist/cli.js language
+agent-speech language
 ```
 
 ### `mute <minutes|off>`
 Mute TTS for a specified duration or turn off muting.
 
 ```bash
-node /Users/warezio/Git/GitHub/welico/agent-speech-claude-code/dist/cli.js mute 15
-node /Users/warezio/Git/GitHub/welico/agent-speech-claude-code/dist/cli.js mute off
+agent-speech mute 15
+agent-speech mute off
 ```
 
 ### `init`
 Initialize configuration file with defaults.
 
 ```bash
-node /Users/warezio/Git/GitHub/welico/agent-speech-claude-code/dist/cli.js init
+agent-speech init
 ```
 
 ## Execution Instructions
 
 1. Parse ARGUMENTS to determine which command and optional arguments were provided
-2. Run the corresponding `node ... dist/cli.js [command] [args]` via Bash
+2. Run the corresponding `agent-speech [command] [args]` via Bash
 3. Show the output to the user
 4. If no command is specified, run `help` and show available commands
 
