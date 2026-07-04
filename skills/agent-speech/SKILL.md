@@ -26,7 +26,7 @@ Text-to-speech plugin for Claude Code using macOS `say` command.
 
 ## Usage
 
-`/agent-speech-claude-code:agent-speech [command] [args]`
+`/agent-speech:agent-speech [command] [args]`
 
 ## How to Execute Commands
 

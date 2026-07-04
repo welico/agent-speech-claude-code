@@ -36,8 +36,8 @@ Get speech output in under 2 minutes with Claude Code:
 
 ```bash
 # Add the marketplace and install
-claude plugin marketplace add welico https://github.com/welico/agent-speech-claude-code
-claude plugin install agent-speech-claude-code
+claude plugin marketplace add welico/agent-speech-claude-code
+claude plugin install agent-speech@welico
 
 # Restart Claude Code
 ```
@@ -55,19 +55,16 @@ pnpm install
 pnpm build
 ```
 
-### 2. Configure Claude Code
+### 2. Register the MCP Server
 
-Add to `~/.config/claude-code/config.json`:
+Register the built server with the `claude mcp add` CLI command (this writes to `.mcp.json` for project scope, or `~/.claude.json` for user scope):
 
-```json
-{
-  "mcpServers": {
-    "agent-speech": {
-      "command": "node",
-      "args": ["/ABSOLUTE/PATH/TO/agent-speech-claude-code/dist/mcp-server.js"]
-    }
-  }
-}
+```bash
+# Project scope — shared with your team via .mcp.json
+claude mcp add --scope project agent-speech -- node /ABSOLUTE/PATH/TO/agent-speech-claude-code/dist/mcp-server.js
+
+# User scope — available across all your projects
+claude mcp add --scope user agent-speech -- node /ABSOLUTE/PATH/TO/agent-speech-claude-code/dist/mcp-server.js
 ```
 
 **Important**: Use an absolute path, not a relative path.
@@ -142,21 +139,13 @@ agent-speech list-voices
 
 ### Claude Code MCP Server
 
-Add to `~/.config/claude-code/config.json`:
+Installing via the plugin marketplace already registers the MCP server automatically through the bundled `.mcp.json` at the plugin root — no manual configuration needed.
 
-```json
-{
-  "mcpServers": {
-    "agent-speech": {
-      "command": "node",
-      "args": ["/ABSOLUTE/PATH/TO/dist/mcp-server.js"],
-      "env": {
-        "DEBUG": "true",
-        "LOG_FILE": "/tmp/agent-speech-debug.log"
-      }
-    }
-  }
-}
+For a manual, standalone setup (without installing the full plugin), register it directly in your project's `.mcp.json` or `~/.claude.json` (user scope):
+
+```bash
+claude mcp add --scope project --env DEBUG=true --env LOG_FILE=/tmp/agent-speech-debug.log \
+  agent-speech -- node /ABSOLUTE/PATH/TO/dist/mcp-server.js
 ```
 
 **Important**: Use an absolute path to `mcp-server.js`.
@@ -239,6 +228,21 @@ agent-speech set-volume <0-100> # Set volume
 agent-speech list-voices       # List available voices
 agent-speech help              # Show help
 ```
+
+### Automatic Hooks
+
+Once installed, the plugin registers these [hooks](https://code.claude.com/docs/en/hooks) (see `hooks/hooks.json`) to speak Claude Code events without you asking:
+
+| Hook event | Matcher | What it speaks |
+|------------|---------|-----------------|
+| `PreToolUse` | `AskUserQuestion` | Reads Claude's question(s) aloud **verbatim** before the interactive prompt appears, so you can listen instead of reading the terminal |
+| `Stop` | — | A short summary of Claude's last response |
+| `Notification` | — | Notification text (permission prompts, idle prompts, etc.) |
+| `PermissionRequest` | — | "Permission required for `<tool>`" |
+| `SubagentStop` | — | "Subagent `<type>` completed" |
+| `TaskCompleted` | — | "Task completed: `<title>`" |
+
+All hooks respect mute state (`agent-speech mute`), the configured voice/rate/volume, and the `language` setting (auto-translated via `hooks/translate.sh`).
 
 ---
 

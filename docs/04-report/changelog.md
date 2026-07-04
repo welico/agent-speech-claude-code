@@ -2,6 +2,18 @@
 
 All notable changes to the agent-speech-claude-code project will be documented in this file.
 
+## [0.5.0] - 2026-07-03 - Plugin Spec Compliance & AskUserQuestion Hook
+
+### Added
+- New `PreToolUse` hook (`hooks/ask-user-question-hook.sh`) matched on `AskUserQuestion` that reads Claude's question(s) aloud verbatim via TTS before the interactive prompt appears
+
+### Fixed
+- Removed a redundant `mcpServers` block from `.claude-plugin/marketplace.json` that duplicated `.mcp.json` and was missing `${CLAUDE_PLUGIN_ROOT}`, risking a broken MCP server path once cached
+- Switched the marketplace plugin `source` from a generic `url` type to the idiomatic `github` type for this GitHub-hosted repository
+- Fixed a leftover pre-rename skill namespace (`/agent-speech-claude-code:agent-speech` → `/agent-speech:agent-speech`) in `skills/agent-speech/SKILL.md`
+- Corrected `claude plugin marketplace add` / `claude plugin install` command syntax and plugin name in README
+- Replaced references to a non-existent `~/.config/claude-code/config.json` with the actual `claude mcp add` / `.mcp.json` / `~/.claude.json` configuration flow in README and `docs/CLAUDE_CODE_INTEGRATION.md`
+
 ## [2026-02-17] - Project Completion v1.0
 
 ### Added

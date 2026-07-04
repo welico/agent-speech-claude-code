@@ -1,65 +1,31 @@
 # Claude Code Integration Guide
 
-This guide shows how to configure Claude Code to use the agent-speech-claude-code locally for development and testing.
+This guide shows how to load agent-speech-claude-code locally for development and testing, following the official [Claude Code plugin](https://code.claude.com/docs/en/plugins) workflow.
 
 ## Configuration
 
-### Claude Code Config Location
+### Loading the Plugin (Recommended)
 
-The Claude Code configuration file is located at:
-- **macOS**: `~/.config/claude-code/config.json`
+Claude Code loads a plugin directly from its working directory with the `--plugin-dir` flag — no config file editing required. This picks up the skill, hooks, and the `.mcp.json`-defined MCP server together:
 
-### Adding the Plugin
-
-Add the following to your `config.json`:
-
-```json
-{
-  "mcpServers": {
-    "agent-speech-dev": {
-      "command": "node",
-      "args": [
-        "/Users/warezio/Git/GitHub/welico/agent-speech-claude-code/dist/mcp-server.js"
-      ],
-      "env": {
-        "DEBUG": "true",
-        "LOG_FILE": "/tmp/agent-speech-debug.log"
-      }
-    }
-  }
-}
+```bash
+claude --plugin-dir /Users/warezio/Git/GitHub/welico/agent-speech-claude-code
 ```
 
-**Important**: Replace `/Users/warezio/Git/GitHub/welico/agent-speech-claude-code` with your actual project path.
+**Important**: Use an absolute path. Replace it with your actual project path.
 
-### Full Example Config
+While iterating, run `/reload-plugins` inside the session to pick up changes without restarting Claude Code.
 
-Here's a complete example with other common settings:
+### MCP-Server-Only Setup (Alternative)
 
-```json
-{
-  "mcpServers": {
-    "agent-speech-dev": {
-      "command": "node",
-      "args": [
-        "/Users/warezio/Git/GitHub/welico/agent-speech-claude-code/dist/mcp-server.js"
-      ],
-      "env": {
-        "DEBUG": "true",
-        "LOG_FILE": "/tmp/agent-speech-debug.log"
-      }
-    },
-    "filesystem": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-filesystem",
-        "/Users/warezio"
-      ]
-    }
-  }
-}
+To register only the MCP server, without the bundled skill or hooks, use `claude mcp add`. This writes to `.mcp.json` (project scope) or `~/.claude.json` (user scope):
+
+```bash
+claude mcp add --scope project --env DEBUG=true --env LOG_FILE=/tmp/agent-speech-debug.log \
+  agent-speech-dev -- node /Users/warezio/Git/GitHub/welico/agent-speech-claude-code/dist/mcp-server.js
 ```
+
+**Important**: Replace the path with your actual project path.
 
 ## Environment Variables
 
@@ -83,9 +49,9 @@ pnpm dev
 
 ## Testing the Integration
 
-### 1. Restart Claude Code
+### 1. Load or Reload the Plugin
 
-After modifying `config.json`, restart Claude Code to load the new MCP server.
+Start Claude Code with `--plugin-dir` as shown above, or run `/reload-plugins` in an existing session after rebuilding.
 
 ### 2. Verify Tool Availability
 
@@ -114,11 +80,12 @@ Please say "Hello, this is a test of the text to speech system" using the speak_
    ls -la dist/mcp-server.js
    ```
 
-2. Check Claude Code logs for errors:
-   - Open Claude Code
-   - View → Developer → Show Debug Logs
+2. Run Claude Code with `--debug` to see plugin loading details, manifest errors, and MCP server initialization:
+   ```bash
+   claude --debug --plugin-dir /path/to/agent-speech-claude-code
+   ```
 
-3. Verify the path in `config.json` is absolute (not relative)
+3. Verify the path passed to `--plugin-dir` (or `claude mcp add`) is absolute (not relative)
 
 ### Debug Mode
 
@@ -164,9 +131,11 @@ For active development:
 
 ## Production Use
 
-For production deployment (e.g., npm install), the plugin will be installed to:
-```
-node_modules/agent-speech-claude-code/dist/mcp-server.js
+For everyday use (not local development), install the plugin from the marketplace instead of pointing at a local checkout:
+
+```bash
+claude plugin marketplace add welico/agent-speech-claude-code
+claude plugin install agent-speech@welico
 ```
 
-Update the config path accordingly.
+Claude Code copies the plugin into its local plugin cache (`~/.claude/plugins/cache`) and resolves `${CLAUDE_PLUGIN_ROOT}` in `.mcp.json` and `hooks/hooks.json` automatically — no manual path configuration needed.
