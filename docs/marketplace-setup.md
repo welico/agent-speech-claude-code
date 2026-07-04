@@ -24,9 +24,9 @@ agent-speech-claude-code/                    # Plugin repository
 
 ### Marketplace Installation Flow
 
-1. User adds marketplace: `claude plugin marketplace add welico <url>`
+1. User adds marketplace: `claude plugin marketplace add welico/agent-speech-claude-code`
 2. Claude clones repo to: `~/.claude/plugins/marketplaces/welico/`
-3. User installs plugin: `claude plugin install agent-speech-claude-code`
+3. User installs plugin: `claude plugin install agent-speech@welico`
 4. Plugin is cached at: `~/.claude/plugins/cache/welico/agent-speech-claude-code/`
 5. MCP server path becomes: `~/.claude/plugins/cache/welico/agent-speech-claude-code/dist/mcp-server.js`
 
@@ -130,8 +130,8 @@ git push origin v1.0.0
 Users can now install:
 
 ```bash
-claude plugin marketplace add welico https://github.com/welico/agent-speech-claude-code
-claude plugin install agent-speech-claude-code
+claude plugin marketplace add welico/agent-speech-claude-code
+claude plugin install agent-speech@welico
 ```
 
 ## Marketplace Source Options
@@ -179,11 +179,12 @@ Then in marketplace.json:
 Test your marketplace before publishing:
 
 ```bash
-# Create a test marketplace entry
-claude plugin marketplace add welico-test file:///path/to/agent-speech-claude-code
+# Add the marketplace from a local checkout (registers under its own
+# "welico" name, taken from marketplace.json — no alias argument)
+claude plugin marketplace add /path/to/agent-speech-claude-code
 
 # Install plugin from test marketplace
-claude plugin install agent-speech-claude-code
+claude plugin install agent-speech@welico
 
 # Verify MCP server is loaded
 # Check Claude Code debug logs

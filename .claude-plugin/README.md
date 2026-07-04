@@ -18,8 +18,8 @@ Convert Claude Code responses into speech with configurable voice, rate, and vol
 
 ```bash
 # Install from welico marketplace
-claude plugin marketplace add welico https://github.com/welico/agent-speech-claude-code
-claude plugin install agent-speech-claude-code
+claude plugin marketplace add welico/agent-speech-claude-code
+claude plugin install agent-speech@welico
 ```
 
 ### Manual Installation
@@ -32,19 +32,12 @@ pnpm install
 pnpm build
 ```
 
-2. Add to Claude Code config (`~/.config/claude-code/config.json`):
-```json
-{
-  "mcpServers": {
-    "agent-speech": {
-      "command": "node",
-      "args": ["/ABSOLUTE/PATH/TO/agent-speech-claude-code/dist/mcp-server.js"]
-    }
-  }
-}
+2. Register the MCP server (writes to `.mcp.json` for project scope, or `~/.claude.json` for user scope):
+```bash
+claude mcp add --scope project agent-speech -- node /ABSOLUTE/PATH/TO/agent-speech-claude-code/dist/mcp-server.js
 ```
 
-3. Restart Claude Code
+3. Restart Claude Code, or run `/reload-plugins` if it's already running
 
 ## Usage
 

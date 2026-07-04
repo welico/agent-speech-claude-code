@@ -29,12 +29,13 @@ echo "📦 Updating .claude-plugin/marketplace.json version to $VERSION"
 sed -i '' "s/\"version\": \"[^\"]*\"/\"version\": \"$VERSION\"/" .claude-plugin/marketplace.json
 
 # Step 3: Update plugin.json version
-echo "📦 Updating .claude-plugin/agent-speech-claude-code/plugin.json version to $VERSION"
-sed -i '' "s/\"version\": \"[^\"]*\"/\"version\": \"$VERSION\"/" .claude-plugin/agent-speech-claude-code/plugin.json
+echo "📦 Updating .claude-plugin/plugin.json version to $VERSION"
+sed -i '' "s/\"version\": \"[^\"]*\"/\"version\": \"$VERSION\"/" .claude-plugin/plugin.json
 
-# Step 4: Build the project
+# Step 4: Build the project and re-bundle the MCP server
 echo "🔨 Building the project"
 pnpm build
+node scripts/bundle-mcp.js
 
 # Step 5: Run tests
 echo "🧪 Running tests"
@@ -42,7 +43,7 @@ pnpm test
 
 # Step 6: Commit changes
 echo "💾 Committing version changes"
-git add package.json package-lock.json .claude-plugin/marketplace.json .claude-plugin/agent-speech-claude-code/plugin.json
+git add package.json package-lock.json .claude-plugin/marketplace.json .claude-plugin/plugin.json dist
 git commit -m "chore: release v$VERSION"
 
 # Step 7: Create git tag
@@ -63,5 +64,5 @@ echo "2. Tag: v$VERSION"
 echo "3. Include the changelog"
 echo ""
 echo "To install from marketplace:"
-echo "  claude plugin marketplace add welico https://github.com/welico/agent-speech-claude-code"
-echo "  claude plugin install agent-speech-claude-code"
+echo "  claude plugin marketplace add welico/agent-speech-claude-code"
+echo "  claude plugin install agent-speech@welico"

@@ -58,17 +58,17 @@ All marketplace infrastructure has been created and configured.
 
 ```bash
 # Add marketplace
-claude plugin marketplace add welico https://github.com/welico/agent-speech-claude-code
+claude plugin marketplace add welico/agent-speech-claude-code
 
 # Install plugin
-claude plugin install agent-speech-claude-code
+claude plugin install agent-speech@welico
 ```
 
 ## Installation Flow Diagram
 
 ```
 User Command:
-  claude plugin marketplace add welico <github-url>
+  claude plugin marketplace add welico/agent-speech-claude-code
                     │
                     ▼
 Claude clones to:
@@ -76,7 +76,7 @@ Claude clones to:
                     │
                     ▼
 User Command:
-  claude plugin install agent-speech-claude-code
+  claude plugin install agent-speech@welico
                     │
                     ▼
 Plugin cached at:
@@ -92,7 +92,7 @@ MCP server configured:
 The marketplace can be added with:
 
 ```bash
-claude plugin marketplace add welico https://github.com/welico/agent-speech-claude-code
+claude plugin marketplace add welico/agent-speech-claude-code
 ```
 
 ## Publishing a Release
@@ -122,7 +122,7 @@ Keep these versions synchronized:
 | `package.json` | `version` |
 | `.claude-plugin/marketplace.json` | `version` (marketplace) |
 | `.claude-plugin/marketplace.json` | `plugins[0].version` |
-| `.claude-plugin/agent-speech-claude-code/plugin.json` | `version` |
+| `.claude-plugin/plugin.json` | `version` |
 
 ## Package.json Files Array
 
@@ -141,8 +141,8 @@ Keep these versions synchronized:
 
 1. **Test local marketplace installation**:
    ```bash
-   claude plugin marketplace add welico-test file:///path/to/agent-speech-claude-code
-   claude plugin install agent-speech-claude-code
+   claude plugin marketplace add /path/to/agent-speech-claude-code
+   claude plugin install agent-speech@welico
    ```
 
 2. **Publish first release**:

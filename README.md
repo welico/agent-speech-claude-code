@@ -95,10 +95,10 @@ Use Claude Code's built-in plugin marketplace:
 
 ```bash
 # Add the welico marketplace
-claude plugin marketplace add welico https://github.com/welico/agent-speech-claude-code
+claude plugin marketplace add welico/agent-speech-claude-code
 
 # Install the plugin
-claude plugin install agent-speech-claude-code
+claude plugin install agent-speech@welico
 ```
 
 The plugin will be installed to `~/.claude/plugins/marketplace/welico/` and automatically configured.

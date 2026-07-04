@@ -2,6 +2,20 @@
 
 All notable changes to the agent-speech-claude-code project will be documented in this file.
 
+## [0.5.1] - 2026-07-03 - Remaining Marketplace Command Fixes
+
+A user hit `Invalid marketplace source format` running a command copied from a
+section of README.md that v0.5.0 missed. Swept the whole repo (outside
+docs/archive/**, plan/design/report snapshots, and the PRD, which are
+point-in-time records) for every remaining occurrence of the same class of bug.
+
+### Fixed
+- `README.md` — second `claude plugin marketplace add` / `claude plugin install` block (under "## Installation") still had the old two-argument syntax and plugin name
+- `.claude-plugin/README.md` (the file shown in the marketplace/plugin UI) — same command fix, plus the same non-existent `~/.config/claude-code/config.json` manual setup replaced with `claude mcp add`
+- `test-marketplace.sh` — rewritten to check the actual current paths (`.claude-plugin/plugin.json`, root `.mcp.json`, `.claude-plugin/README.md`) instead of a stale nested `.claude-plugin/agent-speech-claude-code/` layout that no longer exists; this made the script fail every run
+- `scripts/release.sh` — same stale nested `plugin.json` path bug (would have failed on `sed` at release time), missing MCP bundle re-generation step, and the same wrong install commands in its "next steps" output
+- `docs/marketplace-setup.md`, `docs/marketplace-implementation-summary.md` — corrected every remaining `marketplace add`/`install` example and stale `.claude-plugin/agent-speech-claude-code/plugin.json` path reference
+
 ## [0.5.0] - 2026-07-03 - Plugin Spec Compliance & AskUserQuestion Hook
 
 ### Added

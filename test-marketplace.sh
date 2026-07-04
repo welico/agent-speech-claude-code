@@ -12,19 +12,19 @@ if [ ! -f ".claude-plugin/marketplace.json" ]; then
 fi
 
 # Check if plugin.json exists
-if [ ! -f ".claude-plugin/agent-speech-claude-code/plugin.json" ]; then
+if [ ! -f ".claude-plugin/plugin.json" ]; then
     echo "❌ plugin.json not found"
     exit 1
 fi
 
-# Check if MCP config exists
-if [ ! -f ".claude-plugin/agent-speech-claude-code/.mcp.json" ]; then
+# Check if MCP config exists (at the plugin root, per the official plugin spec)
+if [ ! -f ".mcp.json" ]; then
     echo "❌ .mcp.json not found"
     exit 1
 fi
 
 # Check if README exists
-if [ ! -f ".claude-plugin/agent-speech-claude-code/README.md" ]; then
+if [ ! -f ".claude-plugin/README.md" ]; then
     echo "❌ README.md not found"
     exit 1
 fi
@@ -44,7 +44,7 @@ fi
 # Check version consistency
 PACKAGE_VERSION=$(grep -o '"version": "[^"]*"' package.json | cut -d'"' -f4)
 MARKETPLACE_VERSION=$(grep -o '"version": "[^"]*"' .claude-plugin/marketplace.json | head -1 | cut -d'"' -f4)
-PLUGIN_VERSION=$(grep -o '"version": "[^"]*"' .claude-plugin/agent-speech-claude-code/plugin.json | cut -d'"' -f4)
+PLUGIN_VERSION=$(grep -o '"version": "[^"]*"' .claude-plugin/plugin.json | cut -d'"' -f4)
 
 if [ "$PACKAGE_VERSION" = "$MARKETPLACE_VERSION" ] && [ "$PACKAGE_VERSION" = "$PLUGIN_VERSION" ]; then
     echo "✅ Version consistency: v$PACKAGE_VERSION"
@@ -62,8 +62,8 @@ echo "✅ Ready for marketplace distribution!"
 # Show installation commands
 echo ""
 echo "To install from marketplace:"
-echo "  claude plugin marketplace add welico https://github.com/welico/agent-speech-claude-code"
-echo "  claude plugin install agent-speech-claude-code"
+echo "  claude plugin marketplace add welico/agent-speech-claude-code"
+echo "  claude plugin install agent-speech@welico"
 
 echo ""
 echo "To create a release:"
